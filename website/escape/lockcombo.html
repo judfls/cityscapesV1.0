@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html style="background-image:url(escape1.gif);background-size:5cm;background-repeat:repeat;color:#fff;height:100%;margin:0;">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Escape</title>
+
+  <style>
+    html,body{
+      height:100%;
+      margin:0;
+      padding:0;
+    }
+    body{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    /* ------------- table & image ------------- */
+    table{
+      border:1px solid #fff;
+      background:#000;
+      color:#fff;
+      border-collapse:collapse;
+      padding:20px;
+    }
+    th{padding:20px;}
+    img{
+      width:150px;
+      height:auto;
+      display:block;
+      margin:0 auto;
+      border:1px solid #fff;
+      border-radius:2px;
+    }
+
+    /* ------------- navigation button ------------- */
+    .nav-btn{
+      margin-top:30px;
+      padding:10px 20px;
+      font-size:18px;
+      background:#000;
+      color:#fff;
+      border:2px solid #fff;
+      cursor:pointer;
+    }
+    .nav-btn:hover{
+      background:#fff;
+      color:#000;
+    }
+
+    /* ------------- form & input ------------- */
+    #codeForm{
+      border:2px solid #fff;      /* visible border around the form */
+      padding:20px;
+      margin-top:30px;
+      display:inline-block;
+      background:#000;
+    }
+    #codeInput{
+      background:#000;
+      color:#fff;
+      border:1px solid #fff;
+      padding:8px 12px;
+      font-size:16px;
+    }
+
+    
+  </style>
+</head>
+
+<body>
+  <!-- image in bordered table -->
+  <table>
+    <tr><th><img src="lock.png" alt="Lock on Door"></th></tr>
+  </table>
+
+  <!-- back button -->
+  <button class="nav-btn" onclick="location.href='lock.html'"><i>Back</i></button>
+
+  <!-- code‑entry form -->
+  <form id="codeForm">
+    <input type="text" id="codeInput" placeholder="Enter code…" autocomplete="off">
+  </form>
+
+  <script>
+    /* intercept form submit & check the code */
+    function checkCode(e){
+      e.preventDefault();                       // keep page from reloading
+      const code = document.getElementById('codeInput').value.trim();
+      if(code === '143'){
+        window.location.href = 'success.html';  // ✅ change to your destination
+      }else{
+        alert('Try again.');
+      }
+    }
+    /* attach the handler */
+    document.getElementById('codeForm').addEventListener('submit', checkCode);
+  </script>
+</body>
+</html>

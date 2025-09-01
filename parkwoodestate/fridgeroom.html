@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="images/png" href="img/red.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Room Behind The Fridge</title>
+  <style>
+
+    html{
+background-color: black;
+color: red;
+
+    }
+    body {
+      text-align: center;
+
+    }
+
+    .header-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px; /* space between items */
+      margin-top: 40px;
+    }
+
+    .header-wrapper img {
+      width: 50px; /* adjust as needed */
+      height: auto;
+    }
+
+    #header {
+
+      margin: 20px;
+    }
+
+    p {
+      margin-top: 30px;
+    }
+
+    a{
+color: white;
+text-decoration-line: underline;
+
+    }
+    .hidden {
+  display: none; /* Hides the element completely */
+}
+  </style>
+</head>
+<body>
+
+  <div class="header-wrapper">
+    <img src="img/animated-candle-image-0019.gif" alt="Candle Left">
+    <p id="header">The Room Behind The Fridge</p>
+    <img src="img/animated-candle-image-0019.gif" alt="Candle Right">
+  </div>
+
+  <p>You enter into some strange room with walls of dirt.<br>
+There are bugs who have found their new home here. <br>
+There is also a crumpled piece of paper far near the base of the wall <br>
+
+
+<p id="hiddenText" class="hidden">It looks like a puzzle. You think the answer might be a code. <br><br><br>
+    <img src="img/4836.png" height="150" width="200">
+</p>
+
+</p>
+
+<br>
+<br>
+<a href="floor1.html">Back to the map</a>
+<a><p id="clickableText">Examine the paper</p></a>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const clickable = document.getElementById('clickableText');
+  const hidden = document.getElementById('hiddenText');
+
+  clickable.addEventListener('click', function() {
+    hidden.classList.toggle('hidden'); // Toggles the 'hidden' class
+  });
+});
+</script>
+
+</body>
+</html>

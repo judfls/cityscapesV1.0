@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Donut Shop</title>
+  <style>
+    html {
+      background: #000;
+      color: rgb(255, 0, 0);
+      animation: hueRotateAnimation 10s linear infinite;
+      overflow: hidden;
+    }
+
+    #center {
+      display: block;
+      margin: auto;
+      text-align: center;
+    }
+
+    @keyframes hueRotateAnimation {
+      0% {
+        filter: hue-rotate(0deg);
+        background-color: #000;
+      }
+      100% {
+        filter: hue-rotate(360deg);
+      }
+    }
+
+    @keyframes slide-right {
+      0% { background-color: red; rotate: 0deg; }
+      20% { background-color: orange; }
+      60% { background-color: green; }
+      80% { background-color: blue; }
+      100% { background-color: purple; rotate: 360deg; }
+    }
+
+    .animate-element {
+      animation: slide-right 2s infinite forwards;
+    }
+
+    /* ✅ Hidden by default */
+    #funnyVideo {
+      display: none;
+      margin: 20px auto;
+      width: 60%;
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+  <div id="animatedBox">
+    <br><br><br>
+    <img id="center" src="img/Eye (4).gif">
+    <p id="center">woah, look at this thing right here. oh boy. hmm.</p>
+    <br><br>
+    <a href="ringringwhoisthis.html"><button id="center" style="background-color: blue;">political views</button></a>
+    <button id="triggerButton" style="background-color: green;">nevermind</button>
+    <button id="donutButton" style="background-color: red;">swat team local donut shop (funny)</button>
+    <p id="extraText" style="display: none; text-align: center; color: #fff;">
+      whoa! something is definitely happening now. anyway. this is boring. click something else.
+    </p>
+  </div>
+
+
+  <video id="funnyVideo" controls>
+    <source src="img/Small-Donut-Store-Design (3).mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <script>
+    const triggerButton = document.getElementById('triggerButton');
+    const animatedBox = document.getElementById('animatedBox');
+    const extraText = document.getElementById('extraText');
+    const donutButton = document.getElementById('donutButton');
+    const funnyVideo = document.getElementById('funnyVideo');
+
+    triggerButton.addEventListener('click', () => {
+      animatedBox.classList.remove('animate-element');
+      void animatedBox.offsetWidth; // force reflow
+      animatedBox.classList.add('animate-element');
+      extraText.style.display = 'block';
+    });
+
+    donutButton.addEventListener('click', () => {
+      funnyVideo.style.display = 'block';
+      funnyVideo.play(); 
+    });
+  </script>
+</body>
+</html>

@@ -1,5 +1,6 @@
 <html lang="en">
 <head>
+     <link rel="icon" type="images/png" href="img/sky background1.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CityScapes</title>
@@ -7,7 +8,8 @@
 
 html{
 background-color: white;
-
+background-image: url("img/sky\ background1.png");
+background-repeat: repeat;
 }
 
 #logo{
@@ -18,24 +20,200 @@ position: fixed;
 #center{
  display: block;
   margin: auto;
-  width: 50%;
+
 text-align: center;
+}
+
+a{
+ text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: lightseagreen; 
+  color: lightseagreen;
+
+}
+
+a:hover{
+color: rgb(95, 185, 181);
+text-decoration-color: rgb(95, 185, 181);;
+}
+
+.parent {
+display: grid;
+grid-template-columns: repeat(12, 1fr);
+grid-template-rows: repeat(6, 1fr);
+grid-column-gap: 20px;
+grid-row-gap: 20px;
+}
+
+.div1 { grid-area: 1 / 1 / 8 / 4; }
+.div2 { grid-area: 1 / 10 / 8 / 13; }
+.div3 { grid-area: 1 / 4 / 2 / 10; }
+.div4 { grid-area: 2 / 4 / 8 / 8; }
+.div5 { grid-area: 2 / 8 / 8 / 10; }
+
+#citiesheader{
+color: white;
+background-color: lightskyblue;
+width: 100%;
+}
+
+#cities{
+border-radius: 1px;
+border-color: lightskyblue;
+border-style: solid;
+background-color: white;
+}
+
+#updateheader{
+color: white;
+background-color: lightpink;
+width: 100%;
+}
+
+#update{
+
+    border-radius: 1px;
+border-color: lightpink;
+border-style: solid;
+background-color: white;
+}
+
+#report{
+
+    border-radius: 1px;
+border-color: lightpink;
+border-style: solid;
+background-color: white;
+
 }
 
 </style>
 </head>
 <body>
-    <img id="logo" src="img/cityscapes logo.png" height="100" width="250">
-<br><br>
- <h1 id="center">welcome to cityscapes i am jude felstead</h1>
- <br>
- <br>
- <p id="center">i made cityscapes because i was bored</p>
- <br><br><br>
- WELCOME TO THE WORLD WIDE WEB!! <img src="img/spinning_earth_globe_3.gif">
- <br> <br> <br> <br>
+<br>
+    <div class="parent">
+<div class="div1"> </div>
+<div class="div2"> </div>
+<div class="div3"> 
+    <table>
+        <tr>
+            <img id="center" height="100px" width="400px" src="img/cityscapeslogo2.png" alt="CityScapes Logo">
+        </tr>
+    </table>
+</div>
+<br>
+<div class="div4"> 
 
 
+<br>
+<Div id="cities">
+
+<table id="citiesheader">
+<tr>
+    <td>
+<b>Cities</b>
+</td>
+</tr>
+</table>  
+
+<table id="citiestext">
+<tr>
+<td>
+    <table>
+        <TR>
+
+            <td> <img src="img/new3_e0.gif" height="15px" width="15px"> <a href="webthing/index.html">Jude's Webthing</a> <br></td>
+            <td> <img src="img/new3_e0.gif" height="15px" width="15px"> <a href="website/index.html">judefelstead.com (old) </a> <br></td>
+        </TR>
+<tr>
+            <td><img src="img/new3_e0.gif" height="15px" width="15px"><a href="vendingmachine/index.html">Magic Vending Machine</a> <br></td>
+            <td><img src="img/new3_e0.gif" height="15px" width="15px"><a href="party/index.html">party time (epilepsy warning)</a><br></td>
+           
+</TR>
+<tr>
+<td> icanfly3004</td><td>Arch Chemical Robertson Head</td>
+</tr>
+<tr>
+<td>Eastwood Estate</td><td>jude's design site</td>
+</tr>
+<tr>
+<td>COMING SOON!</td><td>COMING SOON!</td>
+</tr>
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+
+
+</Div>
+<i>© 2025 CityScapes Inc. Created by Jude Felstead</i>
+</div>
+
+
+
+
+
+
+
+<div class="div5"> 
+      <br>
+    <div id="update">
+      
+    <table id="updateheader">
+<tr>
+    <td>
+<b>About</b>
+</td>
+</tr>
+</table>
+
+<table>
+<tr>
+    <td>
+
+
+
+Hello and Welcome to CityScapes! I am Jude. You might know me as <a target="_blank" href="https://www.youtube.com/@judfls">judfls</a> or
+<a target="_blank" href="https://motormachineorchestra.bandcamp.com/">Motor Machine Orchestra.</a> I make websites. A <u>LOT</u> of websites. So many that I made a whole city!
+Every website is made BY JUDE FELSTEAD. (Unless it <u>specifically</u> says. For example: "<i>fartpage by idoit</i>")
+On to the monthly report! <i>(Est. 2025)</i>
+</td>
+</tr>
+</table>  
+</div>
+<br>
+<div id="report">
+    <table id="updateheader">
+<tr>
+    <td>
+<b>Monthly Report</b>
+</td>
+</tr>
+</table>
+
+<table">
+<tr>
+    <td>
+
+Aug 1st - Sept 1st
+<br>
+Added <i>Jude's Webthing, judefelstead.com (old), Magic Vending Machine, and the Party.</i>
+Feeling tired. Happy last bit of summer. Working on <i>Eastwood Estate, Party, and Jude's Design site.</i>
+See you in October.
+</td>
+</tr>
+</table>  
+</div>
+
+
+
+</div>
+  </div>
+</div>
 
 </body>
 </html>

@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html style="background-color:black; background-image: url(images/demonic1.gif), url(images/dogball.gif), url(images/blueballbounce.gif),  url(images/rollingface.gif), url(images/helpmegif.gif), url(images/brain2.gif); background-repeat: repeat; color: rgb(255, 255, 255);">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>this is our home</title>
+
+  <style>
+    body {
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: underline;
+      color: rgb(76, 0, 255);
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+div :not(#not) {
+border-radius: 2px;
+border-color: brown;
+border-style: double;
+background-image: url(images/Pentagram.gif);
+
+
+}
+
+
+    #middletext {
+      column-count: 1;
+      column-gap: 30px;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .image-and-text {
+      display: flex;
+      align-items: flex-start;
+
+    }
+
+    .image-and-text img {
+      width: 232px;
+      height: 254px;
+      flex-shrink: 0;
+
+
+}
+    
+
+    .side-text {
+      flex: 1;
+    }
+
+
+    #space{
+margin: 10px;
+
+    }
+    #spaceleft{
+margin: 10px;
+align-items: left;
+
+    }
+
+.right {
+  float: right;
+margin: 10px;
+  width: 232px;
+      height: 254px;
+  height: auto;
+}
+
+.marquee {
+  --gap: 1rem;
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: var(--gap);
+}
+
+.marquee__content {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  min-width: 100%;
+  gap: var(--gap);
+  animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+.center{
+text-align: center;
+  display: block;
+  margin: auto;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.text2inthe{
+height: 50px;
+width: 1000px;
+text-decoration: solid;
+text-rendering: geometricPrecision;
+text-indent: 30px;
+    position: absolute;
+    z-index:100;
+  
+transform: translate(+300px, -300px);
+
+}
+
+.text3inthe{
+height: 50px;
+width: 1000px;
+text-decoration: solid;
+text-rendering: geometricPrecision;
+text-indent: 30px;
+    position: absolute;
+    z-index:100;
+  
+transform: translate(+800px, -700px);
+
+
+}
+
+.text4inthe{
+height: 50px;
+width: 1000px;
+text-decoration: solid;
+text-rendering: geometricPrecision;
+text-indent: 30px;
+    position: absolute;
+    z-index:100;
+  
+transform: translate(+600px, -500px);
+
+
+}
+
+.text5inthe{
+height: 50px;
+width: 1000px;
+text-decoration: solid;
+text-rendering: geometricPrecision;
+text-indent: 30px;
+    position: absolute;
+    z-index:100;
+  
+transform: translate(+900px, -300px);
+
+
+}
+
+.text6inthe{
+height: 50px;
+width: 1000px;
+text-decoration: solid;
+text-rendering: geometricPrecision;
+text-indent: 30px;
+    position: absolute;
+    z-index:100;
+  
+transform: translate(+905px, -310px);
+
+
+}
+
+.text7inthe{
+height: 50px;
+width: 1000px;
+text-decoration: solid;
+text-rendering: geometricPrecision;
+text-indent: 30px;
+    position: absolute;
+    z-index:100;
+  
+transform: translate(+955px, -380px);
+
+
+}
+
+
+.trynot{
+color: white;
+background-color: red;
+text-decoration: underline;
+text-decoration-line: underline;
+text-decoration-color: white;
+
+text-decoration-thickness: 1px;
+
+}
+
+.mail{
+height: 90px;
+width: 70px;
+z-index: 10;
+
+}
+
+a:not(#not){
+background-color: rgb(0, 0, 0)
+
+}
+
+.fleshandbone{
+background-color: black;
+border-radius: 2px;
+border-color: rgb(255, 255, 255);
+border-style: double;
+border-radius: 8px;
+border-color: rgb(68, 0, 255);
+border-style: double;
+border-radius: 20px;
+border-color: rgb(0, 255, 76);
+border-style: double;
+
+}
+
+  #splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-size: 2rem;
+  }
+
+
+    .centerphone {
+    max-width: 80%;
+    height: auto;
+  }
+
+    #not{
+stroke-width: 0%;
+
+    }
+  
+  </style>
+</head>
+
+<body>
+
+<div id="splash">
+  <img id="not" class="centerphone" src="images/gateopen.gif" alt="Phone">
+</div>
+
+
+  <h1>jude felstead's chaos page</h1>
+
+  <div id="middletext">
+ ̶̨̰̝͈͇͍̹͑͜ͅW̴̘͇̑̀͌E̴͎̳͍͍͌̈́͑̾̈̄̕̚͘ ̴̭̞̫͈̝̊Ą̸̨̩̱̣͓̦̻͉̏R̸̛̮̬̮̯̜̀̏͊̇͐̀Ę̷̧̮̞̦̠̘̝̈́̿͜ ̵̧̳̺̞̗̤̾͆́͋̓̓̀̚͝T̶͓̓͂͌̔͊̿Ř̴̠͑A̷͇͍̫̮͐P̸̝̒́̎̐͛̋P̵̧͕̮̗̳̖̉͋̍̈́E̵̝̣̝̠̅̍͋͗͐̅ͅͅD̸̥̲̳͖̓͛̑͊̊͘ ̷̥̟͚̲̪͗̿̏͘Ì̷̡͉̗̩̣̼̑̿̐̓̂̆͠Ň̶͖̱͎̙̣͚̓̽̑̊ ̴̧̧͍̲̳̗̾͑ͅT̷͎͒͐̏̅H̸̢̳͔̱̖̉̃̊̓̒̀̅̄͜I̶̧͓̲͔͈̥̙̾͂̓̀͜ͅS̸̨͍̫̤̮̯̍̽̉̋̓̊ ̵̢̬̼̖͍̪̜̊̔̈̈́̎̋W̴̹͓̺͖̑̋̿͗̓̆̍̚͜͝Ë̷̢̢̩̝̯̱͖́̈́̏́͐͠Ḇ̴̪̉̅͜Ş̵̭͙̺͕́̊I̷̛̛̼̼̤͂̀͐͐̔̿̓T̵͚͓̞̘̆̍͆̈̏̚E̴̘̣̐̃̈́̎̋̍͂̇ ̷̨̘̆͆̈́̐͝P̴͎̙͖̟̈̊̀̍̔͛̃L̴̼̲͑̽͐͂̑̿͛̓̈E̸̢̨̡̺͉̥͌̀̐A̵̱̦̓̒̐͆S̴̗̤̮̪̒̾Ė̶̦̉̄̏̚ ̴̭̫̯͕͇͖͍̍̓͗͝L̸̛̛̳̼̈́̒̀̀̆͛͠Ȅ̸̘̫̠̟̓̀̃T̷̞̺̼̠̩̥̹͛̀̐̓̈́̚̚ ̵̨̠̳͕̰̰̄̉́̑͗͘Ų̸̥̟̹̣̳͙̫̣̌̏̔̓̈́S̸̮̭̩̜͌͋ ̷̱͐̌̂̀̔̽̂̌͘F̶̼̭͖̺͎̥̮̿̆̏͆̆͒͝ͅR̴̨̛̗͇̥͖̟͖̂̔̀̃Ę̷̛͕̙͍̹̬͙̺̂̐̂͑̂̕̕͝Ę̴̜͙͈̪̞̫͂̓ ̷̼̜̩̙͈̫͇̊̇W̸̧̢̰̱̍̃̍̋̈́̀͌͘E̷̢̨͙͉̰̥̩͗̀̽ ̷͙̞̪͖̩͆̏̇͊̕Ņ̷͎̣͖͍͔̱̖͂́̽̉͗͑͘͜Ê̸͓̼̥͛͑̏̂͠͠E̴̡͈̤̥͓͉̓́͗̇̎͜D̶̡̪̞̻̰̗̒̈́ ̷̤̣͈͎͕̠͛̊̄̀͂͘Y̸̨̡̻̘̙͎͍͚̠͋̎̔Ȯ̶̧̡͔͉͇̰U̷̠̰͓͈̓̀́͑̊̉̀R̵̹̘̲͈̈́͐̓͜͝͝ ̵̡̢͇͚͍̘͕̰̐͋́͘H̶̛̤̜̆͝E̵̢̢̻͊̂͊̀͑́̊͊̀͜L̶͖̣͖͈͖̤͇̱̃͂̇̚P̸̡̗̳̦͙̼̃̒ ̵͇̦̠̱̆̊̀P̵̯̣̤͈̜̖̳̀͐̄̈́̊͒Ĺ̴̝̩̯͚̗̖̺̺̄̒͊͘̚͝E̷̡̛͈͎͇̮͓̙̖͛̇͒A̶͕̯̿̓͝S̸̙͕̙̠̺̣̄̆̑̉̔̂̾͘E̶̛̯̥̝͌͊͂̒̓͂͘͠ ̵̛̹̗̤̻̜̬̅͒̿̐̒̕͝͝H̸͇̼̼͛̐́̈̓͋E̵̡͓̺̊͑ͅĻ̶̭͚̼̹̮̲͛͆͛̀̆̆̉P̴̼̗͉͖͉͈̐̋̓͂̐ ̶̹̼̯͎͖̱̐͑̾̚U̶̥͋̐Ŝ̷̡̱̰̱͉̙̯̥͚͆͐̉ ̶̭̱̫̍̌͊Ẁ̶̳͕̫̱̻͍͐̓̀̈̓̽͘E̷̙̞͌̓͑͌̃͝ ̶̢̣̬͈̬̅̐̾̐̓͗̀͆Á̵̗̖̯͝Ȑ̶̼͇̻̬͑̀̄̅ͅȨ̵̰͕̙̭̱̝̯̟́̾͊̋ ̶̻̲̫̯͒̀̇͋͊͌͗̐̚T̵̨͔͙̩͔͆͂̊̈́͌̏͗̉̊R̷̨̖̼̤̣̰͖̹̋́̕ͅĀ̶̢̧̫̲̦̞͔͋̀͐ͅͅP̶̡̧̙̹͇̙͈͛͜P̶̢͚͙̫̬͋̂͌͗͠Ḙ̸̡͎̫̌̽̈́͗̉̓̀̓D̴̡͕͉͎̼͂ ̷̜̪̰̑̔͘Į̷̧̳̬̙̎̄̄̐̄̿N̶̼͇̰̠̭̅̂͒̉̇̐͠ ̶̭̻͌͑͆T̵̜̆̈̎H̶̰̖̦̼̮̋̓͐̋I̵̬͈̱͊̿̃̏͒S̶̟̣̟̰̯̺̬͈̈͐̑̂͗̈́͘ ̶̯̜̹̗̯́͋̑͗͂̒̀͠W̷͖͓͛̽̊́̄͂͗̓͝Ę̷̯̺̳͍͋̋̋͗̾̉̿͛̓B̷͖̺̤̙͖̬̖̟͐̉͊͒Ś̵͓̝̉̈́̈͋͐̚͠Į̶͈͉̦̖̝̊͛T̶̬̦̪̙̬̰̦̉̈́̄͌͝E̴͇͖͔͊̔͐͋͘͜ ̸̫͂͆̃͒͗̽̕͠P̵̘̣͈̲͔͑͒̓̈́̿̓̈́͘͜͝Ĺ̸̡̢̛͈͕͇͜Ę̸̞͙̐̔A̸͎̹̭̅̂̚S̷͎̗͕̬͋̋̿̊͋́̓̚Ȩ̶̥̯͙̌̌͆͐͘ ̸͉̦̹̒̑́͐̀͘͠L̶͙̣͙̦̐͐É̷͔͓̫̞͇̂̿͋͝͝Ţ̵̯̫͎̣̹̦͇͕͐̕͘ ̶̜̺̎̈́̃̈̿Ų̸̡͖̯͔̪͓̖̭̌̃̓͌S̶̼͚̪̱͖̣̓ ̸̭͂̈̏̈̈́͗͝F̶̖͔̮̳̠͓͔͗̋̎̈́̿̈́̀͝Ȓ̴̨̧̬̱͚̱̘̽̕͜Ě̷̛̼̲͈̦̣̩̖̃͗̒̑̕Ẹ̷͇̯̻̏̇̄ ̵̠̗̖̠̟̼̞̂͋͂̔͗̾W̸̘͇̫̘̣̝̼̤͙̄͋̈̂́͗̊Ę̷͇̏̿͛̂͆͗̔͠ ̸̜͚̓̾͛́̔̃̓̚̕N̴͕̠̱̒̽̾̇̈́͛͘̕͝Ȩ̶̤̥̦̫͚̩̺͒̾̓̃E̶̗̞͙͈̹̞̬̔̕D̸̛͓̫̱̣̥͇̩̬̿͛̀̈́̾́͘͝ ̵̗̩̩͓͌̄́̒Ȳ̶̛̺̫͖͛̎̏͊͆̚O̶͍̾͒̏̽̄̈́̄Ũ̶͈̫̜͕̯̃ͅŖ̸͉͚̹͂̽̔̔̔̋̍̕ ̸̧͓̪̭̮͖̹̀̀̕͜ͅḨ̵̣͔̟̹̙̳͇̪̿͒́̀È̷̡̠̞̘͔̹̪̜̊̄͝Ļ̶̘̠͚̘̻̠͑̍̂̓P̴̪̍͛̅̉̀ ̵̢̱̳̜̜͇̖̘̂P̶͙̬̎͐͌͜L̷͕̭̲̈́͋̒͊̕͝Ȩ̸͙͈̥̹͉̼͓͆̎̚͠A̵̛̛͇̬̥͎̤͘S̴̮͉̪̈͊̀͑̊͑̈́̕Ë̸̥͎͖͍̗̖̤́̆͒͋͒̃͋̽ͅ ̴͇͙̓́͛̿̂͌̿̕Ḩ̵̪͗̈́̂̕Ę̴̜͎̟̝̓̎͂̚L̶̯̮͔͕͓̈́̀̄̽̓͂Ṗ̷̰̘̠̱͉̎͋̂͑̇̚͜ ̵̩̓̾̅̂͝ͅŲ̸̛͖̟͖̱͖͎̋̄̒̄̈͋͠͠S̶̨͕̞̘̮̑̄̅́̈́͒͘͘ ̶̫͚̹͈͔̏
+̶̥͖͍̝́̎̋͂̌̇̽͘͘W̵̦̎̽̎̐͑̋̿̕E̵̫͋̉̔ ̶͕͊͑͗̉̀͜͝A̵̩̫̖̦̣̼̋́̐̍̕Ŗ̸̤͕͍͗̐̽͆̓E̵͙͠ ̴̦̑̅̓̏̿T̴̗̖̳͇̩͉̹̋́͗́̄̈́͋ͅȒ̵̛͉̺̣̠͈̒Ǎ̴̢̛̻̜͛̐̓͋̈́͘͘P̶̡̧̙̲̞̬͈̏̇̈́ͅP̸̪̲̫̘̺̺̆̿̓͗̊͌͂̀͝E̸͚̻͚̝̭̖̭̒̌͛̎͗̂̐̚͠ͅD̷͕̜͐͑̔ ̸͚̱̒̄͊́͛I̵͕̝̜͓̫̘̊̂̈́͝N̵̪͚̼̳̤͍̠̽̽̆ ̸̳̳̖̈́̈́͝T̴̗͊̾̅̑̿H̸̟͕̱̥̣̺̰́͜ͅI̶̮̠̺͙̳̲̰͐̓̽̓͜S̶̡̪͙̩̓͐̏̆͘̚ ̵̧͖̙̩͎̖͚̀̆͝W̸̡̛͍̱̭͍̣͓̑̓́͐͊̋̚͜͠È̸̬̭͎͈̜̐͒͂̐͘͜B̴̺͕̣̗͙̈̈̾̈́̑͋̈́Ṣ̸̯̠̔̎́I̴̼̘̪̖͂T̵̛͉͕̞̤̠̟̲̭̀̊̍͂̎̽̕Ẽ̸̡̺̄͋̊̓̊ ̷̨̳̙͍̳̇P̸̖͎̓̔́̋͠L̴̬̮̃̄̑̊́͛͊E̷̲̓̋̈́͋̀̐͒Ą̸̺̞̳͓͇̓͌ͅS̴̖͍̜̬̮͔̉͌̇͋͜ͅĒ̵̢͍̻̭͍̙͍͎͎̈́̎̃͂̓̃ ̴̧̪̟͈̠̙͔̓̉̓͆͂̀̋̌ͅL̶̰͌͛́̾̽̅̚̚͠Ę̴͇͓̗̦̟̲̥̌̇̅́͐̍̔̔͛ͅT̸̡̡̪̦͖͆͑̀̉ ̵̨̩̝̥͚̫͔́U̷̫̟̹̠̥̣̥͈͙̎̈́͊͝Ş̶̛̙̱̘̙͈͉̣̈̔̆ ̸̩̯̺͓͊̂̈̇̅F̵̜̺̦͚̬̳͑̈́̍͝R̶̬̩͙̲͋̐͑́̔̎̊͜͝ͅÉ̶̱̹̰͉͖̥́̽̈́́̊E̷̡̡̥͕̥͇͙̝̐̄̇̈̾̾̔̔͒ ̶̧̩̺̰͔̞̫͂͑͝W̴͈̜̫̟͎̩̑̾̑̐̀̀̕Ȩ̴͔̖̰̣̫̋͂̈́̏́̍̐̚ ̵͙̫̲͖̣͍̤͝N̵̥̻̰̻͍̮͒E̸̻̭͚͔͈͇̎̏̅ͅE̴̹̱̻̩̜̲̓͜Ḓ̶̛͇̱͇͚͚̈́̀̄ ̷̧̦͖̗̗͚͇̙̒̐͗͒̋̿̒͐̕Ý̷̛̯̣̳͖͎̞̃̈́̑͗̅̄́O̴̩̙̪̻̞͇̭̻͒͜͝͝Ư̴̰̼̝̅͗͆̄͒͠R̷̪̪̃̐̔̀ ̴̩͕͖̘̮̏͂̀̈́̔́͋͂͘H̸̠̀̈́̅̅͒͘Ë̷̠̠́̓̒̈́̒͑̈́̕L̵̛͘͜P̵̣͔̺̼̫̊̋̚ ̷̫̤̟͈͑͌͐̄̎̍̉͝Ṕ̸̡̮̙̝̇̉̎̈́͗̄͠Ļ̶̭͎̰̥̺͙̝̩̉̾͛̐̈͐̑̏̈Ḕ̵̞̬̭͚̹͍͖̇A̷̡͖̱̪̳͚͎̾̓̀͋̐̏̚S̷͙͚̖̯͗̂̈́̎̋̚͝Ë̷̖̻̭̦̦̘͐̾̈́̆ ̴̡̲̗̝̎̎͒͝Ȟ̷͉̦̥̙̺̪̆̈́̏͆̏Ĕ̶̘͖̍̍͂̈́̈́̃͝͝Ĺ̸̻͚͜P̵̙̪̀̕ ̷̦͖̦̯͕̅͊̔Ù̷̧̩͚̼́̑͗̉͝S̴͈̼͖̽̔̓͋ ̷͍̟̂̆W̴̥̮̪͕̩̗̐̊̅̽̋͗́̍̕Ȩ̴̪̪̐͛̽͒͒͆͝͠ ̵̨̞͚́̄̋̒͊̋͝Ǎ̵̡͊͜Ṙ̷̢̗̝̽͂̐͜E̴͇̬̺̯̠̰͎̎̊̔ͅ ̶̩̥̺͆̋͂̃̀Ţ̸̡̛̹̱̱͚͋̓̋̃͜͝R̴̝͉̖̗͎̗̖͉͎̈̍̂͒̒͛̈́͘͝A̶͓͛͌͐͐̀P̷̙͆̑̾̉̈́̕͝P̴̳̀̓̀̒̋̌Ę̴̲͎͓̝̋̇͗̓̊̓̐D̵̝̦͓̭͕̲̅̎̌̎̓͝ ̷̣̻̈̑̒̂̉͝I̸͉͔̓́̅̓͘͜͠N̶̦̹̩̤̙̱̒̇ ̸̧͎̝̦͈͕̰̝́̀̽͋͝Ṭ̴̨̜̼́̌͗̋̀̽̌̃ͅH̶̨̠́̋͆̎̏̓͋̓̚Ḯ̵̯̘͖̲̠̻̬S̵̛̠̭̬͓̗̃̈̓ ̵̗̠͗̇̓̚Ẁ̸̨̧̧̱͙͚͒̃͒̃Ḛ̵̱̙͍̓̔B̷͍̮̹̝̯̓̾͆͗̀S̴̠̼̹̭̫̘͍̒̑̀͗̒̄̀̍̑Ì̷̦̝̤̠̎́̕͘̕T̴͎͓̭̐̌̐́͋̌̚͠Ě̶̡͕͍̞̺̝̐̆̒̈͘͘͘ ̷̨̢̰̦͉͕̪̖̰̌̀͆̕̚P̶͓̟̝͔̤̘͚̱͂̈́͑͝L̷̰̜̓̃̀͑ͅḘ̶̢̛͈̲͐͐̋͝͝Á̸̩̰̗͗͐͛̎̏̕͝͝S̶̙͉̐̔̍̈́̑̃̂͘͜Ę̶͙͉̰̻̯̻͈̰́̍̓ ̶̘̥̞͇̫̱͎̺̓̑̍̈͜͝Ĺ̶̪͌̈̆̈́͋̀̾Ȩ̶̮̔Ţ̸̰͈͓̿̈́̅̀̋̅̔̈ ̷̛̳̒͆̿̒̈̄͝͝Ụ̴̢͖̘̭̬̺̺̐̈́͊̔̄Ş̸̖͓̎͑̐͒͊͠͠ ̶̢̜̣͇͆͑͆̅̆͘͝F̴̨̺̠̻̣͊̾͒̄̉̅̌̓͠R̵̘͖͓̽̎͝E̷͕͕͓̜̍͛̂̐̓́̌E̵͖̫͙̼͊͋ ̴͖̞̰͙̭͇̮̏̑W̷̰̪̙͉̥̭̉́͌̏̇̀̚̕E̶͚̗͚̐͒̅̀͘ ̷̛͓̞̣͕̹̿́́̅N̵̢̨̯̰̺̠̮͆̏Ȅ̸͎̺̦̓̇̽̆̀͝͝Ȩ̷̩̘̳̩͖̩́̋̽͂̋͌̚D̴͉͎̽͝ ̴̧̛̹̘͎̠̾Y̵̛͇̩̼͍͈̲͖̗͒͊̈́̈́̔͑̈́͜Ö̸̞͇̺̱̮̱̟́̏̐̂̿̅͌͗͝Ú̵̩̱͈̼̘̠͛̈̒̾͗̔̕͜ͅṚ̵̢̨̲̫̽̏̍̅͌͗͝ ̵͈̬̥͐̎̇̐̀͘͜H̴̰̠̦̍̎͊̓̀͆̆͝Ë̴͙͓̭̣͔́́̋̈́L̶̡̥̝̰̓̋̅̈́͌͗͠͝P̵̜̠̖̹̮̺̺̐̔͐̉ ̴̧̟͉͓̘̹̞̯̝̍̾̀̀̓̑͋͒P̷͉̬̓̿̋L̷͎̦̘̰̩͈̿͌͜Ę̷̧̻̮̲̥̻̯̌͛͒̍͘A̶͚̪̳̲̻̗͉̒̈́͊̂͝Ş̷̤̩͔̼̻̻̹̮̊̀̍͂̌Ẽ̸͎͉̞͕̩̆̓̈́̕ͅ ̶̮̬̝̖̗̬̗̓́H̷͎͍̄͌̀̅Ę̸̛̳̣͕͓̟̱͉̭̉̽̀̍́̀̚L̴̫̇̌̽̌̀͆̍̄̇P̴͕̮͓̦̑̌͛͘ ̸̧͉̬̜̠̞̼̠́͛̇̄̕U̴͙̦̦̘̰͇̿S̴͎͔̝̱̰̬̱̈̅͂̊͘͜ ̴͉͖̏͜ͅ
+̵̱̥̘̦͇̙̭͆̐̍͂͋̍ͅͅW̸͍̭̻̬͔͔̗̬̉͗̅̒͜Ẽ̶̩̯̼̫̞̠̱͜ ̵̨̢̧͓̲̼͈̥̿̂̈́̈́̓̀̑Á̴̠̭̄́̐͝ͅR̶̛̜̤̦͎̥E̸̟͌͌ ̷̨̲̱͖̘͕́̊̽T̸̛̞̲̹͉̀͘͝͝R̴̡͔̹̫͔̳̩̍̏̀̀̑̈́͜A̷͎̣̳̳͐̑̀͆̌̃P̵̡̧̧̫̲̼̤̔̍̈́̒͊̓͊͝P̸̠͇̠͇͓̖͈̣̝̌̓̆̇̽̒͗͛͝E̸͎̭̮̎͌͛̋̀̈́D̷̙̞̦̓͗̍̓̾̒͌ ̵̥̥͇̹̹̩̠̇̽̀͑̆͑̕͘͘ͅĮ̷͔͔͙̮̃̇̀͠N̷̪͋̉̂͒ ̸̧̛̺̬͉̥̀̒͘T̴̟̐H̷͎̞͋̎͌̈͜Ỉ̵̧̲͓̓̀Ś̸̻̲̝̘̏̊̃͋͝ ̴̱̬͖̮͙͈̈́̽͒̓̏͌̾͠W̴̞͈͎̝̜̘͕̌̑̽̎̀̆̂́̃Ę̶̪̫͕̗̪̖̟̱́̔̾̓͂͗͛̐͝B̷͙̥̼̐̃̒̉̄̐̕͠Ś̵͕̫̘̰̫̺̼̠͜I̴̻̠̺̱̘͍͇̣̊̾̊̎̾̂̓T̶̢̫̠̫̘̓̓̎͒͒̇̅̚͘Ȩ̸̜̯͖̲̞̹̂̅̎̏͗͌ ̸̤͈̄͒̑̽́P̸̧͈̲͉͇̠͙̫̦̀̃̌̈́̓̊͐̕̕L̶̢͙̺̱̞̠̗͋̋̈̊̓̋͘͝͝E̶̡͚̺̬̠̅̓̊̑̋̀͝A̵̛̳̥̭̻͌̔̑̋̄̀͝ͅŠ̸̘̝͉͍̪̤̋͊͒ͅE̵͕̘̩͚̼͇͂ͅ ̸͕̈́Ļ̵̨͔̦̮̠̰̳̩̍̒̃͑͘È̵̯̳Ť̸̮̬̳͓̹̞͔̖̑̀̀̉͜ ̴̟̻͙̩̖͍̂̕͘Ṵ̴͓̫̰̺͈̻̂̌͛͆̒͝S̸̢̈̾̀̅̐ ̷͈̥̫̪̣͇̰̀ͅF̶̧̨̢̤̲̲̗̗̬́̓Ř̷͕̭̪͊̆̀̇̑̀͑É̶̞̣̜͎̻̬͆̊̅̂̏̚͘͠Ĕ̷̱̩̠͕̚͠ ̷̛͎̞̻̣͈͔̮̖̲̽́̃̌̽̽̓W̵̨͕̻͖̑͐͗E̶̢͖͔̙̳͖͚͈͌̏͐̎̐͜ ̴̱̺̟̟͝N̷̳̜̝̯̱͈͑̔̆̆͋̈͘Ę̸͓͒̔̿̀͝Ė̸̢̨̡̞͉̜̩̬̓̏̋͌͐̾̆D̵̰͖̣̓͛̊̒̋̚ ̶̗͚̗̎̍̒̆́͛̋̚Y̶̘͈͔̜͖̤̎̆̅͜͝͝Ȯ̴̬͔̳̘͈̣̜̌̒̿̆̍͜U̷̻̱̝̜͇̾ͅR̸̰̞̒͌ ̷̧̫͔͎̗̠͐͠H̵̫̦̤͔̘͎̙̗̣̐̽̈́E̵̱̤̯͉̜̹̤̼͆̓̀̀̒ͅĻ̵͕̫̜͖͖̭̋̀̒̈͒̚P̶̼̱̱̤̞̄̐́̓͌̚ͅ ̴̭̜̓̿̈́͋̀̈́̑͝P̴͖̝̯̪̺̟̔͊̆̓̇̋̅͘Ļ̷͙̥̱͖̖͖̺̀̔͗͋͌̃̅͌̚Ȩ̸̟̗͕̪̯̣̩̱̔̇̇͒̍̑͘À̴͔̮́̌͂̆̀̈́̀S̴̲̀͛̏̿̋͐̍͘E̵̞͙͕̪͆̈́͋͋͐ ̷̹͉̯̽͋́H̵̳͆̈́͆͗̽E̴̡͕̮̊͒̓̀͑͜Ľ̸͍̀̽͐̒̇̒͝͝P̶̗̻͎͠ ̷̡̱̠̰̏͛̈̎͋̂̆͘͝U̷̡̪̫̜̣͇̤͊̾͊̈́̍̓̽̔̕S̴̨̜̳̊̀̚ ̶̨̛̺̘̮̭̟̯̈́́̈͒̕͘ͅW̷̧̜̣̬̻̐̆E̵̜̐̄̈́́ ̸͕̫͉̆̒̈́͑A̶̖̘͎̥̦̤̤̠͓͛͌̕͝͝R̵̟̦̥̰̩̞͚̎͌̅͘E̶͓̹̹̯͉̫͝͝ ̵̢̢̺̯̣̪̪͈͆͌͋̆̋̿T̶̢͖̱̯͌̿̂͝R̵̨̩̪̙͍̬͓͛̾̐̈́͋̈́̋͘͠ͅA̷̗͚͍͔͚̥͕̮̎͐͘͠͝ͅP̶̨͖̲̜̩̠̎͂̒̈́͐̽̑̉̿P̷͉̥͉̪͚̥̩̼̯̊̈́̒Ě̸͔̭̻͓͙͇̻̾͑͐̊̑̚͘̕͜Ḑ̴̘̭̓̏̾̔͒̄̎̾͜ ̶̖̭͚̣̫̦͂̽͂I̷̫͆͌Ņ̶̛̭̥͙̱̭̤̩̥͗̽͝ ̵̳̇͜͝T̴̢̡͕̣̟̝͗̂̾̓͋H̸͍͝I̷̻̋́̌̂͘S̷̢̧͙̮̠̪̟̥͗ ̷̫̫̅́͋̈́͝Ẃ̶͍̖͚̹́̓̽̌E̷̳͛́̌̂̀͒̏͂̕B̸̦͉̣̌̐̂͒̉̈̓S̶̺̯͂͘I̶̧̞͚̣̊́̽̽͆̓̕͠͝Ţ̷̨̯̝̞̔̌̓̃̚͠E̸͎̪͖̅̎̿̐̏ ̵̨̱̘̥̬̈́̑̀̏̚P̸̛͙͈Ĺ̵̢̠͚̟̣̥̝̺́̌̄͜Ẹ̶̢͉͇̗̑̾̇̆̂̔̄̕̚Å̶̯̪͎̝͇̹ͅS̷̪̤̦͚͚̤̐̔́͜Ē̵͔ ̴̨̪̼̜͉̥̺͒̋̓͊́͘͜͝͝͠Ḷ̷͖͔͑Ę̴͉͉͈̬̥̣̝̰̓̌̍̋̐͆T̴̛̤̣̳͉͍͍͚̟ ̵̡͔̤̳̳̗̅̉͊̿̍́̿U̸͉͕͍͂̅̎̇͋́̆͗͠S̸̨̝̜̞͈̬̀ͅ ̷̢͚̖̦̞̳̦͓̂͘͝F̵͓̪̮͍͚̒̌Ŕ̸̛̪͚͓͕̲̖̤̀̐̾͂̽͠ͅE̵̼̮̥͔͈̝̞̗̜̐̇̀̒̅̐̊E̵̯̽̓̍͑̎̒͜ ̵͉̫̗̅̎̈́̄̉̈W̶̛̦͖E̵̻̽̅̿̄̈̉̂̽͠ ̷͇͖̋̾̓̾͋̆̇̃̃N̷̨̧͕̞̬͉̻͎̬̊̆É̶̳̇̈́́̓̈́E̵̟̳̜͖͛D̶͖̠̦̪͔̪͔̹̊̅̌ ̷̨̡̗͕̣̩͙̓͋̈́̓̽͝͝Y̸̹̭̟͙͔̥̊̎̀͘͜Ǫ̷͉̬̱̖̟̰̬͒͝Ủ̸͈Ŗ̸̟̘̮̬̹͑̄ ̴̡̹́̓̄̌̍͌̑͐͝H̸̝͕̑̄̅E̴̛̲̟̖̦̗̥̽͛́L̵̨̖͓̯̪̱̉̎̊̍̍̄P̴͇͔̫̟͚̺̤̱̻̋̕ ̵̺̹͎̗̭͍̩͉̯̃P̴̹͓͈̲̗̄̋̈͊ͅL̸̖̙̪͍̳̩̻̆̽̾̊̀̈͠͠Ȩ̷͚̗̺͍̀̃̂̀̃̀͝A̸̛͖̭͎̤̯̾͌̄̆ͅS̷̳̈̊͑͝E̴̜͉͋͒̾̾̎̆̕ͅ ̷̡͔̙̬̂̓̅̀͑͝Ḥ̶͔̒͐͐̑É̷̤̖̅̀̈́͝L̴̳͒̈͒͑̾̂͝P̵̝̹͚̫̻̉͐̑̍̍̾ ̴̹͕͕̽́͐͋̆͠U̵͓͔͔͗̉̽̄͘Ș̴̨̜͇̎ ̷̘̤͌̈̕͘͝
+̵͎͇͓͎̰̪̌ͅẄ̵͚́̀͑̈́Ẻ̷̡̪̲͇̹͓̠͕̲̀̋̋͊͌̽͋͠ ̷̹͖̬̹͚̌̋̀͜͝ͅͅA̵̦͗̏̽̽R̸͖̞͈͔͊̾͛͗̍̒̂̄E̵̛̝͕͚͐ ̶̨̰͈̖̆̒̂͝T̴̳̪̩͖͍̤̬͕͌̀̎Ŕ̶͖͉̫̮̓̚͜Ą̶̡͖͇̗̂͒̀͆̕͜P̸̡̿̈͆͑̐̚͝P̶̮͉̳̊̅̾̓̒̿͌͝͝E̶̢̛͉͉͕͌̈́͒͝D̵̥̞̗̗̝̥̅̈́̀̄̌ ̵̱́͊̀̒̏̊̄̽́I̵͎͂̋̉̀̀̐̆Ņ̷̤̣̭̮͍͔͙̮̂̿͒̈́̐̀̉ ̸̨͇̞͕͍̘̍̓͑̔̂͂T̷̡̺̦̖̯̘͈͋̏̈̀̊͂̂Ḩ̸̧͈̺̖̈́͊̎̎͊̎̒̎͘ͅĨ̷̻͕̭́̎̎͂̐̏̒͠Ṡ̶̹̫͍ ̸̧̲̩̽́̇̌͂̒̂̕͜͝W̷̲̌̃͐̊É̷̼B̴̻̤͈̤̭͖̲͎͇͐͗̑͗͗̎̿̽S̸̡̝̯̩̞͚̣̻̳̊̊͑̇̈́̊̀Ï̸̻̣̈́̀̕̚T̴̗̟͉͐͆̈́Ě̸̡͖̘͔͕̠́͒̅͘ ̴̥̱͙̼͔̌̈͑P̷̧̥͈̦̌̉͘ͅL̸̛͖̦̘̱͈͙͚̬̒̆͊̇̍͌E̶̡͔̤̻͓͎͚̬̣̓́͑A̵̝̬͚̪̩͌̀Ṡ̶̏̀ͅẸ̷͍͈̙͍̮̓̊̋͋͑͌̒͘͠ ̴̧̡̡͙̽̍̐͒̿̕͘͠Ļ̸̨͇̠͍͌͐̑̎͋̈́̓̀͗Ę̶̢̰͈͇̼͖̙͙͆͆̀̈́T̸͍̬̼͖̔̇͘͜ ̷̜͍̬̠̥͖͊̄U̸̡͕̝̤͓̳̽̆͘Ş̵̧̱̥͈̼́̓̓̈́̏̐̾̚͠ ̸̙̓͋̎̈̋̽͘͘F̴̡̡̨̛̜̥̳̠͇̺͋́͑R̵̢̡̘̬̖̰̯̈́̊̔̒̄̍̑̓͌È̸̢̨͍̜̫̜͒̆͂̏̄E̴̞̱̪̼͍̰̫̐͝͝ͅ ̶̱̗̑̇̾̏̉͛͋W̶̛̮̗̜͕̗͉͜Ȇ̴̗͔͚̣̀̈͌͋̚̕ ̴͓͈͗̅Ṉ̷́̃͠Ȩ̴͎͇̎̀̂̇̔̈́͋̕E̸͉͋̎̽̔̎̽̏D̴̼͈̫̻̋ ̴̞̥̘̾̿̂̍Y̶̛̫̣̭̒̃̓͋̆̆͠O̶̜͂̓̈́̊͋̔̚͠͠Ȕ̴̡̝̳̬̖͓̻̟̞͛R̸̤̤̱̣͖̩͈̹̐̋̓͛͗͗͘͜ ̶̠̪̱̥̙͉͐́̃͜H̵̡̗͔͆̈́̀̂͊̆E̵̟̝͉̙̞͋͋ͅL̷̨̛̦̗̗͇̍̒̂̓͜͜P̸̛̙̳̣͈̻͙̠͖̎͐̔ͅ ̸̛͇̼͖̠̲͚͒̔͆̋͆̍̈́͘P̷̳̼͚̮̲̔̈́́̕͝L̶̳̏̃͆̾̈́Ȩ̶̦͇̥͔̪̐̾́͑̽̾̚͜͝A̶͔͕̫͙̐̂S̴̳͖̠̻̖̘̬͔̑͜͝E̵̩͚̦̘͖̣̟̓̎̂̎̕͠ ̷̨̡̩̬͇̲̙̩͑͆̔̄̉̂H̸̢͔̏̒̊̓͌̀̑̆͝È̶̦̥̱͔̻͉̰̌̏̋͗́̊̀̚Ľ̶̳͍̗̰P̵̤͊͠ͅ ̸̫̼̯̍͛Ữ̶͈̥̼̟̥̩̀̽̃͑͜ͅṢ̵̡̯̭̉̃̔́̿̋̽̕ ̵̡̛͓̙̐̈̏͌̀̽̈́Ẅ̵̛̛̰̖̖̰͍̞̙́̊͂́̀̓ͅȨ̶̡͙̖̗̹̯̜̬̑ ̸̗̼̆̅̕Ä̷̡̨́̊͗̂͒̊͐̌̏ͅR̴͖̈́̎͐͋̚͝Ę̷̻̳̣̝̥̤̞̻̅̓ ̷̳͉̯̍̂͑̑͌̂͜͝͠T̷̺̺̾̌͠R̶͉̗̊̂̅͗͗͒͊A̸̹̰̙͙̤͖͑̃͠P̷̞͍̪͉͓̣̋͋P̸̧͚̜̤̄̓͂̈̊͜Ę̸̗͎͎̠̬̑̈́̓D̷̞͙̫̯͙̖̓̇ ̶̞̠̞̔̅̈I̵̗̲͔̣̙͓͓͊̈̋͑͆̕̚̚͜ͅN̵̢̹͙̺̲̔̃͛̈͐̉̔̑ ̸̼͉̠͈̇͒͒͂͝T̶̡̳̪͖̦͇̠̭͆͗̆̀͊̑̾̚͘͜H̴̯̗̯͍̒̈́̏̈́́Ï̶̳͉̾̉S̸̢̱̺̠͚̩͇̾̌̌͝ ̵̨̢͓͔͈̽̎̽͜W̸͔̝̳̣̳͕̥̪̹̒̈̎͠E̵̢̘͈͆̒͒͛͛̐͒͘͝B̶͖̪͙̗̞̑͑̇͊͋̄Ś̸̥͆I̴̧̩͓̤̰͈̞̔̑̆̑͐́̃͘͜͝T̸̲̘̙̣͚͖̦̐̿͛̇̀͊͒͜E̸͉̭͍̫͛̽̾͛̂̏̋͛̚ͅ ̵̨̖͖̒P̴̗̘͉̞̜͂͘ͅL̶̢̧̝͕͍̅̃͒͛̋͝͝E̴̢̦͙̒̏̌̍̇̍͜͝A̴̛͚͕̐̓̄̕Š̵͕̪̦̥͇̗̼̎̔̾͂̅É̵̠̭̫̗͇̺̪̼ ̷̛̝̹̭̞̫͐̐L̸̗͍̣̰͚̽Ė̴̬̺̑͒͂̾̀͝T̸̰̎̊̃̈́͘͠ ̴̣̲̩̗̠̃Ṳ̶̯̖͇͍͙̙̐̊̂̀͑̑̒̕͜ͅS̵̼͒̂̕ ̶̡̘̘̜̼̎̇͛̎͊̀͑F̴̧̡̙͖̰͠R̵͎̣̒̑̽̚͘E̷͓̪̗̊͒̓͠Ȩ̴͎̞̇̇ ̶̛͈̝͇͚̬͈̠̩̾̈̋͌͐͒͂W̵͚͖͎̪̗̻͎͑͒̓̒͑̿̔ͅE̸͎͓͕̲̊̿͘ ̸̛̭͐Ņ̵̛̠̪͍̳͑̔̈́̾͠È̶͚̣̿͋͋̇͆͋͠ͅE̴̺͈͛̿͛̄̕D̷̨̨̛̬͔̰͇̜̈́̋̊͝ ̸̨͍̼̹͍̲̳̊̂͊̀Ỳ̸͐͛͆ͅƠ̴͖̄̇̄͗̀U̵͕͕͂̐́͆̈̃͋̓͠R̵̛̫̦͈̉͐̉́̚ ̶̨̠̞̞͎̟̹̊H̸̙̒͒̄̾̈́̈́̒Ȩ̷͍͉͇̍̌͛̂L̴̡̜̙͙̩̦̈́͑͒P̵͔̬͚̬̲̜̯̜͖͒̽͋̒̾̉ ̵͕̖̋̓̈̍̅P̸̟̬͔̻͖̲̞̌̇̑̃̒̐L̶̼̎̀͘Ę̴̢͙͉̙̐̒̌̐͒̈͘͠ͅA̴͇̲̱̘͛͊̌̍ͅͅŠ̶̺͙̥͓͔̼̜̖̓̌ͅE̴͖͖̦̺̫̰̥̘̾ ̸̱͍̯̭͓̭̺̀͛̒̓̽̃͆́͊͜H̸̡̼̦͔̥͚͗̒̀Ę̵͍̾̐̏L̷̢̢̦̭͔͚̩̪͌̀͗P̵͔̣̞̒͒͌̕ ̷̺͍̚Ǘ̸̦̝̓̿̌̀̊̈́̂̍Š̵̠͑͑̀̑̎̏͘ ̸̛̬̻̯͎̩̲̈́
+    <div class="image-and-text">
+
+     <a href="ERR505.html">
+  <img id="space" src="images/ginger in the wood2s.png" alt="Ginger the cat">
+</a>
+      <div class="side-text">
+      d̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅ
+          d̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅ
+            d̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅd̴̡͕̮̮̼͙͌̃̒̓̐̃̓̈͋̈̃̂̍̔͝ẻ̷̡̛̼̬̩̯͔̯̫͚̪̍m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕ó̴̻̈͐͋̋̃̐͛͌̌́ń̶̡̢̧͖̞̹̳͔͍̠̿̍̋̇̐͜s̷̨̡͙̖̯͕͈̘̜͎͑̂̒͘ͅ<a href="mysongs.html">strike</a> <img class="mail" src="images/bloodexplodes.gif"> please stay<img class="mail" src="images/mail.gif">keep him away from us <img class="mail" src="images/mail.gif">keep him away
+        m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕       m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕
+        m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕m̶̨̛̜̩͈̝̤̗̹̣͇̺̲̑̌͒̏̏̏̒̾͆̋̕
+      </div>
+
+    </div>
+
+ 
+   welcome to my chaos page!<img class="mail" src="images/eyes.gif"><img class="mail" src="images/mail.gif">
+   welcome to my chaos page!
+        
+   welcome to my chaos page!<img class="mail" src="images/eyes.gif"><img class="mail" src="images/mail.gif">  
+   welcome to my chaos page!<img class="mail" src="images/eyes.gif"><img class="mail" src="images/mail.gif">
+   welcome to my chaos page!
+      
+   welcome to my chaos page!<img class="mail" src="images/eyes.gif">
+   welcome to my chaos page!       <img src="images/warning_sign.gif">   
+   welcome to my chaos page!  <img src="images/warning_sign.gif">   
+   welcome to my chaos page!<img class="mail" src="images/eyes.gif">
+   welcome to my chaos page!
+         <a class="buttonlinks" href="cluboptions.html">hell</a>   <img class="mail" src="images/mail.gif">
+   welcome to my chaos page!<img class="mail" src="images/mail.gif">
+   welcome to my chaos page!<img class="mail" src="images/eyes.gif">
+   welcome to my chaos page!<img class="mail" src="images/eyes.gif">
+   welcome to my chaos page!
+        <img class="mail" src="images/mail.gif">6̴̣̪͂6̵̼̙̄̏6̶̦̄ͅ6̸̺̔6̸̪̏͆̓6̶̧̢͂͋6̶̬͔͒͂6̸̈͑͜6̷̗̜̚6̷̼̟̣̾6̵̧̦͙͆6̶̛̞̎̚6̵̡̞̓̀6̷̯̗̃̀͝6̴̢̘̏̓̇6̴̜̺͠6̸̱͕͝ͅ6̵̨̻̜̈̕͝6̴̣̐6̶̛̩͍̂6̴̳͖̝̓6̸͎̄6̷̮͍̩͒̄6̶͖͔͝ <img class="mail" src="images/mail.gif">6̴̨̛̥̓6̴̣̪͂6̵̼̙̄̏6̶̦̄ͅ6̸̺̔6̸̪̏͆̓6̶̧̢͂͋6̶̬͔͒͂6̸̈͑͜6̷̗̜̚6̷̼̟̣̾6̵̧̦͙͆6̶̛̞̎̚6̵̡̞̓̀6̷̯̗̃̀͝6̴̢̘̏̓̇6̴̜̺͠6̸̱͕͝ͅ6̵̨̻̜̈̕͝6̴̣̐6̶̛̩͍̂6̴̳͖̝̓6̸͎̄6̷̮͍̩͒̄6̶͖͔͝<img class="mail" src="images/mail.gif">6̴̨̛̥̓6̴̣̪͂6̵̼̙̄̏6̶̦̄ͅ6̸̺̔6̸̪̏͆̓6̶̧̢͂͋6̶̬͔͒͂6̸̈͑͜6̷̗̜̚6̷̼̟̣̾6̵̧̦͙͆6̶̛̞̎̚6̵̡̞̓̀6̷̯̗̃̀͝6̴̢̘̏̓̇6̴̜̺͠6̸̱͕͝ͅ6̵̨̻̜̈̕͝6̴̣̐6̶̛̩͍̂6̴̳͖̝̓6̸͎̄6̷̮͍̩͒̄6̶͖͔͝6̴̨̛̥̓6̴̣̪͂6̵̼̙̄̏6̶̦̄ͅ6̸̺̔6̸̪̏͆̓6̶̧̢͂͋6̶̬͔͒͂6̸̈͑͜6̷̗̜̚6̷̼̟̣̾6̵̧̦͙͆6̶̛̞̎̚6̵̡̞̓̀6̷̯̗̃̀͝6̴̢̘̏̓̇6̴̜̺͠6̸̱͕͝ͅ6̵̨̻̜̈̕͝6̴̣̐6̶̛̩͍̂6̴̳͖̝̓6̸͎̄6̷̮͍̩͒̄6̶͖͔͝<img class="mail" src="images/mail.gif">like long drives<img class="mail" src="images/eyes.gif">but not when <img class="mail" src="images/mail.gif">am in the back seat.
+        when we got there we walked to our cabin we were staying in<img class="mail" src="images/eyes.gif">it was super dry but also very cozy<img class="mail" src="images/eyes.gif">on the first day we downhill skiied<img class="mail" src="images/eyes.gif">it was fun<img class="mail" src="images/eyes.gif"><img class="mail" src="images/mail.gif">just did
+        
+        
+
+    <img class="right" class="spaceleft" src="images/the hill2.png" alt="hill view from cabin">
+  
+      <div class="side-text">
+        
+        baby hills
+        because <img class="mail" src="images/mail.gif">am not much of a pro<img class="mail" src="images/eyes.gif">the next day we went back to the hills for another fun couple hours of skiing<img class="mail" src="images/eyes.gif">this time <img class="mail" src="images/mail.gif">went on three blue squares<img class="mail" src="images/eyes.gif">the last day we 
+        were supposed to go cross country skiing but we got snowed in and we watched the movies dodgeball and click instead<img class="mail" src="images/eyes.gif">later that day we drove home<img class="mail" src="images/eyes.gif">here is an image
+        of the view we had of the hill from our cabin<img class="mail" src="images/eyes.gif">
+        <img src="images/down arrow.gif" alt=""><img src="images/down arrow.gif" alt=""><img src="images/down arrow.gif" alt=""><img src="images/down arrow.gif" alt=""><img src="images/down arrow.gif" alt=""><img src="images/down arrow.gif" alt=""><img src="images/down arrow.gif" alt=""><img src="images/down arrow.gif" alt=""><img src="images/down arrow.gif" alt=""><img src="images/down arrow.gif" alt=""><img src="images/down arrow.gif" alt=""><img src="images/down arrow.gif" alt=""><img src="images/down arrow.gif" alt=""><img src="images/down arrow.gif" alt=""><img src="images/down arrow.gif" alt=""><img src="images/down arrow.gif" alt=""><img src="images/down arrow.gif" alt=""><img src="images/down arrow.gif" alt="">
+        <br>   <img src="images/eyeballsgif.gif"> 
+        <img src="images/pointer.gif" alt=""><A href="welcometoourhome.html" class="fleshandbone">THIS SITE IS HELD TOGETHER WITH FLESH AND BONE</A><img src="images/pointerleft.gif" alt="">
+        <br>
+        
+        <img src="images/up arrow.gif" alt=""><img src="images/up arrow.gif" alt=""><img src="images/up arrow.gif" alt="">  <img src="images/up arrow.gif" alt=""><img src="images/up arrow.gif" alt=""><img src="images/up arrow.gif" alt="">  <img src="images/up arrow.gif" alt=""><img src="images/up arrow.gif" alt=""><img src="images/up arrow.gif" alt="">  <img src="images/up arrow.gif" alt=""><img src="images/up arrow.gif" alt=""><img src="images/up arrow.gif" alt=""><img src="images/up arrow.gif" alt=""><img src="images/up arrow.gif" alt=""><img src="images/up arrow.gif" alt="">  <img src="images/up arrow.gif" alt=""><img src="images/up arrow.gif" alt=""><img src="images/up arrow.gif" alt="">
+       
+        <br> PRESS THIS LINK NOW    PRESS THIS LINK NOW    PRESS THIS LINK NOW    PRESS THIS LINK NOW    PRESS THIS LINK NOW    PRESS THIS LINK NOW
+        <br>   <img src="images/eyeballsgif.gif"> 
+
+        <br>   
+             <br>  <img src="images/eyeballsgif.gif">
+                 <br>  <img src="images/eyeballsgif.gif">  
+        <div class="trynot">
+       <img src="images/warning_sign.gif">  PLEASE CLICK THE IMAGES IT SETS US FREE  <img src="images/warning_sign.gif">
+                 </div>
+    <br>  <img src="images/eyeballsgif.gif">  
+  <br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  
+
+      
+
+
+  </div>
+
+    </div>
+
+
+  </div>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+
+<div class="row">
+  <div class="column">  <img class="center" src="images/underconstruchting5.gif"></div>
+  <div class="column">  <img class="center" src="images/under construction3.gif"></div>
+  <div class="column"><img class="center" src="images/underconstruchting5.gif"></div>
+</div>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+  <div class="marquee">
+  <ul class="marquee__content">
+    <li>PLEASE HELP US!</li>
+    <li>WE ARE TRAPPED!</li>
+      <li>PLEASE HELP US!</li>
+    <li>WE ARE TRAPPED!</li>
+      <li>PLEASE HELP US!</li>
+    <li>WE ARE TRAPPED!</li>
+     <li>PLEASE HELP US!</li>
+    <li>WE ARE TRAPPED!</li>
+  </ul>
+  <!-- Mirrors the content above -->
+  <ul class="marquee__content" aria-hidden="true">
+     <li>PLEASE HELP US!</li>
+    <li>WE ARE TRAPPED!</li>
+      <li>PLEASE HELP US!</li>
+    <li>WE ARE TRAPPED!</li>
+      <li>PLEASE HELP US!</li>
+    <li>WE ARE TRAPPED!</li>
+     <li>PLEASE HELP US!</li>
+    <li>WE ARE TRAPPED!</li>
+  </ul>
+  <br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+  <br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+</div>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<div class="row">
+  <div class="column">   <img class="center" src="images/helpmeconstruction.gif">
+
+    <br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+    <br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+    <img class="center" src="images/helpmeconstruction.gif">
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+    <br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+     <img class="center" src="images/helpmeconstruction.gif">
+    <br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+    <br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+   <img class="center" src="images/helpmeconstruction.gif">
+    <br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+    <br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+     <img class="center" src="images/helpmeconstruction.gif">
+    <br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+    <br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+    <img class="center" src="images/helpmeconstruction.gif">
+
+
+       <img src="images/warning_sign.gif">  PLEASE CLICK THE IMAGES IT SETS US FREE  <img src="images/warning_sign.gif">
+
+</div>
+  <div class="column"><p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+</div>
+  <div class="column">   <img class="center" src="images/helpmeconstruction.gif">
+
+    <br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">sgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+    <img class="center" src="images/helpmeconstruction.gif">
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+
+     <img class="center" src="images/helpmeconstruction.gif">        <img src="images/warning_sign.gif">  PLEASE CLICK THE IMAGES IT SETS US FREE  <img src="images/warning_sign.gif">
+
+   <img class="center" src="images/helpmeconstruction.gif">
+
+    <img class="center" src="images/helpmeconstruction.gif">
+
+
+
+
+</div>
+</div>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<div class="text2inthe">
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<p class="center">P̵̡̡̧̨̧̡̡̧̨̛̛̯͇̗̬̠̯̪̠͎̮̺̼͍̬̦͔͍͕̘͓͔̱̟̦̞̹̱̱͍̞̗̫̜̜͔͎̬͔̘̝̲̼͖̖̠̖͈̥̣̘͖͍̫̻̱̘̣͇͕̫̮͖̮͙͉̞̻̦̩̻̟͍̘͎͙̘̥̤̭̹͖̮̫̙̣̫͓̤̺̠̠͚̱̣͚̖̥̭̞̮̤̘̤̙̻̩̣͒̎͆̓̎͌̽̔͋͛̈̌̾͋̆͂̄̈́͂̈̅̊͆̂͗̂̍̈́͆̄̎͌̽͐̀͋̽͑̆̔̊̅͋̃̆͂̆͐̃́̉̅̆́̔͊̆̈̉̋͌̃̍̂́̌̈́͆̋̈́̍͐̄̄̐̌̾̈̌̎̃̌̅͒̇̉̾̋̀̉̈́́͋̐̉̀̔̈́̇̓͛̒͌̽̾̋̑̑͊́̃͗̍̆̿͑̒͗̉̌̎͋̏̓͐͛̏̏̂͑̉͂̂̃̆̉́͆͊̄̅̐́͆̏͒̾̃̾̋̂́̔́͆̇̈́̂̑̏̂̏̂̒̓̚͘͘͘̕̕͘̚͘̕͘͘̚̕̕̕͘͘͘͜͜͜͠͝͝͠͝͠͝͠͠͠͝͠ͅͅŖ̵̢̡̨̧̢̧̢̨̨̧̡̧̧̨̡̧̧͍̝͉̰̠͙̠̹͔̯̹̦̻̱̰͓͔̖̲͈̙̺̥͓̳̥̬̰̝̹̫̠̮̙͕͕̬̹͕̳̹͍͔͓̳͎̩͕͙͖̟̰͈̝̞̩̰̝̦̺̹̠̠̼͕͚̫̫̙͕̤̜͔̥̜̭̻̺̩̹͖̹͔͖͚͚̞̮̱͍̤̜̺̖̰̗̯͙̞̼̪̮̫̯͙͎̤̰̟̖͔̝̥̠͆̽͊͆̄̈͛͐͋̍̈̂̓͛̂̐̃̎͐̀͒̉͐̌̉̒̀̽̒̍̐̋̄͑̊̂̇̍͛͒̍̉̉̔͋͛̉̏͒̌̕͜͜͜͝͝͝͠͝ͅͅͅͅͅͅẸ̵̡̡̡̡̨̢̧̨̢̧̧̨̧̨̢̢̨̛̛̛̛̛̲̥͍̞̲̳̦͙͖̹̙̖̗͔̭̻̯̞̬͇̖̜̖͚̭̹̯͈͚̻̖͈̖̯̫̠̙͙̹̖̹̠͖͕͕̪͕̗͚̤̲̥͕̰̻̖̝͔̮̤̪̘͇̲̞̣̱̞̳͎̘̝͖͔̱̤̥̫̟̥͇̖̘͖̮̗͎̙̦̣̦̠̳̖͈͖̼̥̼͍͙̞̙̭̗̙͕̜̦̖̜͎̩͔̳̰̗̝͕̺̼̰̫̮̱̮̝̣͉͕̰͙̫̱̌̄̽̾̍̿̌͐́̍̌̈́̇̊͂̂̽̂̓̈͒̊̓͛̓͑̈̈́̔͊̓̓́͐̀̀͆̾̓͐͂̈́̓̈̍̎́̀͌͋͌̂̓̇̄̈́̃̔͆̈́͒́̄̓͂͋́̅̂̆̃̇̈͒̏̔̈́̽̅͒̌̇͑̀̓̅͒̎̈́͛̓͂͋͊̀̈́̓́̊͛̊͌̊͐̽̏̐̎̄͑̄͊̇͂̾́̽̍̇͋̐́́̊̾̂͋̊̔̆͌͐̃̆͛̿̓̒̊̾̋̏̍̓͂̾̉̔͌͒̉̀̔̈́̇̀̊̀̎͂͊̊̃̆̃̐̈́̽͘͘̚̚͘͘̚͘̚̕̚̕͘̕͜͜͜͜͝͠͝͝͝͝͠͝͝͝͝͝ͅͅͅṠ̵̢̨̡̨̧̛̛̛̛̛̛̼̱̳͖̹͍̩͙̣̰̠̘̫̬͎̼̫̖̮̪͕͙͎̳̤̩͍̹̟̙̘͎͍̠̹̺̞̮̝͐͛̽̀͛͒͋̋̓́̈́́̋̈̈́͗̿̆̅̑̽̒͛͑̽̆̋̅̐̑̃͐̾̈́̋̓̒̑̾̑̇̿̒̄͛͊͋̄̆̈́̈́̎̃́̀̔́̑͒̌̆̇̿̾́͑́̿͛̾͊́̋̅͐̊̃͗͑͆́̀̉̾͊̇̏̑̆̆͑̀́̃̈͌͐̈́͆͋́̒͂͘͘͘̚̚̕͘͘̕̕̕͜͜͝͠͝͠͝͝͝͝ͅS̷̢̧̧̨̢̨̧̡̢̧̡̨̢̨̢̨̡̡̢̧̧̡̢̧̧̛̛̛̗̥̰̖͍̪̦̠̹̥̦̟̼̰̥͉̼͍̝̺͓̮̗͈̤̥̘͙̭̲̫̳͍̹̩̟̜̹̭̹͍̦̗̦̜͚͚̙̠̞̠̪͎͍̤̯̗̫͇̫̙͎͙̗͕̘͔͉̤̟̤͖̞̬͙̜̼͓̤̥̖̟͉͓̺͍̞̝͉̗̯͔͕̪̟̜̯̜̱̪̯̞̲̰̤̞̺͈͖̳͙̭̹͍̪̫͍̥̰̠̫̮̠̩͙̬̺͈͓̠̣̫͙͚̹̦̤̤̖͔͖̥̙̦͓̬̫̣̩̮͕͍̺̖͈̬͕͕̠̞̤̰͉͓̬̤̝̺͉̣̞̼̹̫̭̖̲̘͓̻̝̯͉̜̣̼̜͙̖͉̪̠̖͎̠̙̺̗̬̻͎͚̻̻͙͍̤͉̥̞̟̳̙̬̭̦̲̣̹̮̝͈̰̗̱͈̣̺̝̹̰͎̙͈͓̖̘͕̟͙̓͛͛̎́̒̓̉͌͋́̈́̌͒͗̾̉̎̓̈́̈́͗̾̈́̐̈́͗̾̋̆̈́͂̀͑͌͑́͐̀̌͗̉̈́̂̓̉͆̊̒͌͊̏̏̓̈́̉̃͂̐̒̎͑̍̔̓̇͆͋͑̍̿̃́̀̃͆̓̂̿̅̋̂̐͗̀͗͌͋̈́̍̀̇̈̔̽̊̊̏̋͋͒̊̌͑͋̏͊̾͋̌̍͌̈́͊̈́͗͆́̒̈͗̀̒͊́͆̾̆̎̂̓̍̾̒̃̌͌̈́̿́͌̃͌̃̈́͐͛̈́͊͗̈̂̂̿́̔̂̎̈́̂̍͊̈́͋̒́̓̌͗͆̊͗̑̑̌̎̀̚͘̚̚̚͘͘̕̚͘͜͜͜͜͜͜͜͝͝͝͠͠͝͝͠͝͝͠͝͝͝͝͝͝͠͠͝͝ͅͅͅͅͅͅͅͅ ̵̨̡̨̢̨̢̡̢̨̢̢̛̛͕̻̹̖̙̲̙͔͇̱̼̩̙͇̭͉̜̞̭͍̳͈̮͈̳͈̳̺͔̪̺̠̟̟̞̟͉͎͕̬͍͚̤̳̠͓̹̜̰̮̰͇̭͙̥͎̻͕͉̣͖̖̠̫̞̝̪̠̯̺̳̦̬̱̜͖̻͇͇͎̟̰̬̹̦̻͖̫̖̻̻͈̹̞̗̤̞̜̼̭͕̖̰͉̟̹͎̖̯̥̱̼̦̬̹͚͕͉͈͈̻͕͈̩̞͉̮̠͎̬̫̺̮̹̠͈̒͊̽̈́͊̑͆̋̄̀̑͐͋̄͑͊́̔̾̂̐̂̏̌̈̃̄͑͆̈́̑̅̏̐͐́̓̽͌̀̊͗̈́̑̆́́̉́̾̄̊̒̈͗͛͌̀͌̽͌̌̍͋̈́̍̀̑̐̊͗͌̓͂͒̈̒̉̆̒̿͑̔̄͒͑͌̃̑̎́͑̈͊̊͗͆̓͋̈́̓̽̽̑̎͊̌͘̚̚̚̚͘̚̕͘͜͜͝͝͝͝͝͝͠͠͠͠͝ͅT̶̢̨̡̢̨̢̧̨̡̨̧̢̧̨̡̢̢̡̢̡̧̛̛̛̼̱͍̙͎̱͚̫̲̺̯̖͔̫̼̟̤͓͉̫̞̬͕̜̤̩̮̦̜͕͕̖͕͎͔̝͉̺̯̝̳͉͙̗̘̱̻̖͚̫̳̙̗̝̬͖͇̬̠̫̱̲͕̝̜̬̯̩͇̪̞̟͉̩͕̹̪̣̺̪͉̪͈͖͈̗͓̤͈̙̥̫̤͍̥̗̝̼̩̹̱͖̰͕͕̯̩͎̗͇̟̯͙̫̤͚̮̣̘̼̩̭̤̤͔̺͎̳̩͇̫̘̭͖͕̟͍̩̤̞̘̠̠͔̮͉̫̻͇̣̻̯̥͓̤̝̫͕͖̲̲̝̠̙̱͖͍͍͔̩̫̖̗̗͉̙͕̳͎̮͚͕͙̼̪̟͕̟̻̺̱̤̳͍̩̳͈̻̀͋͛͂̑̔̑͛̀͛̀́͐͒̍̉͐́̑͛̃͋́̋͛̉̒̈̀̓̉̋̋̿̃̉̇̓̍͒͆̎̏͗̀́̽̈͌̀̒͆̃͗͆̀̍̊̾̍̊͌̿̕͘̚̚̕̕͜͜͜͜͜͜͜͠͠͝͝͝ͅḨ̵̨̢̧̨̢̡̢̢̡̧̢̨̨̨̧̡̢̨̛̛̛̛͚͓̩͈̟̖̱̱̩̝̗̩̰̲̣͍͎͉̱͓̞͎͖̖̝̤͓̣͙͎̯͚̹͍̲̠̺̰̹̠̥̝̞̻͍̹̬̹̲̦̳̟̰͓̰̠̹̙̼̝͇̲̯̟̣͖͎̭͈̙̻͈̣͚͍̺̹͈̘̳̬͇̞̜͓̣̪͍̺͓̤̹̪͚͎͈̣̠͈͖̺̞̹͚̖͎̜͍͈̱̙̪̫̬͙̼̯̖̥̼̰͔̻̳̠̮̙̮̮̥̫͓̣̫̜͓̝͖͙̠͓̳̗͉̼͎̠̭̝̳͇̙̼̼̗̲͍͚̰̣̘̘̙͖̰͙̤͔͈̞̰͎̘̓̓̓͋̇͂̀̍́̆̓̓̓̊̑͌̌͂͋̈̄̍̋͛̑̊̐̓͊͐́̈̿͒̅̀̐̎͗̂̽̉̒́́͑͊̋́̔͌́̃͆̊̓̏͛̇́̄͋̍̀̋̀̀͆͂̆͒̀̅̒̔̉̋̀̈̀̐̚̚̕̚̕̚̕͜͜͠͠͝͠͠ͅͅͅͅͅȨ̵̨̢̨̨̡̡̡̧̧̧̡̨̨̨̢̧̧̡̢̨̨̡̧̛̛̟͓͔̣͉͖͖̝̳̥̰̦̗͍̙͉̱͖̩̪͚̳̭̹̰̦̻̪̭͓͚̘͙̥̪̬̥͓̝͍̦̞̰͈̜͎͉̻̰̼̻̬̗̭̩̩̥̫͙̖̺͇̼̟͕̣̭̜̮̝̣̼̦͍̼͙̣̺͕̫͉̫̫̭̦̼͕̜̭͎̩̺͈͉̼͉̣̹̣̳̝͇̞̻͉̣̹̩̭͈̪̙̻̤̟̠̦̲͎̖̲̰̦̟̝̱̱̪͕̘͚̲͔̫͓̻̞͎̞̗͎̠͙̥̱̤̭̖̯̣̪̱͖͓͙̰͚̮̖͇̻͇̲͚̥͉̫̗̖̤̖͙̘̣͔̲̣̭̯̯̥̲̲̳̠̟̩̬̹̻̣̹͈̖̥̥̥̦͇̩͈͉̙͈̬͍̤̟͇͇͉͎̣̥̜̺͉͚͖̯̠̹̰͉̲͍̦̜̱̞̠̘̱̞̦̰͍̯̫͚͈̳̜͇͕̾͌̽̎̾̓̍̀͊̽͆̔̔́̈́̎̽͑̈́̽̍̑́͊̀̑̾̌͑͂̈́̿̌̾̇̇͊̎̽͂̾̈̋̈́̈̈́̾̆̌̅͛̅͆͛̃̃́̾̓̌̃͆̀͋̋̒̃̎̂̀̓̀̏́̈́̐̇̑̓́͛̇̔̈́͐̂̄̀̎̍̔̌̈́̉̃͌̈̂͒̏͋̄͊̈͑̇̾̋͂͆̆̌̋̔́̾̇́̌̃̆̎̐́̿͂̋̒͗̓̓͂̈́̌̋͒͐̂́̀̅̅́́͐̽͛͌̓̈́̆̒̾͊̇͆̄͋̉̾̏̽̃̽̅͌̏̚̚̕͘̕̚͘͘͘̚̕̚̕͘̚͘͘̕̚̕͜͜͜͜͜͜͜͜͜͝͝͝͝͝͝͝ͅͅͅͅͅͅͅͅͅ ̶̨̨̡̨̢̢̡̡̢̧̧̢̧̨̨̧̨̨̧̛̛̛̛̛̞̜̬̦̦̭͔͕̘̩̘̘̘̺̠̩͖̲̙̰̠̣̪̲̱̣̦͙̣̤͙̙̱̥̳̰̮̙̞̬͖͈͈̥̹͇͎̮̣̮͖̰͔̮̼̙͖͉̟̦͇̰̝͓̤̥̟͖͇̟̬̙̳̪͚̣͉͉̖̠̪̭̟͈̼͎͎̥̙̩̦͕̜̘͚̬͚̯̥̘͖͈͖̝̫̰͖̯̱̹͍̯͎͇̞̹̦̘̣̻̩̮̝̬̮͎̬̳̫͎͎̤͓̩͎̻̳͎͖̣͇̞̗̮͉͎̪͇̬̤̠͚̦̱̺̫̌̿͋̏͑̌̆̔̓͑̈́̃͋̈́̍͗̋͗̌͂̃͋͌͑̋́͋̈́̉͆̆͑͛͛̍̍̾̔̈́̒̿̈́̇̍̑̊͗̎͆̅̔̇͐̈̀̃́̿̃́́̆̏͒͑͒̈̀͐̾̉̋̓̅͐͐̐͒̏́̑͒̐͊͐̉̊̈́͑͛̀̍̎͌̔̈́̆̓͗̃̍̈̀̆͐͋̀̿̄̐̄̈̈̓́̅͂̐̀͐̾̊̎̀͛̀͆͋̽̆͂̔̔̅̓̂̽͒̏̇̂͒͆̿̐̋̎͂́͋́̓̽͋̏͑̊̔͋̃̊͆̎͒̇͐̀̔͑̄̌̈̈́͆͆́̄͋̍̐̔̔̌͌̂̒̓̆̓̓͌͐͐̀̊̽̀̾̈́̄͘͘͘͘̕̚͘͘̕̚͘̚̚̕͘̕̚̕͘͘͜͜͜͜͝͝͠͠͠͠͝͝͝͝͝͝͠͠͝ͅͅͅẐ̶̡̡̧̢̛̛̛̠͈̳̲̳͇̹̹̱̬̖͈̾̔͐̇̋̎͐̉͐͛̿͌̈́͂̈́̋̂̓̃̆́̂͋̋̽̒̑͊́̈́̓̆̓͒̓̈́̀̋̈́̾̀̄́̇͋̉͐́̈́̂̍̐͑͂́̉́͐̍̆͂̌̎̂̉̆̉̀̑̋͆̐̌͛̾̿͒͒̄͂̌͛̿̍̂̓̂̂̾̄̅̀̈́͗͆͋̈́̿̔̔̈̐͐̈́͌̒̆̒͋̃̂̋͗͂̓̐͛̀̑̂̋̅̈́͒́̍͂͐̃̍͌́̅͆̅̾́̒̓̇͋̈́͑̒̽͒̏̎̑̉̀͐͊̿͐̔̈́͒́͒̀̆̊̒̐̈́̋̇̂̐͊̚͘͘͘͘̚͘͘͘̚̕̚͘̚̕͝͝͠͠͝͝͠͝͝͝͠͠͝͝Ę̸̨̧̢̧̨̨̡̡̨̢̡̨̨̧̛̪̺̪̥̱̜̰̝̫̬̦̬̘̝̹͙̩̜̤̝̤̤͇͚̖̤̺͇̖̪͍̘͙̲̘̠̜̫͕̳͔͉͖̤̻̖̻͉̻͉̥͉͔̥͓͉̭͈̟̼̪̲̱͖̝̟͖̦͎̜͖̼̦̱̯͖͓͎̦̰̗͎̥̘̮̹̞̗̝̳̪͚̝̘̱̹̯̠͓̰̟̦̤̫̭̖̰̣̩̞̻͎̖̞̙͕͔͎̳̗̰͓͉̲͖̣̪̝̟̥͕̖̼̣̹̬̺̖͚̪͙̮̘̫͈̥͇͈̲͖̪̖͖̬̬̦͇͖̬̤̘̪̦̟̹̯̰̝̝͓̲̥͍̤̺͈̖̫̘̤̥̦̥̺̫̬̪̒͐́̔̈́̄̐̏͋̈̊͗̏̒̈̌͑̋̔̅̓̾̐̎͐̂͌̄͗̒̇̂͂́́͂̒͌̍̔̾̀̏̀̓̈́͐̔̃̔́̿̂͋̿͊͑̇̋̆̿̾̌͆̅̈̍͐̋͑̓̓̀̀̀͌̉̈̈̎̉̑̈́̆̾̔͑̀͂̂̂́͗̐͆́͊̊̐͑̒̉̔͆̈́̅̀̈́̕̕̕̕̕͘͘̕͘͘̕͜͜͜͜͜͝͝͝͝͝͝͝͝͠ͅR̵̡̡̢̢̨̡̢̨̨̢̨̢̧̢̨̡̨̧̨̨̡̨̨̧̨̡̡̢̧̨̛̛̛̛̛̛̛̛̺̝̞̹̩͚̯͇̝̜̻͈͔̩̞̮̲̫͔͚̪̘̠̙͖̮̜̼̱̜͖̣̹̦̺̲̣̭̘̯̝̮͈̪̭̳̻̤͓͉̳̙̤̼̲̞̲̯̗͍̠̯͙̤͙̥͍̺͙̙̲̯͈̤̯̩͖͇͔̹͎̦̜̻̘̬̮͉̗̤̘̺̩̟̲̩̬̻̯̳̲̦̗̺̩̘̝̦̯̟̳̯̪͓̦̫̤͖̻͈̝̺̬͙͔̞̮̱̹̺̹͎̰̗̹̥̭̪̖͙͈͔̝̯͎͎̱̙̮̞̲̫̖̖͎͖͇͓̫̞̖͍͚̮̭̩͈̠͍͙̗̺̝̞̟̠͉̦̞̦̹͔̫̣̬̹̠͔͕̞̞̭͍͔͍͊̏͂͐̇̀̈́͋̔̔͊͗̊̀̿͐̿̌͗̉̒̾̾̐̅̈́͐̋͋̿̐͌̈́̀͌̌̿͌͆̏̔̏͑̅̄̀̔̀̀̔̏̓̊͊̅̋̇̇̆̔̇̀̄̀̀͊͑͌̄͐̐̅̋̉͋́̾̊͂̽̄̋̅̈́̐̉̋̄́̾̆̑͐͛̄̏͐̎̏̆̍̈́̾̀̂̔͌̊͊͌̉̒̀̄͋̋́̄͊̽̑̏̄̃̉̀̀̐̔̔̉̓̒̓͂͑̒̈́́́̈́̊̑̊̈́́͋̍̈́͆͒̂̉̓̍̒͑̽̈́͌̔̎̽̑͂͐̏̾̔̒͆͑͆͌̍̽̽̊͗͋̑̍͌̐̈̊͂̎̏̃̅̍̋̚̕͘̕͘̚͘͘͘̚̚̚̚͘͜͜͜͜͜͠͝͝͝͝͝͝͝͠͠͝ͅͅͅǪ̴̡̛̛̥͙̜͚͚̞̘̺̞̘͉͍̤̠̩̬͚͖̮͉̜̻̗͈̽͛̋̆͐̌͊̽͐̇̄͗̔̈̃̎̍͋͐̒̿͒̈́͌̔̓̅̅͒̃̇̄̃̔̿̀͒̄̏̈̔̈́̀̈́̓̅̂͒̓̀̂̅͒̋͊͊̆́̀͌͋̽̈́͋͐͋̅̍̔̓͘̕͘̚̚͝͠͠͝͝͠͝ͅͅ</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<p class="center"><img class="mail" src="images/mail.gif">⁇ ̀ů ⁇ № ⁇ ⁇ ̯n ⁇ ̋ ⁇ oz̃猫̥ ⁇ "́9性 ⁇ に ⁇ Б ⁇ ̋ ⁇ ⁇ 願性 ⁇ ុ ⁇ ⁇ Ănon̍ ⁇ 말 ⁇ っ 耶̍ "《̥ ⁇ "́ " ⁇ ̶̶ ⁇ ⁇ 明̇̇ ⁇ רに ⁇ p̵̮̰̏̀͐̌͊̌̅̍̈́͘ă̷̭̭̹̖̩̦͍͎̺̳̲̞̮̞̇̉́̕͘͜ģ̸̡̧͔̤̝̳͕̞̞̩̯͉̪̯̆͗̽͛̏͂̓̊̇͂̈ę̶̛̹͎̯̲̪͆͛̀̐̀̈́͆̍͌̓̾̂͝͝ ̶ ⁇ ⁇ ̆ ̄́ ⁇ ̶ ⁇ ̶́ ⁇ ̶ ⁇ ̶́ ⁇ ̶ ⁇ ̶́ ⁇ ̶ ⁇ ́ ⁇ ́ ⁇ ̶ ⁇ ́ ⁇ ̶ ⁇ ̶願 ⁇ ̯ ⁇ ̯ ⁇ ̯ ⁇ ̯́ ⁇ ̯́ ⁇ ̶̶̶ ⁇ û̶̶̶̶̶̄ ⁇ ̶̀́ ⁇ ̍̃́́́̍ ⁇ 왕̶̶̶̊口̍ ⁇ Ő ⁇ ̶̀ ⁇ ̶ ̶̶̶ ⁇ ̶̊別 ⁇ ̀̍̅ ⁇ 布ပ ⁇ ְ ⁇ ̶̶̊口̍ ⁇ Ő ⁇ ̶̀ ⁇ 号̍̅ ⁇ 経ช́ ⁇ 典̶̶Ÿ̊口̍ ⁇ Ő ⁇ ̶̀ ⁇ 号</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE PRESS THE ZERO ON THE PAGE WITH THE E̶̗̓̓R̷̡̨̢̰̲̝̦͎͖̗̫̝͔̺͍̺͈̃́́̓̅̒̽͝R̵̡̛̖̙̝̜͎̤̪̪͍͖̹͇͐̽̿̎̏̈́̇̈͑̉̃̔̕Ơ̴̡̫͙̘̱̳̹̤̳̟̟̤̦͇̼̈́̾͊̔͋̈́̎̏͆̎̌̔̊̈́͒̍̾̕͝R̵̨̢͕̱̝̜͕̮͎͉͔̩̪̞̝̜̪͈̣̹̥͈̯͉̟͍͕͚̫̱̯̰̳͚̼̘̱͓͙͎̲̻̞͙̘̱̔̑͗͑͛̅̈́͐͌̽́̾͊̉̄̈́͆̎̓́̈́́͂͆͛̿͊͛́̈́̆͆̔͒͛̿̓̌̇̅̾̎͑̍̒̈́̃͗̄̉͛͂͒̃̈͂̇̃̎͘̕͘̕̕͘̚͜͠͝͝</p>
+</div>
+
+<div class="text3inthe">
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<p class="center"><img class="mail" src="images/mail.gif">⁇ ̀ů ⁇ № ⁇ ⁇ ̯n ⁇ ̋ ⁇ oz̃猫̥ ⁇ "́9性 ⁇ に ⁇ Б ⁇ ̋ ⁇ ⁇ 願性 ⁇ ុ ⁇ ⁇ Ănon̍ ⁇ 말 ⁇ っ 耶̍ "《̥ ⁇ "́ " ⁇ ̶̶ ⁇ ⁇ 明̇̇ ⁇ רに ⁇ p̵̮̰̏̀͐̌͊̌̅̍̈́͘ă̷̭̭̹̖̩̦͍͎̺̳̲̞̮̞̇̉́̕͘͜ģ̸̡̧͔̤̝̳͕̞̞̩̯͉̪̯̆͗̽͛̏͂̓̊̇͂̈ę̶̛̹͎̯̲̪͆͛̀̐̀̈́͆̍͌̓̾̂͝͝ ̶ ⁇ ⁇ ̆ ̄́ ⁇ ̶ ⁇ ̶́ ⁇ ̶ ⁇ ̶́ ⁇ ̶ ⁇ ̶́ ⁇ ̶ ⁇ ́ ⁇ ́ ⁇ ̶ ⁇ ́ ⁇ ̶ ⁇ ̶願 ⁇ ̯ ⁇ ̯ ⁇ ̯ ⁇ ̯́ ⁇ ̯́ ⁇ ̶̶̶ ⁇ û̶̶̶̶̶̄ ⁇ ̶̀́ ⁇ ̍̃́́́̍ ⁇ 왕̶̶̶̊口̍ ⁇ Ő ⁇ ̶̀ ⁇ ̶ ̶̶̶ ⁇ ̶̊別 ⁇ ̀̍̅ ⁇ 布ပ ⁇ ְ ⁇ ̶̶̊口̍ ⁇ Ő ⁇ ̶̀ ⁇ 号̍̅ ⁇ 経ช́ ⁇ 典̶̶Ÿ̊口̍ ⁇ Ő ⁇ ̶̀ ⁇ 号</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">  <img src="images/eyeballsgif.gif">
+<p class="center">  THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+</div>
+
+       <img src="images/warning_sign.gif"> <img class="mail" src="images/bloodexplodes.gif">PLEASE CLICK THE IMAGES IT SETS US FREE  <img src="images/warning_sign.gif">
+<div class="text4inthe">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif">you can click the 0</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif">ì̷̧͍̦̘̙͖̯̓̐ṉ̷̞͓̗͚̬̫̬͓̮͉̝̬͙̋̒̃̌̉̾͋̚͠ ̵̱̲̻̥̥͈̳̦̣̮̲̮̠͙̾̍͌͜ţ̴̢̢̡̬͉̺̠͍̰̊͆̆̓͜ĥ̶̙̻̞̜̝̝̟̰̤̭̖͕̇̿̎́͋͋͂̚͘͝͝͝e̶͖͓̮̟̘̳͐̈̉̚ͅ ̸̡̢̭̩̰̥̝̻̘͒͑̈̓̈́̈́͗̈̐͑̿͜p̵̮̰̏̀͐̌͊̌̅̍̈́͘ă̷̭̭̹̖̩̦͍͎̺̳̲̞̮̞̇̉́̕͘͜ģ̸̡̧͔̤̝̳͕̞̞̩̯͉̪̯̆͗̽͛̏͂̓̊̇͂̈ę̶̛̹͎̯̲̪͆͛̀̐̀̈́͆̍͌̓̾̂͝͝ ̶̢̡̨̛̝͔͍̲͓̗̻͕̱̣̣͌͐̆̔̄͜w̵̧̰̞͍͖͕̓̀͗͂̂̚̕͠i̷̢̥͓̟̝̻̳̝͈̝͎̗̳͍̱͊̈́́̆̃̊̀̍̓̄̕͝t̶̨̡͓̜͍͖̹͙̭̔̇̀̆͆͜h̶̛͇̝̖̠͉̥̰̀̉̉́́̂́͒̇ ̴̢̛͙̜͇͆̈͋̆̋͘ţ̸͔͓̻̥̩͇͙͍̣̔̐̏̽͜h̵͍̘̬͈͈̰͎͙͇̞̀͊̐͛̕͠e̷͖̟̼̱̱͗̽́̓͝ ̸͖̹͈̘̗͕̗̯̳̘͍̍ë̶͈̦͉̟̪̳̗̳̝̣̳̹̹͔͉̆̉̄̽̄͛r̵̮͖͎̬̥̟̋̔͐̀͊͋̽̈́̆̏̃̐̕͠ͅŗ̶̜̋͘͝ǒ̴͓͕̲̖̯̘͉̾̚̚͠r̶͈̻͓̝̟̾̑̀͂͐̊͗̄̽͗̕̚ ̸̯͙͓̙̦̙͚̥̻̝̐̽̇̒͗͜y̷̛̞̤̫̓̀͂̍̀̈́͑͑̀͝ơ̶̢̩͔̹̖͔͂͛̐̽̆͑̄̾̽̋̃̚ų̸̟̣̺͙̈́͒̍̃́̉́ ̸͕̭̯͖̘̰̙̲̭̫̻̌̄̌̈́̎̌̅͆̈́̂̇̏̍̾̚͜͜č̶̟̯̼͔̯̯̳̺͗͊̆̂͊͊͋̉͘͘á̴̜̼̹̇̑̾̀̅̂̀͑̒̇̈́̚͜͝͝n̷̮̰̝̭͈̈́̀́̚ ̴̢̤̭̜̙̼͓͍̮̗̦̅̂̕͠c̸͙͈̘̳̺̄͋̆l̴̡̖̗̬̯̈́̾̀̌͂͊͋̈́̃͘î̷̘̣̟͈͍͓̺̗̘̩̱̽̅̾̀͆̋̉͗ͅc̴̫͚̟̱̦̽͛͜k̵̡̠̪͙̫̘͍̯̒̿̎͋̓̒̃̈́͛̑͂̃͑ ̶̛̔̊͂͒̈̍͑̎̈́̍̌͐̏͘͜t̶̛̞̗̊̎̍͗̕h̴̢͈͍̰̦̰̪̬̘̰̣̐̂̀̍̅̾̔̌́̓͝ę̶̱̼̮̜͓̟̩̲͓̖̭̀͑̑͌̍͜ ̶̢̝̮̟͖̰̀ͅ0̷̘̮̜̠͍̲͆̋͠</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif">you can click the 0</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif"><img class="mail" src="images/mail.gif">⁇ ̀ů ⁇ № ⁇ ⁇ ̯n ⁇ ̋ ⁇ oz̃猫̥ ⁇ "́9性 ⁇ に ⁇ Б ⁇ ̋ ⁇ ⁇ 願性 ⁇ ុ ⁇ ⁇ Ănon̍ ⁇ 말 ⁇ っ 耶̍ "《̥ ⁇ "́ " ⁇ ̶̶ ⁇ ⁇ 明̇̇ ⁇ רに ⁇ p̵̮̰̏̀͐̌͊̌̅̍̈́͘ă̷̭̭̹̖̩̦͍͎̺̳̲̞̮̞̇̉́̕͘͜ģ̸̡̧͔̤̝̳͕̞̞̩̯͉̪̯̆͗̽͛̏͂̓̊̇͂̈ę̶̛̹͎̯̲̪͆͛̀̐̀̈́͆̍͌̓̾̂͝͝ ̶ ⁇ ⁇ ̆ ̄́ ⁇ ̶ ⁇ ̶́ ⁇ ̶ ⁇ ̶́ ⁇ ̶ ⁇ ̶́ ⁇ ̶ ⁇ ́ ⁇ ́ ⁇ ̶ ⁇ ́ ⁇ ̶ ⁇ ̶願 ⁇ ̯ ⁇ ̯ ⁇ ̯ ⁇ ̯́ ⁇ ̯́ ⁇ ̶̶̶ ⁇ û̶̶̶̶̶̄ ⁇ ̶̀́ ⁇ ̍̃́́́̍ ⁇ 왕̶̶̶̊口̍ ⁇ Ő ⁇ ̶̀ ⁇ ̶ ̶̶̶ ⁇ ̶̊別 ⁇ ̀̍̅ ⁇ 布ပ ⁇ ְ ⁇ ̶̶̊口̍ ⁇ Ő ⁇ ̶̀ ⁇ 号̍̅ ⁇ 経ช́ ⁇ 典̶̶Ÿ̊口̍ ⁇ Ő ⁇ ̶̀ ⁇ 号</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif">in the page with the error you can click the 0</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif">you can click the 0</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif">you can click the 0</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+
+</div>
+
+<div class="text5inthe">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif">y̴̫̺̝͗̈̓̎̈o̶̭̻̩͙̳̗̹̺̭̮̽̀̓̔̄̇̅̉̆͊́͘͜͝͝ͅͅu̴̼̼̜̥̪͒̆̆͊̔̂͠ ̷̜͇̉͠ç̷̢̤̜̞̩̗̙̹̹̯̫̫͚͆͋̋̏̆̏́͂̕ͅȧ̷̡̞̰̜̯͇̞̜͎̳̜̉͋̔͌̍̔͒̌n̶̛̛̛̦̂͛͋͆͛́͆̓̚͝͝ ̷̢̢̻͚̜͚̩̮̘̯̝̳͕̀̈̃͛̎͗̚̕͜ͅc̴̢̓̇̌̑͊̐̐̈́̉̔͘̚ļ̶̢̲͓̩͍̤̖̹̏̐̇i̵͓̿̚͝c̴̛̲̭̭̗̪̰̼͆̒͗͗̑̐͒̂͛͝k̸͎̱͚̱͕͎̈́̄̋̄͊̾̆̚͝ ̶͍̺̬̙̼͕͍̰͓̞͕̱̐̈́̉̏͒̀͋̃ť̷̛͚̩̩̗̽͗̐̈́̆͒̿͑̑̃̃̚͝ȟ̴̼͙̣̤̍͌̉͗͝e̴̡̟͓͔̟͎͍̺̳̩͔͋̈́̋͋̅̊̆̊̒̃̚ͅͅ ̶̤̤̫̏̎̑̀͗̒ż̷̢̛̼̼̝͔͂̃̒̾͘͘͜͠͝ě̸͇̘̩̭̝̥̪̭̗̭͖̖́͂̋̐̈͐̿̇̌̅̕r̴̡̟͎͕̲̞͖̓ỡ̵̧̡̤̯̬͙̩̟̝̜͔̃́͐̈́͘y̴̫̺̝͗̈̓̎̈o̶̭̻̩͙̳̗̹̺̭̮̽̀̓̔̄̇̅̉̆͊́͘͜͝͝ͅͅu̴̼̼̜̥̪͒̆̆͊̔̂͠ ̷̜͇̉͠ç̷̢̤̜̞̩̗̙̹̹̯̫̫͚͆͋̋̏̆̏́͂̕ͅȧ̷̡̞̰̜̯͇̞̜͎̳̜̉͋̔͌̍̔͒̌n̶̛̛̛̦̂͛͋͆͛́͆̓̚͝͝ ̷̢̢̻͚̜͚̩̮̘̯̝̳͕̀̈̃͛̎͗̚̕͜ͅc̴̢̓̇̌̑͊̐̐̈́̉̔͘̚ļ̶̢̲͓̩͍̤̖̹̏̐̇i̵͓̿̚͝c̴̛̲̭̭̗̪̰̼͆̒͗͗̑̐͒̂͛͝k̸͎̱͚̱͕͎̈́̄̋̄͊̾̆̚͝ ̶͍̺̬̙̼͕͍̰͓̞͕̱̐̈́̉̏͒̀͋̃ť̷̛͚̩̩̗̽͗̐̈́̆͒̿͑̑̃̃̚͝ȟ̴̼͙̣̤̍͌̉͗͝e̴̡̟͓͔̟͎͍̺̳̩͔͋̈́̋͋̅̊̆̊̒̃̚ͅͅ ̶̤̤̫̏̎̑̀͗̒ż̷̢̛̼̼̝͔͂̃̒̾͘͘͜͠͝ě̸͇̘̩̭̝̥̪̭̗̭͖̖́͂̋̐̈͐̿̇̌̅̕r̴̡̟͎͕̲̞͖̓ỡ̵̧̡̤̯̬͙̩̟̝̜͔̃́͐̈́͘y̴̫̺̝͗̈̓̎̈o̶̭̻̩͙̳̗̹̺̭̮̽̀̓̔̄̇̅̉̆͊́͘͜͝͝ͅͅu̴̼̼̜̥̪͒̆̆͊̔̂͠ ̷̜͇̉͠ç̷̢̤̜̞̩̗̙̹̹̯̫̫͚͆͋̋̏̆̏́͂̕ͅȧ̷̡̞̰̜̯͇̞̜͎̳̜̉͋̔͌̍̔͒̌n̶̛̛̛̦̂͛͋͆͛́͆̓̚͝͝ ̷̢̢̻͚̜͚̩̮̘̯̝̳͕̀̈̃͛̎͗̚̕͜ͅc̴̢̓̇̌̑͊̐̐̈́̉̔͘̚ļ̶̢̲͓̩͍̤̖̹̏̐̇i̵͓̿̚͝c̴̛̲̭̭̗̪̰̼͆̒͗͗̑̐͒̂͛͝k̸͎̱͚̱͕͎̈́̄̋̄͊̾̆̚͝ ̶͍̺̬̙̼͕͍̰͓̞͕̱̐̈́̉̏͒̀͋̃ť̷̛͚̩̩̗̽͗̐̈́̆͒̿͑̑̃̃̚͝ȟ̴̼͙̣̤̍͌̉͗͝e̴̡̟͓͔̟͎͍̺̳̩͔͋̈́̋͋̅̊̆̊̒̃̚ͅͅ ̶̤̤̫̏̎̑̀͗̒ż̷̢̛̼̼̝͔͂̃̒̾͘͘͜͠͝ě̸͇̘̩̭̝̥̪̭̗̭͖̖́͂̋̐̈͐̿̇̌̅̕r̴̡̟͎͕̲̞͖̓ỡ̵̧̡̤̯̬͙̩̟̝̜͔̃́͐̈́͘</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+<p class="center">you can click the 0</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif">you can click the 0</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif">click the 0</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif">click the 0</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif">the 0</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif">the 0</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+
+</div>
+
+<div class="text6inthe">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif">you can click the 0</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+<p class="center">you can click the 0</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif">you can click the 0</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif">y̴̫̺̝͗̈̓̎̈o̶̭̻̩͙̳̗̹̺̭̮̽̀̓̔̄̇̅̉̆͊́͘͜͝͝ͅͅu̴̼̼̜̥̪͒̆̆͊̔̂͠ ̷̜͇̉͠ç̷̢̤̜̞̩̗̙̹̹̯̫̫͚͆͋̋̏̆̏́͂̕ͅȧ̷̡̞̰̜̯͇̞̜͎̳̜̉͋̔͌̍̔͒̌n̶̛̛̛̦̂͛͋͆͛́͆̓̚͝͝ ̷̢̢̻͚̜͚̩̮̘̯̝̳͕̀̈̃͛̎͗̚̕͜ͅc̴̢̓̇̌̑͊̐̐̈́̉̔͘̚ļ̶̢̲͓̩͍̤̖̹̏̐̇i̵͓̿̚͝c̴̛̲̭̭̗̪̰̼͆̒͗͗̑̐͒̂͛͝k̸͎̱͚̱͕͎̈́̄̋̄͊̾̆̚͝ ̶͍̺̬̙̼͕͍̰͓̞͕̱̐̈́̉̏͒̀͋̃ť̷̛͚̩̩̗̽͗̐̈́̆͒̿͑̑̃̃̚͝ȟ̴̼͙̣̤̍͌̉͗͝e̴̡̟͓͔̟͎͍̺̳̩͔͋̈́̋͋̅̊̆̊̒̃̚ͅͅ ̶̤̤̫̏̎̑̀͗̒ż̷̢̛̼̼̝͔͂̃̒̾͘͘͜͠͝ě̸͇̘̩̭̝̥̪̭̗̭͖̖́͂̋̐̈͐̿̇̌̅̕r̴̡̟͎͕̲̞͖̓ỡ̵̧̡̤̯̬͙̩̟̝̜͔̃́͐̈́͘</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif">click the 0</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif">the 0</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif">the 0</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+
+</div>
+
+<div class="text7inthe">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif">THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif">THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif">THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif">THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif">THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif">THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif">THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif">THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif"><img class="mail" src="images/bloodexplodes.gif">THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br> <img class="mail" src="images/bloodexplodes.gif"><img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif"> <img class="mail" src="images/bloodexplodes.gif"><img class="mail" src="images/bloodexplodes.gif"><img src="images/eyeballsgif.gif">
+<p class="center"> <img class="mail" src="images/bloodexplodes.gif"><img class="mail" src="images/bloodexplodes.gif">THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+</div>
+       <img src="images/warning_sign.gif"> <img class="mail" src="images/bloodexplodes.gif"><img class="mail" src="images/bloodexplodes.gif">PLEASE CLICK THE IMAGES IT SETS US FREE  <img src="images/warning_sign.gif">
+
+<audio id="beesBGM" src="images/horrid background audio.wav"></audio>
+
+<script>
+  const splash = document.getElementById('splash');
+  const audio = document.getElementById('beesBGM');
+
+  splash.addEventListener('click', () => {
+    splash.style.display = 'none';
+    audio.play().catch(err => {
+      console.warn("Audio play failed:", err);
+    });
+  });
+</script>
+
+
+</body>
+</html>

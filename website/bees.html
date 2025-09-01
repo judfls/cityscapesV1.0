@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html style="background-image: url(bees.png); color: rgb(0, 0, 0);">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bees</title>
+
+  <style>
+    body {
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    a {
+      color: black;
+      text-decoration: double;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    #splash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      background-color: black;
+      cursor: pointer;
+      font-size: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Splash screen -->
+  <div id="splash">
+    Enter bees.html?
+  </div>
+
+  <h1>Bees.HTML</h1>
+  <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+
+  <!-- Clickable image -->
+  <a href="garage.html" >
+    <img src="garage.png" width="400" height="400" />
+  </a>
+
+  <!-- Audio -->
+  <audio id="beesBGM" src="bees.wav"></audio>
+
+  <!-- Script to handle splash interaction -->
+  <script>
+    const splash = document.getElementById('splash');
+    const audio = document.getElementById('beesBGM');
+
+    splash.addEventListener('click', () => {
+      splash.style.display = 'none';
+      audio.play();
+    });
+  </script>
+</body>
+</html>

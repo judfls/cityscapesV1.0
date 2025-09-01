@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html style="background-image: url(star\ bg\ aboutme.png), url(sunraysaboutme1.png); color: rgb(19, 19, 19);">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Me</title>
+
+  <style>
+    body {
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    a {
+      color: black;
+      text-decoration: double;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    #splash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      background-color: black;
+      cursor: pointer;
+      font-size: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="splash">
+    About Me
+  </div>
+
+  <h1>About Me</h1>
+  
+
+  
+  <!-- Audio -->
+  <audio id="beesBGM" src="bees.wav"></audio>
+
+  <!-- Script to handle splash interaction -->
+  <script>
+    const splash = document.getElementById('splash');
+    const audio = document.getElementById('beesBGM');
+
+    splash.addEventListener('click', () => {
+      splash.style.display = 'none';
+      audio.play();
+    });
+  </script>
+</body>
+</html>

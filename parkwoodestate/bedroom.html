@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="images/png" href="img/red.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bedroom</title>
+  <style>
+
+    html{
+background-color: black;
+color: red;
+
+    }
+    body {
+      text-align: center;
+
+    }
+
+    .header-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px; /* space between items */
+      margin-top: 40px;
+    }
+
+    .header-wrapper img {
+      width: 50px; /* adjust as needed */
+      height: auto;
+    }
+
+    #header {
+
+      margin: 20px;
+    }
+
+    p {
+      margin-top: 30px;
+    }
+
+    a{
+color: white;
+text-decoration-line: underline;
+
+    }
+    .hidden {
+  display: none; /* Hides the element completely */
+}
+  </style>
+</head>
+<body>
+
+  <div class="header-wrapper">
+    <img src="img/animated-candle-image-0019.gif" alt="Candle Left">
+    <p id="header">Bedroom</p>
+    <img src="img/animated-candle-image-0019.gif" alt="Candle Right">
+  </div>
+
+  <p>You enter into the Bedroom<br>
+The matress is supported by thin metal poles, and the bed is damp.<br>
+On the wall you see a poster.<br><br>
+<img src="img/poster.png" alt=""height="150" width="200">
+<p id="hiddenText" class="hidden">You find half of a note.<br><br><br>
+
+    <img src="img/ripped1.png" height="150" width="200">
+</p>
+
+</p>
+
+<br>
+<br>
+<a href="floor1.html">Back to the map</a>
+<a><p id="clickableText">Search under the bed</p></a>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const clickable = document.getElementById('clickableText');
+  const hidden = document.getElementById('hiddenText');
+
+  clickable.addEventListener('click', function() {
+    hidden.classList.toggle('hidden'); // Toggles the 'hidden' class
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html style="background-color: rgb(255, 255, 255); background-repeat: repeat; color: rgb(0, 0, 0);">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>phone</title>
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    a:hover {
+      cursor: default;
+    }
+
+    #middletext {
+      column-count: 1;
+      column-gap: 30px;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .image-and-text {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .image-and-text img {
+      width: 232px;
+      height: 254px;
+      flex-shrink: 0;
+    }
+
+    .side-text {
+      flex: 1;
+    }
+
+    #space {
+      margin: 10px;
+    }
+
+    .center {
+      text-align: center;
+      display: block;
+      margin: auto;
+    }
+
+    .centerphone {
+      text-align: center;
+      display: block;
+      margin: auto;
+    }
+
+    #hidden-text {
+      display: none;
+      text-align: center;
+      padding: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <img class="centerphone" src="images/phone ring.gif" alt="Phone">
+  <br>
+
+  <div style="text-align:center;">
+    <button onclick="showText()">Pickup Call</button>
+  </div>
+
+  <div id="hidden-text">
+   you found my secret?<br>
+    well, good for you. <br>
+    many prizes await.<br>
+    if you can handle it.<br>
+    <br>
+
+<a href="chaos.HTML">
+  <button>Enter Main Gate</button>
+</a>
+  </div>
+
+  <script>
+    function showText() {
+      document.getElementById("hidden-text").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>

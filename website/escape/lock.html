@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html style="background-image: url(escape1.gif); background-size: 5cm; background-repeat: repeat; color: rgb(255, 255, 255); height: 100%; margin: 0;">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Escape</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+ 
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    table {
+      border: 1px solid #fff;
+      background: #000;
+      color: #fff;
+      border-collapse: collapse;
+      padding: 20px;
+    }
+
+    th {
+      padding: 20px;
+    }
+
+    img {
+      width: 150px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border: 1px solid #fff;
+      border-radius: 2px;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: black;
+      color: white;
+      border: 2px solid white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: white;
+      color: black;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: double wavy;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      transform: matrix3d(300,399,288);
+    }
+
+    /* This makes all buttons sit in a row */
+    .button-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 30px;
+
+    }
+
+    .button-row a {
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <table>
+    <tr>
+      <th>
+        <img src="lockondoor.png" alt="Lock on Door" style="width: 150px; height: auto; display: block; margin: 0 auto;">
+      </th>
+    </tr>
+  </table>
+ <div class="button-row">
+  <button onclick="location.href='matandwall.html'"><i>Left</i></button> 
+  <button onclick="location.href='toilet.html'"><i>Right</i></button> 
+     <button onclick="location.href='lockcombo.html'"><i>Look At Lock</i></button>
+     </div>
+</body>
+</html>

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html style="background-color: rgb(66, 197, 84); background-repeat: repeat; color: rgb(255, 255, 255);">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jude felstead</title>
+
+  <style>
+    body {
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: underline;
+      color: blue;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    #middletext {
+      column-count: 1;
+      column-gap: 30px;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .image-and-text {
+      display: flex;
+      align-items: flex-start;
+
+    }
+
+    .image-and-text img {
+      width: 232px;
+      height: 254px;
+      flex-shrink: 0;
+
+
+}
+    
+
+    .side-text {
+      flex: 1;
+    }
+
+
+    #space{
+margin: 10px;
+
+    }
+    #spaceleft{
+margin: 10px;
+align-items: left;
+
+    }
+
+.right {
+  float: right;
+margin: 10px;
+  width: 232px;
+      height: 254px;
+  height: auto;
+}
+
+.marquee {
+  --gap: 1rem;
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: var(--gap);
+}
+
+.marquee__content {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  min-width: 100%;
+  gap: var(--gap);
+  animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+.center{
+text-align: center;
+  display: block;
+  margin: auto;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.text2inthe{
+height: 50px;
+width: 1000px;
+text-decoration: solid;
+text-rendering: geometricPrecision;
+text-indent: 30px;
+    position: absolute;
+    z-index:100;
+  
+transform: translate(+300px, -300px);
+
+}
+
+.text3inthe{
+height: 50px;
+width: 1000px;
+text-decoration: solid;
+text-rendering: geometricPrecision;
+text-indent: 30px;
+    position: absolute;
+    z-index:100;
+  
+transform: translate(+800px, -700px);
+
+
+}
+
+.text4inthe{
+height: 50px;
+width: 1000px;
+text-decoration: solid;
+text-rendering: geometricPrecision;
+text-indent: 30px;
+    position: absolute;
+    z-index:100;
+  
+transform: translate(+600px, -500px);
+
+
+}
+
+.text5inthe{
+height: 50px;
+width: 1000px;
+text-decoration: solid;
+text-rendering: geometricPrecision;
+text-indent: 30px;
+    position: absolute;
+    z-index:100;
+  
+transform: translate(+900px, -300px);
+
+
+}
+
+.text6inthe{
+height: 50px;
+width: 1000px;
+text-decoration: solid;
+text-rendering: geometricPrecision;
+text-indent: 30px;
+    position: absolute;
+    z-index:100;
+  
+transform: translate(+905px, -310px);
+
+
+}
+
+.text7inthe{
+height: 50px;
+width: 1000px;
+text-decoration: solid;
+text-rendering: geometricPrecision;
+text-indent: 30px;
+    position: absolute;
+    z-index:100;
+  
+transform: translate(+955px, -380px);
+
+
+}
+
+
+.trynot{
+color: white;
+background-color: red;
+text-decoration: underline;
+text-decoration-line: underline;
+text-decoration-color: white;
+
+text-decoration-thickness: 1px;
+
+}
+
+
+  
+  </style>
+</head>
+
+<body>
+
+  <h1>jude felstead's webthing</h1>
+
+  <div id="middletext">
+    this is my website, or one of them. this is my webthing. this is a personal about me page. my name is jude felstead. obviously, because of the title. 
+    my favourite colour is mustard yellow or green; but dark green. i was born in canada. i am still in school if you were wondering.
+    this would be the part where i tell you a story from my school. but i dont have any stories. i sit in the back of my class doing what i need to do. 
+    and when i am done, i code this website. my favourite subject is pe. not because i am some super-sporty guy. i acually hate sports.
+    it's so i have a break from the other teachers. enough about school. school is boring to talk about when you can talk about something else.
+    i have a cat. his name is ginger. i got him when i was 10 and he looks like this. he is a good kitty. he loves playing outside in the forest.
+     the collar you see has some 
+
+    <div class="image-and-text">
+
+     <a href="ERR505.html">
+  <img id="space" src="images/ginger in the woods.jpg" alt="Ginger the cat">
+</a>
+      <div class="side-text">
+       weird gps thingy. its so he doesnt get lost in the forest. this has only happened twice, both times i found him
+        under our neighbours house. he is an orange tabby, but i think he might be a special pattern tabby cat. our friend's friend found him on their
+        door step in a box. i was lucky to get him. i used to have a hampster. i acually had two. one was named pig but i took him back because he almost 
+        bit my finger off twice. then i got a much nicer hampster i named chip. i dont have any pictures of chip so you have to trust me that he was pretty cute.
+        ginger and chip got along. i would put chip in his ball and ginger just stared at him. sometimes i would even take chip out of his ball. chip died of old age
+        a couple years ago. 
+        when i am not in school i am programming. either programming or making music. i have other hobbies but those are the main ones. i make music under the alias
+        motor machine orchestra. <a href="mysongs.html">here</a> are some of my favourites. i also have a youtube channel. i dont really post there much anymore. 
+        its called judfls. i dont know if its cool or just... fine. there was a time at my school where i couldnt code. this was because the firewall my school wifi
+        used temporarily blocked the website i use to code. i didnt know if this was a blessing or a
+      </div>
+
+    </div>
+
+ 
+    curse with how much time i was spending on my computer coding.
+        it ended up being fun. i had more time on my hands then ever. i decided to gather a group of people to join a club. the "surprise club". it took place on thursdays.
+        every thursday we spun a wheel deciding what we did for the next week. the options ranged from "drawing club" to "blowing your nose club" to even "pretend you are driving a car club"
+        the full list is <a href="cluboptions.html">here</a> i like birdwatching. i also like woodworking. not the crazy woodworking with a lathe. just widdling with my knife.
+        i like skiing. in 2024 i went on a ski trip with my mother. it was a long drive. a long drive for me, at least. i like long drives. but not when i am in the back seat.
+        when we got there we walked to our cabin we were staying in. it was super dry but also very cozy. on the first day we downhill skiied. it was fun. i just did
+        
+        
+
+    <img class="right" class="spaceleft" src="images/the hill.jpg" alt="hill view from cabin">
+  
+      <div class="side-text">
+        
+        baby hills
+        because i am not much of a pro. the next day we went back to the hills for another fun couple hours of skiing. this time i went on three blue squares. the last day we 
+        were supposed to go cross country skiing but we got snowed in and we watched the movies dodgeball and click instead. later that day we drove home. here is an image
+        of the view we had of the hill from our cabin. 
+        <br>
+        <br>
+        <br>
+        THIS SITE IS UNDER CONSTRUCTION!
+        <br>
+        PLEASE COME BACK SOON!
+        <Br>
+             <Br>
+                 <Br>
+        <div class="trynot">
+       <img src="images/warning_sign.gif"> try not clicking on any images. it will break the website and take you to pages that dont exist.  <img src="images/warning_sign.gif">
+                 </div>
+    <br>
+  <br>
+    <br>
+       
+<br>
+<br>
+<br>
+      
+
+
+  </div>
+
+    </div>
+
+
+  </div>
+<br>
+
+<div class="row">
+  <div class="column"> <img class="center" src="images/underconstruchting5.gif"></div>
+  <div class="column"> <img class="center" src="images/under construction3.gif"></div>
+  <div class="column"><img class="center" src="images/underconstruchting5.gif"></div>
+</div>
+<br>
+<br>
+  <div class="marquee">
+  <ul class="marquee__content">
+    <li>PLEASE COME BACK SOON!</li>
+    <li>UNDER CONSTRUCTION!</li>
+    <li>PLEASE COME BACK SOON!</li>
+    <li>UNDER CONSTRUCTION!</li>
+    <li>PLEASE COME BACK SOON!</li>
+    <li>UNDER CONSTRUCTION!</li>
+    <li>PLEASE COME BACK SOON!</li>
+    <li>UNDER CONSTRUCTION!</li>
+  </ul>
+  <!-- Mirrors the content above -->
+  <ul class="marquee__content" aria-hidden="true">
+    <li>PLEASE COME BACK SOON!</li>
+    <li>UNDER CONSTRUCTION!</li>
+    <li>PLEASE COME BACK SOON!</li>
+    <li>UNDER CONSTRUCTION!</li>
+    <li>PLEASE PRESS THE ZERO!</li>
+    <li>UNDER CONSTRUCTION!</li>
+    <li>PLEASE COME BACK SOON!</li>
+    <li>UNDER CONSTRUCTION!</li>
+  </ul>
+  <br>
+  <br>
+</div>
+<br>
+<br>
+<div class="row">
+  <div class="column"><img class="center" src="images/underconstruchting4.gif">
+    <br>
+<br>
+    <br>
+<br>
+    <img class="center" src="images/underconstruchting4.gif">
+<br>
+<br>
+    <br>
+<br>
+    <img class="center" src="images/underconstruchting4.gif">
+    <br>
+<br>
+    <br>
+<br>
+    <img class="center" src="images/underconstruchting4.gif">
+    <br>
+<br>
+    <br>
+<br>
+    <img class="center" src="images/underconstruchting4.gif">
+    <br>
+<br>
+    <br>
+<br>
+    <img class="center" src="images/underconstruchting4.gif">
+
+
+
+
+
+</div>
+  <div class="column"><p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+</div>
+  <div class="column"><img class="center" src="images/underconstruchting4.gif">
+
+    <br>
+<br>
+    <br>
+<br>
+    <img class="center" src="images/underconstruchting4.gif">
+<br>
+<br>
+    <br>
+<br>
+    <img class="center" src="images/underconstruchting4.gif">
+    <br>
+<br>
+    <br>
+<br>
+    <img class="center" src="images/underconstruchting4.gif">
+    <br>
+<br>
+    <br>
+<br>
+    <img class="center" src="images/underconstruchting4.gif">
+    <br>
+<br>
+    <br>
+<br>
+    <img class="center" src="images/underconstruchting4.gif">
+
+
+
+
+</div>
+</div>
+<br>
+<br>
+<br>
+<div class="text2inthe">
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center">P̵̡̡̧̨̧̡̡̧̨̛̛̯͇̗̬̠̯̪̠͎̮̺̼͍̬̦͔͍͕̘͓͔̱̟̦̞̹̱̱͍̞̗̫̜̜͔͎̬͔̘̝̲̼͖̖̠̖͈̥̣̘͖͍̫̻̱̘̣͇͕̫̮͖̮͙͉̞̻̦̩̻̟͍̘͎͙̘̥̤̭̹͖̮̫̙̣̫͓̤̺̠̠͚̱̣͚̖̥̭̞̮̤̘̤̙̻̩̣͒̎͆̓̎͌̽̔͋͛̈̌̾͋̆͂̄̈́͂̈̅̊͆̂͗̂̍̈́͆̄̎͌̽͐̀͋̽͑̆̔̊̅͋̃̆͂̆͐̃́̉̅̆́̔͊̆̈̉̋͌̃̍̂́̌̈́͆̋̈́̍͐̄̄̐̌̾̈̌̎̃̌̅͒̇̉̾̋̀̉̈́́͋̐̉̀̔̈́̇̓͛̒͌̽̾̋̑̑͊́̃͗̍̆̿͑̒͗̉̌̎͋̏̓͐͛̏̏̂͑̉͂̂̃̆̉́͆͊̄̅̐́͆̏͒̾̃̾̋̂́̔́͆̇̈́̂̑̏̂̏̂̒̓̚͘͘͘̕̕͘̚͘̕͘͘̚̕̕̕͘͘͘͜͜͜͠͝͝͠͝͠͝͠͠͠͝͠ͅͅŖ̵̢̡̨̧̢̧̢̨̨̧̡̧̧̨̡̧̧͍̝͉̰̠͙̠̹͔̯̹̦̻̱̰͓͔̖̲͈̙̺̥͓̳̥̬̰̝̹̫̠̮̙͕͕̬̹͕̳̹͍͔͓̳͎̩͕͙͖̟̰͈̝̞̩̰̝̦̺̹̠̠̼͕͚̫̫̙͕̤̜͔̥̜̭̻̺̩̹͖̹͔͖͚͚̞̮̱͍̤̜̺̖̰̗̯͙̞̼̪̮̫̯͙͎̤̰̟̖͔̝̥̠͆̽͊͆̄̈͛͐͋̍̈̂̓͛̂̐̃̎͐̀͒̉͐̌̉̒̀̽̒̍̐̋̄͑̊̂̇̍͛͒̍̉̉̔͋͛̉̏͒̌̕͜͜͜͝͝͝͠͝ͅͅͅͅͅͅẸ̵̡̡̡̡̨̢̧̨̢̧̧̨̧̨̢̢̨̛̛̛̛̛̲̥͍̞̲̳̦͙͖̹̙̖̗͔̭̻̯̞̬͇̖̜̖͚̭̹̯͈͚̻̖͈̖̯̫̠̙͙̹̖̹̠͖͕͕̪͕̗͚̤̲̥͕̰̻̖̝͔̮̤̪̘͇̲̞̣̱̞̳͎̘̝͖͔̱̤̥̫̟̥͇̖̘͖̮̗͎̙̦̣̦̠̳̖͈͖̼̥̼͍͙̞̙̭̗̙͕̜̦̖̜͎̩͔̳̰̗̝͕̺̼̰̫̮̱̮̝̣͉͕̰͙̫̱̌̄̽̾̍̿̌͐́̍̌̈́̇̊͂̂̽̂̓̈͒̊̓͛̓͑̈̈́̔͊̓̓́͐̀̀͆̾̓͐͂̈́̓̈̍̎́̀͌͋͌̂̓̇̄̈́̃̔͆̈́͒́̄̓͂͋́̅̂̆̃̇̈͒̏̔̈́̽̅͒̌̇͑̀̓̅͒̎̈́͛̓͂͋͊̀̈́̓́̊͛̊͌̊͐̽̏̐̎̄͑̄͊̇͂̾́̽̍̇͋̐́́̊̾̂͋̊̔̆͌͐̃̆͛̿̓̒̊̾̋̏̍̓͂̾̉̔͌͒̉̀̔̈́̇̀̊̀̎͂͊̊̃̆̃̐̈́̽͘͘̚̚͘͘̚͘̚̕̚̕͘̕͜͜͜͜͝͠͝͝͝͝͠͝͝͝͝͝ͅͅͅṠ̵̢̨̡̨̧̛̛̛̛̛̛̼̱̳͖̹͍̩͙̣̰̠̘̫̬͎̼̫̖̮̪͕͙͎̳̤̩͍̹̟̙̘͎͍̠̹̺̞̮̝͐͛̽̀͛͒͋̋̓́̈́́̋̈̈́͗̿̆̅̑̽̒͛͑̽̆̋̅̐̑̃͐̾̈́̋̓̒̑̾̑̇̿̒̄͛͊͋̄̆̈́̈́̎̃́̀̔́̑͒̌̆̇̿̾́͑́̿͛̾͊́̋̅͐̊̃͗͑͆́̀̉̾͊̇̏̑̆̆͑̀́̃̈͌͐̈́͆͋́̒͂͘͘͘̚̚̕͘͘̕̕̕͜͜͝͠͝͠͝͝͝͝ͅS̷̢̧̧̨̢̨̧̡̢̧̡̨̢̨̢̨̡̡̢̧̧̡̢̧̧̛̛̛̗̥̰̖͍̪̦̠̹̥̦̟̼̰̥͉̼͍̝̺͓̮̗͈̤̥̘͙̭̲̫̳͍̹̩̟̜̹̭̹͍̦̗̦̜͚͚̙̠̞̠̪͎͍̤̯̗̫͇̫̙͎͙̗͕̘͔͉̤̟̤͖̞̬͙̜̼͓̤̥̖̟͉͓̺͍̞̝͉̗̯͔͕̪̟̜̯̜̱̪̯̞̲̰̤̞̺͈͖̳͙̭̹͍̪̫͍̥̰̠̫̮̠̩͙̬̺͈͓̠̣̫͙͚̹̦̤̤̖͔͖̥̙̦͓̬̫̣̩̮͕͍̺̖͈̬͕͕̠̞̤̰͉͓̬̤̝̺͉̣̞̼̹̫̭̖̲̘͓̻̝̯͉̜̣̼̜͙̖͉̪̠̖͎̠̙̺̗̬̻͎͚̻̻͙͍̤͉̥̞̟̳̙̬̭̦̲̣̹̮̝͈̰̗̱͈̣̺̝̹̰͎̙͈͓̖̘͕̟͙̓͛͛̎́̒̓̉͌͋́̈́̌͒͗̾̉̎̓̈́̈́͗̾̈́̐̈́͗̾̋̆̈́͂̀͑͌͑́͐̀̌͗̉̈́̂̓̉͆̊̒͌͊̏̏̓̈́̉̃͂̐̒̎͑̍̔̓̇͆͋͑̍̿̃́̀̃͆̓̂̿̅̋̂̐͗̀͗͌͋̈́̍̀̇̈̔̽̊̊̏̋͋͒̊̌͑͋̏͊̾͋̌̍͌̈́͊̈́͗͆́̒̈͗̀̒͊́͆̾̆̎̂̓̍̾̒̃̌͌̈́̿́͌̃͌̃̈́͐͛̈́͊͗̈̂̂̿́̔̂̎̈́̂̍͊̈́͋̒́̓̌͗͆̊͗̑̑̌̎̀̚͘̚̚̚͘͘̕̚͘͜͜͜͜͜͜͜͝͝͝͠͠͝͝͠͝͝͠͝͝͝͝͝͝͠͠͝͝ͅͅͅͅͅͅͅͅ ̵̨̡̨̢̨̢̡̢̨̢̢̛̛͕̻̹̖̙̲̙͔͇̱̼̩̙͇̭͉̜̞̭͍̳͈̮͈̳͈̳̺͔̪̺̠̟̟̞̟͉͎͕̬͍͚̤̳̠͓̹̜̰̮̰͇̭͙̥͎̻͕͉̣͖̖̠̫̞̝̪̠̯̺̳̦̬̱̜͖̻͇͇͎̟̰̬̹̦̻͖̫̖̻̻͈̹̞̗̤̞̜̼̭͕̖̰͉̟̹͎̖̯̥̱̼̦̬̹͚͕͉͈͈̻͕͈̩̞͉̮̠͎̬̫̺̮̹̠͈̒͊̽̈́͊̑͆̋̄̀̑͐͋̄͑͊́̔̾̂̐̂̏̌̈̃̄͑͆̈́̑̅̏̐͐́̓̽͌̀̊͗̈́̑̆́́̉́̾̄̊̒̈͗͛͌̀͌̽͌̌̍͋̈́̍̀̑̐̊͗͌̓͂͒̈̒̉̆̒̿͑̔̄͒͑͌̃̑̎́͑̈͊̊͗͆̓͋̈́̓̽̽̑̎͊̌͘̚̚̚̚͘̚̕͘͜͜͝͝͝͝͝͝͠͠͠͠͝ͅT̶̢̨̡̢̨̢̧̨̡̨̧̢̧̨̡̢̢̡̢̡̧̛̛̛̼̱͍̙͎̱͚̫̲̺̯̖͔̫̼̟̤͓͉̫̞̬͕̜̤̩̮̦̜͕͕̖͕͎͔̝͉̺̯̝̳͉͙̗̘̱̻̖͚̫̳̙̗̝̬͖͇̬̠̫̱̲͕̝̜̬̯̩͇̪̞̟͉̩͕̹̪̣̺̪͉̪͈͖͈̗͓̤͈̙̥̫̤͍̥̗̝̼̩̹̱͖̰͕͕̯̩͎̗͇̟̯͙̫̤͚̮̣̘̼̩̭̤̤͔̺͎̳̩͇̫̘̭͖͕̟͍̩̤̞̘̠̠͔̮͉̫̻͇̣̻̯̥͓̤̝̫͕͖̲̲̝̠̙̱͖͍͍͔̩̫̖̗̗͉̙͕̳͎̮͚͕͙̼̪̟͕̟̻̺̱̤̳͍̩̳͈̻̀͋͛͂̑̔̑͛̀͛̀́͐͒̍̉͐́̑͛̃͋́̋͛̉̒̈̀̓̉̋̋̿̃̉̇̓̍͒͆̎̏͗̀́̽̈͌̀̒͆̃͗͆̀̍̊̾̍̊͌̿̕͘̚̚̕̕͜͜͜͜͜͜͜͠͠͝͝͝ͅḨ̵̨̢̧̨̢̡̢̢̡̧̢̨̨̨̧̡̢̨̛̛̛̛͚͓̩͈̟̖̱̱̩̝̗̩̰̲̣͍͎͉̱͓̞͎͖̖̝̤͓̣͙͎̯͚̹͍̲̠̺̰̹̠̥̝̞̻͍̹̬̹̲̦̳̟̰͓̰̠̹̙̼̝͇̲̯̟̣͖͎̭͈̙̻͈̣͚͍̺̹͈̘̳̬͇̞̜͓̣̪͍̺͓̤̹̪͚͎͈̣̠͈͖̺̞̹͚̖͎̜͍͈̱̙̪̫̬͙̼̯̖̥̼̰͔̻̳̠̮̙̮̮̥̫͓̣̫̜͓̝͖͙̠͓̳̗͉̼͎̠̭̝̳͇̙̼̼̗̲͍͚̰̣̘̘̙͖̰͙̤͔͈̞̰͎̘̓̓̓͋̇͂̀̍́̆̓̓̓̊̑͌̌͂͋̈̄̍̋͛̑̊̐̓͊͐́̈̿͒̅̀̐̎͗̂̽̉̒́́͑͊̋́̔͌́̃͆̊̓̏͛̇́̄͋̍̀̋̀̀͆͂̆͒̀̅̒̔̉̋̀̈̀̐̚̚̕̚̕̚̕͜͜͠͠͝͠͠ͅͅͅͅͅȨ̵̨̢̨̨̡̡̡̧̧̧̡̨̨̨̢̧̧̡̢̨̨̡̧̛̛̟͓͔̣͉͖͖̝̳̥̰̦̗͍̙͉̱͖̩̪͚̳̭̹̰̦̻̪̭͓͚̘͙̥̪̬̥͓̝͍̦̞̰͈̜͎͉̻̰̼̻̬̗̭̩̩̥̫͙̖̺͇̼̟͕̣̭̜̮̝̣̼̦͍̼͙̣̺͕̫͉̫̫̭̦̼͕̜̭͎̩̺͈͉̼͉̣̹̣̳̝͇̞̻͉̣̹̩̭͈̪̙̻̤̟̠̦̲͎̖̲̰̦̟̝̱̱̪͕̘͚̲͔̫͓̻̞͎̞̗͎̠͙̥̱̤̭̖̯̣̪̱͖͓͙̰͚̮̖͇̻͇̲͚̥͉̫̗̖̤̖͙̘̣͔̲̣̭̯̯̥̲̲̳̠̟̩̬̹̻̣̹͈̖̥̥̥̦͇̩͈͉̙͈̬͍̤̟͇͇͉͎̣̥̜̺͉͚͖̯̠̹̰͉̲͍̦̜̱̞̠̘̱̞̦̰͍̯̫͚͈̳̜͇͕̾͌̽̎̾̓̍̀͊̽͆̔̔́̈́̎̽͑̈́̽̍̑́͊̀̑̾̌͑͂̈́̿̌̾̇̇͊̎̽͂̾̈̋̈́̈̈́̾̆̌̅͛̅͆͛̃̃́̾̓̌̃͆̀͋̋̒̃̎̂̀̓̀̏́̈́̐̇̑̓́͛̇̔̈́͐̂̄̀̎̍̔̌̈́̉̃͌̈̂͒̏͋̄͊̈͑̇̾̋͂͆̆̌̋̔́̾̇́̌̃̆̎̐́̿͂̋̒͗̓̓͂̈́̌̋͒͐̂́̀̅̅́́͐̽͛͌̓̈́̆̒̾͊̇͆̄͋̉̾̏̽̃̽̅͌̏̚̚̕͘̕̚͘͘͘̚̕̚̕͘̚͘͘̕̚̕͜͜͜͜͜͜͜͜͜͝͝͝͝͝͝͝ͅͅͅͅͅͅͅͅͅ ̶̨̨̡̨̢̢̡̡̢̧̧̢̧̨̨̧̨̨̧̛̛̛̛̛̞̜̬̦̦̭͔͕̘̩̘̘̘̺̠̩͖̲̙̰̠̣̪̲̱̣̦͙̣̤͙̙̱̥̳̰̮̙̞̬͖͈͈̥̹͇͎̮̣̮͖̰͔̮̼̙͖͉̟̦͇̰̝͓̤̥̟͖͇̟̬̙̳̪͚̣͉͉̖̠̪̭̟͈̼͎͎̥̙̩̦͕̜̘͚̬͚̯̥̘͖͈͖̝̫̰͖̯̱̹͍̯͎͇̞̹̦̘̣̻̩̮̝̬̮͎̬̳̫͎͎̤͓̩͎̻̳͎͖̣͇̞̗̮͉͎̪͇̬̤̠͚̦̱̺̫̌̿͋̏͑̌̆̔̓͑̈́̃͋̈́̍͗̋͗̌͂̃͋͌͑̋́͋̈́̉͆̆͑͛͛̍̍̾̔̈́̒̿̈́̇̍̑̊͗̎͆̅̔̇͐̈̀̃́̿̃́́̆̏͒͑͒̈̀͐̾̉̋̓̅͐͐̐͒̏́̑͒̐͊͐̉̊̈́͑͛̀̍̎͌̔̈́̆̓͗̃̍̈̀̆͐͋̀̿̄̐̄̈̈̓́̅͂̐̀͐̾̊̎̀͛̀͆͋̽̆͂̔̔̅̓̂̽͒̏̇̂͒͆̿̐̋̎͂́͋́̓̽͋̏͑̊̔͋̃̊͆̎͒̇͐̀̔͑̄̌̈̈́͆͆́̄͋̍̐̔̔̌͌̂̒̓̆̓̓͌͐͐̀̊̽̀̾̈́̄͘͘͘͘̕̚͘͘̕̚͘̚̚̕͘̕̚̕͘͘͜͜͜͜͝͝͠͠͠͠͝͝͝͝͝͝͠͠͝ͅͅͅẐ̶̡̡̧̢̛̛̛̠͈̳̲̳͇̹̹̱̬̖͈̾̔͐̇̋̎͐̉͐͛̿͌̈́͂̈́̋̂̓̃̆́̂͋̋̽̒̑͊́̈́̓̆̓͒̓̈́̀̋̈́̾̀̄́̇͋̉͐́̈́̂̍̐͑͂́̉́͐̍̆͂̌̎̂̉̆̉̀̑̋͆̐̌͛̾̿͒͒̄͂̌͛̿̍̂̓̂̂̾̄̅̀̈́͗͆͋̈́̿̔̔̈̐͐̈́͌̒̆̒͋̃̂̋͗͂̓̐͛̀̑̂̋̅̈́͒́̍͂͐̃̍͌́̅͆̅̾́̒̓̇͋̈́͑̒̽͒̏̎̑̉̀͐͊̿͐̔̈́͒́͒̀̆̊̒̐̈́̋̇̂̐͊̚͘͘͘͘̚͘͘͘̚̕̚͘̚̕͝͝͠͠͝͝͠͝͝͝͠͠͝͝Ę̸̨̧̢̧̨̨̡̡̨̢̡̨̨̧̛̪̺̪̥̱̜̰̝̫̬̦̬̘̝̹͙̩̜̤̝̤̤͇͚̖̤̺͇̖̪͍̘͙̲̘̠̜̫͕̳͔͉͖̤̻̖̻͉̻͉̥͉͔̥͓͉̭͈̟̼̪̲̱͖̝̟͖̦͎̜͖̼̦̱̯͖͓͎̦̰̗͎̥̘̮̹̞̗̝̳̪͚̝̘̱̹̯̠͓̰̟̦̤̫̭̖̰̣̩̞̻͎̖̞̙͕͔͎̳̗̰͓͉̲͖̣̪̝̟̥͕̖̼̣̹̬̺̖͚̪͙̮̘̫͈̥͇͈̲͖̪̖͖̬̬̦͇͖̬̤̘̪̦̟̹̯̰̝̝͓̲̥͍̤̺͈̖̫̘̤̥̦̥̺̫̬̪̒͐́̔̈́̄̐̏͋̈̊͗̏̒̈̌͑̋̔̅̓̾̐̎͐̂͌̄͗̒̇̂͂́́͂̒͌̍̔̾̀̏̀̓̈́͐̔̃̔́̿̂͋̿͊͑̇̋̆̿̾̌͆̅̈̍͐̋͑̓̓̀̀̀͌̉̈̈̎̉̑̈́̆̾̔͑̀͂̂̂́͗̐͆́͊̊̐͑̒̉̔͆̈́̅̀̈́̕̕̕̕̕͘͘̕͘͘̕͜͜͜͜͜͝͝͝͝͝͝͝͝͠ͅR̵̡̡̢̢̨̡̢̨̨̢̨̢̧̢̨̡̨̧̨̨̡̨̨̧̨̡̡̢̧̨̛̛̛̛̛̛̛̛̺̝̞̹̩͚̯͇̝̜̻͈͔̩̞̮̲̫͔͚̪̘̠̙͖̮̜̼̱̜͖̣̹̦̺̲̣̭̘̯̝̮͈̪̭̳̻̤͓͉̳̙̤̼̲̞̲̯̗͍̠̯͙̤͙̥͍̺͙̙̲̯͈̤̯̩͖͇͔̹͎̦̜̻̘̬̮͉̗̤̘̺̩̟̲̩̬̻̯̳̲̦̗̺̩̘̝̦̯̟̳̯̪͓̦̫̤͖̻͈̝̺̬͙͔̞̮̱̹̺̹͎̰̗̹̥̭̪̖͙͈͔̝̯͎͎̱̙̮̞̲̫̖̖͎͖͇͓̫̞̖͍͚̮̭̩͈̠͍͙̗̺̝̞̟̠͉̦̞̦̹͔̫̣̬̹̠͔͕̞̞̭͍͔͍͊̏͂͐̇̀̈́͋̔̔͊͗̊̀̿͐̿̌͗̉̒̾̾̐̅̈́͐̋͋̿̐͌̈́̀͌̌̿͌͆̏̔̏͑̅̄̀̔̀̀̔̏̓̊͊̅̋̇̇̆̔̇̀̄̀̀͊͑͌̄͐̐̅̋̉͋́̾̊͂̽̄̋̅̈́̐̉̋̄́̾̆̑͐͛̄̏͐̎̏̆̍̈́̾̀̂̔͌̊͊͌̉̒̀̄͋̋́̄͊̽̑̏̄̃̉̀̀̐̔̔̉̓̒̓͂͑̒̈́́́̈́̊̑̊̈́́͋̍̈́͆͒̂̉̓̍̒͑̽̈́͌̔̎̽̑͂͐̏̾̔̒͆͑͆͌̍̽̽̊͗͋̑̍͌̐̈̊͂̎̏̃̅̍̋̚̕͘̕͘̚͘͘͘̚̚̚̚͘͜͜͜͜͜͠͝͝͝͝͝͝͝͠͠͝ͅͅͅǪ̴̡̛̛̥͙̜͚͚̞̘̺̞̘͉͍̤̠̩̬͚͖̮͉̜̻̗͈̽͛̋̆͐̌͊̽͐̇̄͗̔̈̃̎̍͋͐̒̿͒̈́͌̔̓̅̅͒̃̇̄̃̔̿̀͒̄̏̈̔̈́̀̈́̓̅̂͒̓̀̂̅͒̋͊͊̆́̀͌͋̽̈́͋͐͋̅̍̔̓͘̕͘̚̚͝͠͠͝͝͠͝ͅͅ</p>
+<br>
+
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center">i ⁇ ̀ů ⁇ № ⁇ ⁇ ̯n ⁇ ̋ ⁇ oz̃猫̥ ⁇ "́9性 ⁇ に ⁇ Б ⁇ ̋ ⁇ ⁇ 願性 ⁇ ុ ⁇ ⁇ Ănon̍ ⁇ 말 ⁇ っ 耶̍ "《̥ ⁇ "́ " ⁇ ̶̶ ⁇ ⁇ 明̇̇ ⁇ רに ⁇ p̵̮̰̏̀͐̌͊̌̅̍̈́͘ă̷̭̭̹̖̩̦͍͎̺̳̲̞̮̞̇̉́̕͘͜ģ̸̡̧͔̤̝̳͕̞̞̩̯͉̪̯̆͗̽͛̏͂̓̊̇͂̈ę̶̛̹͎̯̲̪͆͛̀̐̀̈́͆̍͌̓̾̂͝͝ ̶ ⁇ ⁇ ̆ ̄́ ⁇ ̶ ⁇ ̶́ ⁇ ̶ ⁇ ̶́ ⁇ ̶ ⁇ ̶́ ⁇ ̶ ⁇ ́ ⁇ ́ ⁇ ̶ ⁇ ́ ⁇ ̶ ⁇ ̶願 ⁇ ̯ ⁇ ̯ ⁇ ̯ ⁇ ̯́ ⁇ ̯́ ⁇ ̶̶̶ ⁇ û̶̶̶̶̶̄ ⁇ ̶̀́ ⁇ ̍̃́́́̍ ⁇ 왕̶̶̶̊口̍ ⁇ Ő ⁇ ̶̀ ⁇ ̶ ̶̶̶ ⁇ ̶̊別 ⁇ ̀̍̅ ⁇ 布ပ ⁇ ְ ⁇ ̶̶̊口̍ ⁇ Ő ⁇ ̶̀ ⁇ 号̍̅ ⁇ 経ช́ ⁇ 典̶̶Ÿ̊口̍ ⁇ Ő ⁇ ̶̀ ⁇ 号</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE PRESS THE ZERO ON THE PAGE WITH THE E̶̗̓̓R̷̡̨̢̰̲̝̦͎͖̗̫̝͔̺͍̺͈̃́́̓̅̒̽͝R̵̡̛̖̙̝̜͎̤̪̪͍͖̹͇͐̽̿̎̏̈́̇̈͑̉̃̔̕Ơ̴̡̫͙̘̱̳̹̤̳̟̟̤̦͇̼̈́̾͊̔͋̈́̎̏͆̎̌̔̊̈́͒̍̾̕͝R̵̨̢͕̱̝̜͕̮͎͉͔̩̪̞̝̜̪͈̣̹̥͈̯͉̟͍͕͚̫̱̯̰̳͚̼̘̱͓͙͎̲̻̞͙̘̱̔̑͗͑͛̅̈́͐͌̽́̾͊̉̄̈́͆̎̓́̈́́͂͆͛̿͊͛́̈́̆͆̔͒͛̿̓̌̇̅̾̎͑̍̒̈́̃͗̄̉͛͂͒̃̈͂̇̃̎͘̕͘̕̕͘̚͜͠͝͝</p>
+</div>
+
+<div class="text3inthe">
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center">i ⁇ ̀ů ⁇ № ⁇ ⁇ ̯n ⁇ ̋ ⁇ oz̃猫̥ ⁇ "́9性 ⁇ に ⁇ Б ⁇ ̋ ⁇ ⁇ 願性 ⁇ ុ ⁇ ⁇ Ănon̍ ⁇ 말 ⁇ っ 耶̍ "《̥ ⁇ "́ " ⁇ ̶̶ ⁇ ⁇ 明̇̇ ⁇ רに ⁇ p̵̮̰̏̀͐̌͊̌̅̍̈́͘ă̷̭̭̹̖̩̦͍͎̺̳̲̞̮̞̇̉́̕͘͜ģ̸̡̧͔̤̝̳͕̞̞̩̯͉̪̯̆͗̽͛̏͂̓̊̇͂̈ę̶̛̹͎̯̲̪͆͛̀̐̀̈́͆̍͌̓̾̂͝͝ ̶ ⁇ ⁇ ̆ ̄́ ⁇ ̶ ⁇ ̶́ ⁇ ̶ ⁇ ̶́ ⁇ ̶ ⁇ ̶́ ⁇ ̶ ⁇ ́ ⁇ ́ ⁇ ̶ ⁇ ́ ⁇ ̶ ⁇ ̶願 ⁇ ̯ ⁇ ̯ ⁇ ̯ ⁇ ̯́ ⁇ ̯́ ⁇ ̶̶̶ ⁇ û̶̶̶̶̶̄ ⁇ ̶̀́ ⁇ ̍̃́́́̍ ⁇ 왕̶̶̶̊口̍ ⁇ Ő ⁇ ̶̀ ⁇ ̶ ̶̶̶ ⁇ ̶̊別 ⁇ ̀̍̅ ⁇ 布ပ ⁇ ְ ⁇ ̶̶̊口̍ ⁇ Ő ⁇ ̶̀ ⁇ 号̍̅ ⁇ 経ช́ ⁇ 典̶̶Ÿ̊口̍ ⁇ Ő ⁇ ̶̀ ⁇ 号</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+</div>
+
+
+<div class="text4inthe">
+<p class="center"> you can click the 0</p>
+<br>
+<p class="center"> ì̷̧͍̦̘̙͖̯̓̐ṉ̷̞͓̗͚̬̫̬͓̮͉̝̬͙̋̒̃̌̉̾͋̚͠ ̵̱̲̻̥̥͈̳̦̣̮̲̮̠͙̾̍͌͜ţ̴̢̢̡̬͉̺̠͍̰̊͆̆̓͜ĥ̶̙̻̞̜̝̝̟̰̤̭̖͕̇̿̎́͋͋͂̚͘͝͝͝e̶͖͓̮̟̘̳͐̈̉̚ͅ ̸̡̢̭̩̰̥̝̻̘͒͑̈̓̈́̈́͗̈̐͑̿͜p̵̮̰̏̀͐̌͊̌̅̍̈́͘ă̷̭̭̹̖̩̦͍͎̺̳̲̞̮̞̇̉́̕͘͜ģ̸̡̧͔̤̝̳͕̞̞̩̯͉̪̯̆͗̽͛̏͂̓̊̇͂̈ę̶̛̹͎̯̲̪͆͛̀̐̀̈́͆̍͌̓̾̂͝͝ ̶̢̡̨̛̝͔͍̲͓̗̻͕̱̣̣͌͐̆̔̄͜w̵̧̰̞͍͖͕̓̀͗͂̂̚̕͠i̷̢̥͓̟̝̻̳̝͈̝͎̗̳͍̱͊̈́́̆̃̊̀̍̓̄̕͝t̶̨̡͓̜͍͖̹͙̭̔̇̀̆͆͜h̶̛͇̝̖̠͉̥̰̀̉̉́́̂́͒̇ ̴̢̛͙̜͇͆̈͋̆̋͘ţ̸͔͓̻̥̩͇͙͍̣̔̐̏̽͜h̵͍̘̬͈͈̰͎͙͇̞̀͊̐͛̕͠e̷͖̟̼̱̱͗̽́̓͝ ̸͖̹͈̘̗͕̗̯̳̘͍̍ë̶͈̦͉̟̪̳̗̳̝̣̳̹̹͔͉̆̉̄̽̄͛r̵̮͖͎̬̥̟̋̔͐̀͊͋̽̈́̆̏̃̐̕͠ͅŗ̶̜̋͘͝ǒ̴͓͕̲̖̯̘͉̾̚̚͠r̶͈̻͓̝̟̾̑̀͂͐̊͗̄̽͗̕̚ ̸̯͙͓̙̦̙͚̥̻̝̐̽̇̒͗͜y̷̛̞̤̫̓̀͂̍̀̈́͑͑̀͝ơ̶̢̩͔̹̖͔͂͛̐̽̆͑̄̾̽̋̃̚ų̸̟̣̺͙̈́͒̍̃́̉́ ̸͕̭̯͖̘̰̙̲̭̫̻̌̄̌̈́̎̌̅͆̈́̂̇̏̍̾̚͜͜č̶̟̯̼͔̯̯̳̺͗͊̆̂͊͊͋̉͘͘á̴̜̼̹̇̑̾̀̅̂̀͑̒̇̈́̚͜͝͝n̷̮̰̝̭͈̈́̀́̚ ̴̢̤̭̜̙̼͓͍̮̗̦̅̂̕͠c̸͙͈̘̳̺̄͋̆l̴̡̖̗̬̯̈́̾̀̌͂͊͋̈́̃͘î̷̘̣̟͈͍͓̺̗̘̩̱̽̅̾̀͆̋̉͗ͅc̴̫͚̟̱̦̽͛͜k̵̡̠̪͙̫̘͍̯̒̿̎͋̓̒̃̈́͛̑͂̃͑ ̶̛̔̊͂͒̈̍͑̎̈́̍̌͐̏͘͜t̶̛̞̗̊̎̍͗̕h̴̢͈͍̰̦̰̪̬̘̰̣̐̂̀̍̅̾̔̌́̓͝ę̶̱̼̮̜͓̟̩̲͓̖̭̀͑̑͌̍͜ ̶̢̝̮̟͖̰̀ͅ0̷̘̮̜̠͍̲͆̋͠</p>
+<br>
+<p class="center"> you can click the 0</p>
+<br>
+<p class="center"> i ⁇ ̀ů ⁇ № ⁇ ⁇ ̯n ⁇ ̋ ⁇ oz̃猫̥ ⁇ "́9性 ⁇ に ⁇ Б ⁇ ̋ ⁇ ⁇ 願性 ⁇ ុ ⁇ ⁇ Ănon̍ ⁇ 말 ⁇ っ 耶̍ "《̥ ⁇ "́ " ⁇ ̶̶ ⁇ ⁇ 明̇̇ ⁇ רに ⁇ p̵̮̰̏̀͐̌͊̌̅̍̈́͘ă̷̭̭̹̖̩̦͍͎̺̳̲̞̮̞̇̉́̕͘͜ģ̸̡̧͔̤̝̳͕̞̞̩̯͉̪̯̆͗̽͛̏͂̓̊̇͂̈ę̶̛̹͎̯̲̪͆͛̀̐̀̈́͆̍͌̓̾̂͝͝ ̶ ⁇ ⁇ ̆ ̄́ ⁇ ̶ ⁇ ̶́ ⁇ ̶ ⁇ ̶́ ⁇ ̶ ⁇ ̶́ ⁇ ̶ ⁇ ́ ⁇ ́ ⁇ ̶ ⁇ ́ ⁇ ̶ ⁇ ̶願 ⁇ ̯ ⁇ ̯ ⁇ ̯ ⁇ ̯́ ⁇ ̯́ ⁇ ̶̶̶ ⁇ û̶̶̶̶̶̄ ⁇ ̶̀́ ⁇ ̍̃́́́̍ ⁇ 왕̶̶̶̊口̍ ⁇ Ő ⁇ ̶̀ ⁇ ̶ ̶̶̶ ⁇ ̶̊別 ⁇ ̀̍̅ ⁇ 布ပ ⁇ ְ ⁇ ̶̶̊口̍ ⁇ Ő ⁇ ̶̀ ⁇ 号̍̅ ⁇ 経ช́ ⁇ 典̶̶Ÿ̊口̍ ⁇ Ő ⁇ ̶̀ ⁇ 号</p>
+<br>
+<p class="center"> in the page with the error you can click the 0</p>
+<br>
+<p class="center"> you can click the 0</p>
+<br>
+<p class="center"> you can click the 0</p>
+<br>
+
+</div>
+
+<div class="text5inthe">
+<p class="center"> y̴̫̺̝͗̈̓̎̈o̶̭̻̩͙̳̗̹̺̭̮̽̀̓̔̄̇̅̉̆͊́͘͜͝͝ͅͅu̴̼̼̜̥̪͒̆̆͊̔̂͠ ̷̜͇̉͠ç̷̢̤̜̞̩̗̙̹̹̯̫̫͚͆͋̋̏̆̏́͂̕ͅȧ̷̡̞̰̜̯͇̞̜͎̳̜̉͋̔͌̍̔͒̌n̶̛̛̛̦̂͛͋͆͛́͆̓̚͝͝ ̷̢̢̻͚̜͚̩̮̘̯̝̳͕̀̈̃͛̎͗̚̕͜ͅc̴̢̓̇̌̑͊̐̐̈́̉̔͘̚ļ̶̢̲͓̩͍̤̖̹̏̐̇i̵͓̿̚͝c̴̛̲̭̭̗̪̰̼͆̒͗͗̑̐͒̂͛͝k̸͎̱͚̱͕͎̈́̄̋̄͊̾̆̚͝ ̶͍̺̬̙̼͕͍̰͓̞͕̱̐̈́̉̏͒̀͋̃ť̷̛͚̩̩̗̽͗̐̈́̆͒̿͑̑̃̃̚͝ȟ̴̼͙̣̤̍͌̉͗͝e̴̡̟͓͔̟͎͍̺̳̩͔͋̈́̋͋̅̊̆̊̒̃̚ͅͅ ̶̤̤̫̏̎̑̀͗̒ż̷̢̛̼̼̝͔͂̃̒̾͘͘͜͠͝ě̸͇̘̩̭̝̥̪̭̗̭͖̖́͂̋̐̈͐̿̇̌̅̕r̴̡̟͎͕̲̞͖̓ỡ̵̧̡̤̯̬͙̩̟̝̜͔̃́͐̈́͘y̴̫̺̝͗̈̓̎̈o̶̭̻̩͙̳̗̹̺̭̮̽̀̓̔̄̇̅̉̆͊́͘͜͝͝ͅͅu̴̼̼̜̥̪͒̆̆͊̔̂͠ ̷̜͇̉͠ç̷̢̤̜̞̩̗̙̹̹̯̫̫͚͆͋̋̏̆̏́͂̕ͅȧ̷̡̞̰̜̯͇̞̜͎̳̜̉͋̔͌̍̔͒̌n̶̛̛̛̦̂͛͋͆͛́͆̓̚͝͝ ̷̢̢̻͚̜͚̩̮̘̯̝̳͕̀̈̃͛̎͗̚̕͜ͅc̴̢̓̇̌̑͊̐̐̈́̉̔͘̚ļ̶̢̲͓̩͍̤̖̹̏̐̇i̵͓̿̚͝c̴̛̲̭̭̗̪̰̼͆̒͗͗̑̐͒̂͛͝k̸͎̱͚̱͕͎̈́̄̋̄͊̾̆̚͝ ̶͍̺̬̙̼͕͍̰͓̞͕̱̐̈́̉̏͒̀͋̃ť̷̛͚̩̩̗̽͗̐̈́̆͒̿͑̑̃̃̚͝ȟ̴̼͙̣̤̍͌̉͗͝e̴̡̟͓͔̟͎͍̺̳̩͔͋̈́̋͋̅̊̆̊̒̃̚ͅͅ ̶̤̤̫̏̎̑̀͗̒ż̷̢̛̼̼̝͔͂̃̒̾͘͘͜͠͝ě̸͇̘̩̭̝̥̪̭̗̭͖̖́͂̋̐̈͐̿̇̌̅̕r̴̡̟͎͕̲̞͖̓ỡ̵̧̡̤̯̬͙̩̟̝̜͔̃́͐̈́͘y̴̫̺̝͗̈̓̎̈o̶̭̻̩͙̳̗̹̺̭̮̽̀̓̔̄̇̅̉̆͊́͘͜͝͝ͅͅu̴̼̼̜̥̪͒̆̆͊̔̂͠ ̷̜͇̉͠ç̷̢̤̜̞̩̗̙̹̹̯̫̫͚͆͋̋̏̆̏́͂̕ͅȧ̷̡̞̰̜̯͇̞̜͎̳̜̉͋̔͌̍̔͒̌n̶̛̛̛̦̂͛͋͆͛́͆̓̚͝͝ ̷̢̢̻͚̜͚̩̮̘̯̝̳͕̀̈̃͛̎͗̚̕͜ͅc̴̢̓̇̌̑͊̐̐̈́̉̔͘̚ļ̶̢̲͓̩͍̤̖̹̏̐̇i̵͓̿̚͝c̴̛̲̭̭̗̪̰̼͆̒͗͗̑̐͒̂͛͝k̸͎̱͚̱͕͎̈́̄̋̄͊̾̆̚͝ ̶͍̺̬̙̼͕͍̰͓̞͕̱̐̈́̉̏͒̀͋̃ť̷̛͚̩̩̗̽͗̐̈́̆͒̿͑̑̃̃̚͝ȟ̴̼͙̣̤̍͌̉͗͝e̴̡̟͓͔̟͎͍̺̳̩͔͋̈́̋͋̅̊̆̊̒̃̚ͅͅ ̶̤̤̫̏̎̑̀͗̒ż̷̢̛̼̼̝͔͂̃̒̾͘͘͜͠͝ě̸͇̘̩̭̝̥̪̭̗̭͖̖́͂̋̐̈͐̿̇̌̅̕r̴̡̟͎͕̲̞͖̓ỡ̵̧̡̤̯̬͙̩̟̝̜͔̃́͐̈́͘</p>
+<br>
+<p class="center">you can click the 0</p>
+<br>
+<p class="center"> you can click the 0</p>
+<br>
+<p class="center"> click the 0</p>
+<br>
+<p class="center"> click the 0</p>
+<br>
+<p class="center"> the 0</p>
+<br>
+<p class="center"> the 0</p>
+<br>
+
+</div>
+
+<div class="text6inthe">
+<p class="center"> you can click the 0</p>
+<br>
+<p class="center">you can click the 0</p>
+<br>
+<p class="center"> you can click the 0</p>
+<br>
+<p class="center"> y̴̫̺̝͗̈̓̎̈o̶̭̻̩͙̳̗̹̺̭̮̽̀̓̔̄̇̅̉̆͊́͘͜͝͝ͅͅu̴̼̼̜̥̪͒̆̆͊̔̂͠ ̷̜͇̉͠ç̷̢̤̜̞̩̗̙̹̹̯̫̫͚͆͋̋̏̆̏́͂̕ͅȧ̷̡̞̰̜̯͇̞̜͎̳̜̉͋̔͌̍̔͒̌n̶̛̛̛̦̂͛͋͆͛́͆̓̚͝͝ ̷̢̢̻͚̜͚̩̮̘̯̝̳͕̀̈̃͛̎͗̚̕͜ͅc̴̢̓̇̌̑͊̐̐̈́̉̔͘̚ļ̶̢̲͓̩͍̤̖̹̏̐̇i̵͓̿̚͝c̴̛̲̭̭̗̪̰̼͆̒͗͗̑̐͒̂͛͝k̸͎̱͚̱͕͎̈́̄̋̄͊̾̆̚͝ ̶͍̺̬̙̼͕͍̰͓̞͕̱̐̈́̉̏͒̀͋̃ť̷̛͚̩̩̗̽͗̐̈́̆͒̿͑̑̃̃̚͝ȟ̴̼͙̣̤̍͌̉͗͝e̴̡̟͓͔̟͎͍̺̳̩͔͋̈́̋͋̅̊̆̊̒̃̚ͅͅ ̶̤̤̫̏̎̑̀͗̒ż̷̢̛̼̼̝͔͂̃̒̾͘͘͜͠͝ě̸͇̘̩̭̝̥̪̭̗̭͖̖́͂̋̐̈͐̿̇̌̅̕r̴̡̟͎͕̲̞͖̓ỡ̵̧̡̤̯̬͙̩̟̝̜͔̃́͐̈́͘</p>
+<br>
+<p class="center"> click the 0</p>
+<br>
+<p class="center"> the 0</p>
+<br>
+<p class="center"> the 0</p>
+<br>
+
+</div>
+
+<div class="text7inthe">
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+<br>
+<p class="center"> THIS PAGE IS UNDER CONSTRUCTION! PLEASE COME BACK WHEN THE PAGE IS BUILT</p>
+</div>
+
+
+
+
+
+</body>
+</html>
