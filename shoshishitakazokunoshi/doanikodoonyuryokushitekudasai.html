@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ōkina mizūmi</title>
+    <style>
+        html{
+            background-color: black;
+            color: white;
+        }
+
+        a:hover{
+filter: brightness(200%);
+        }
+    </style>
+</head>
+<body>
+<table id="Table_01" width="1026" height="644" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="3">
+			<img src="img/codeimputer_01.gif" width="1026" height="302" alt=""></td>
+	</tr>
+	<tr>
+		<td rowspan="2">
+			<img src="img/codeimputer_02.gif" width="418" height="342" alt=""></td>
+		<td>
+		 <input type="text" id="codeInput" placeholder="Enter code here">
+  <button onclick="checkCode()">Submit</button></td>
+		<td rowspan="2">
+			<img src="img/codeimputer_04.gif" width="486" height="342" alt=""></td>
+	</tr>
+	<tr>
+		<td>
+			<img src="img/codeimputer_05.gif" width="122" height="289" alt=""></td>
+	</tr>
+</table>
+
+
+
+
+  <script>
+    function checkCode() {
+      const correctCode = "3077"; // 🔐 Set your code here
+      const input = document.getElementById("codeInput").value;
+      const errorMsg = document.getElementById("errorMsg");
+
+      if (input === correctCode) {
+        window.location.href = "zenhan.html";
+      } else {
+        errorMsg.textContent = "Incorrect code. Please try again.";
+      }
+    }
+  </script>
+
+
+</body>
+</html>
