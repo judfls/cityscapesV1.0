@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>motherfuckercantcode</title>
+<style>
+  :root{
+    --bg:#0b1220;
+    --panel:#0f1724;
+    --accent:#22c55e;
+    --muted:#94a3b8;
+    --danger:#ef4444;
+    --glass: rgba(255,255,255,0.03);
+  }
+  html{
+          animation-name: hueRotateAnimation;
+      animation-duration: 1s; /* Adjust speed as needed */
+      animation-iteration-count: infinite; /* For continuous loop */
+      animation-timing-function: linear; /* For a smooth, even rotation */
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial}
+  body{
+  background: #ff0000;
+background: radial-gradient(circle,rgba(255, 0, 0, 1) 0%, rgba(253, 134, 29, 1) 16%, rgba(253, 235, 33, 1) 25%, rgba(126, 253, 42, 1) 45%, rgba(47, 232, 253, 1) 56%, rgba(55, 55, 253, 1) 71%, rgba(192, 60, 253, 1) 82%, rgba(253, 64, 196, 1) 90%, rgba(252, 69, 69, 1) 100%);
+    display:flex;align-items:center;justify-content:center;padding:20px;
+    color:#e6eef8;
+
+  }
+
+  .container{
+    width:min(920px,96vw);
+    display:grid;
+    grid-template-columns: 1fr 320px;
+    gap:20px;
+  }
+
+  @media (max-width:880px){
+    .container{grid-template-columns: 1fr; padding-bottom:40px;}
+  }
+
+  .card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:14px; padding:16px; box-shadow: 0 6px 30px rgba(2,6,23,0.6);
+    border: 1px solid rgba(255,255,255,0.03);
+  }
+
+  /* Game area */
+  .game-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;justify-content:center}
+  #gameCanvas{
+    background: repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0 1px, transparent 1px 32px);
+    border-radius:10px; width:100%; max-width:720px; height:auto; display:block;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+    touch-action: none;
+  }
+
+  .hud{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center}
+  .score-pill{background:var(--glass);padding:8px 12px;border-radius:999px;font-weight:600;color:var(--accent)}
+  .muted{color:var(--muted);font-size:13px}
+  .controls{display:flex;gap:10px}
+  button.btn{
+    background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:8px;color:inherit;cursor:pointer;
+  }
+  button.btn.primary{background:linear-gradient(90deg,var(--accent), #10b981); color:#031018; font-weight:700; border:none}
+
+  /* sidebar */
+  .sidebar{display:flex;flex-direction:column;gap:12px}
+  .label{font-size:13px;color:var(--muted);margin-bottom:6px}
+  .row{display:flex;gap:8px;align-items:center}
+  input[type=range]{width:100%}
+  .footer{font-size:13px;color:var(--muted);text-align:center;padding-top:8px}
+
+  /* big messages */
+  .overlay{
+    position:absolute; inset:0; display:flex;align-items:center;justify-content:center;pointer-events:none;
+  }
+  .message{
+    pointer-events:auto;
+    background:linear-gradient(180deg, rgba(3,7,18,0.82), rgba(3,7,18,0.92));
+    padding:18px 22px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);
+    text-align:center; min-width:220px;
+  }
+  .message h2{margin:0 0 8px;font-size:20px}
+  .message p{margin:0;color:var(--muted);font-size:14px}
+  .message .small{font-size:12px;color:var(--muted);margin-top:8px}
+
+  @keyframes hueRotateAnimation {
+      0% {
+        filter: hue-rotate(0deg);
+      }
+      100% {
+        filter: hue-rotate(360deg); /* Or any desired ending angle */
+      }
+    }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="card game-wrap" style="position:relative">
+      <canvas id="gameCanvas" width="720" height="720"></canvas>
+
+      <div class="hud">
+        <div class="score-pill">how many idiots: <span id="score">0</span></div>
+        <div class="muted">tums for stomach: <span id="level">1</span></div>
+        <div class="muted">Speed: <span id="speedDisplay">6</span></div>
+        <div class="controls">
+          <button class="btn" id="pauseBtn">Pause</button>
+          <button class="btn primary" id="restartBtn">Restart</button>
+        </div>
+      </div>
+
+      <div id="overlay" class="overlay" style="display:none">
+        <div class="message" id="messageBox">
+          <h2 id="messageTitle">Paused</h2>
+          <p id="messageText">Press space or tap Resume to continue.</p>
+          <div style="display:flex;gap:8px;justify-content:center;margin-top:12px">
+            <button class="btn" id="resumeBtn">Resume</button>
+            <button class="btn primary" id="overlayRestart">Restart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="card sidebar">
+      <div>
+        <div class="label">Controls</div>
+        <div class="row muted">
+          Arrows / WASD — move &nbsp; • &nbsp; Space — pause/resume
+        </div>
+      </div>
+
+      <div>
+        <div class="label">Speed (tiles / second)</div>
+        <div class="row">
+          <input id="speed" type="range" min="4" max="14" value="6" />
+          <div style="width:48px;text-align:center;font-weight:700" id="speedVal">6</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="label">Grid Size (tiles)</div>
+        <div class="row">
+          <select id="gridSize">
+            <option value="16">16 × 16</option>
+            <option value="20" selected>20 × 20</option>
+            <option value="24">24 × 24</option>
+            <option value="32">32 × 32</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <div class="label">Gameplay</div>
+        <div class="row">
+          <label style="display:flex;align-items:center;gap:8px">
+            <input type="checkbox" id="wrap" /> Wrap around edges
+          </label>
+        </div>
+        <div style="margin-top:8px" class="muted">When wrap is off, hitting a wall ends the game.</div>
+      </div>
+
+      <div style="margin-top:auto">
+        <div class="label">About</div>
+        <div class="muted">
+          Simple Snake implemented in plain JavaScript + Canvas. Touch-friendly: swipe to move on mobile.
+        </div>
+        <div class="footer">Made with ❤️ — edit speed & grid size in the right panel</div>
+      </div>
+    </aside>
+  </div>
+
+<script>
+(() => {
+  // Elements
+  const canvas = document.getElementById('gameCanvas');
+  const ctx = canvas.getContext('2d', { alpha: false });
+  const scoreEl = document.getElementById('score');
+  const levelEl = document.getElementById('level');
+  const speedDisplay = document.getElementById('speedDisplay');
+  const pauseBtn = document.getElementById('pauseBtn');
+  const restartBtn = document.getElementById('restartBtn');
+  const overlay = document.getElementById('overlay');
+  const messageTitle = document.getElementById('messageTitle');
+  const messageText = document.getElementById('messageText');
+  const resumeBtn = document.getElementById('resumeBtn');
+  const overlayRestart = document.getElementById('overlayRestart');
+  const speedInput = document.getElementById('speed');
+  const speedVal = document.getElementById('speedVal');
+  const gridSizeSelect = document.getElementById('gridSize');
+  const wrapCheckbox = document.getElementById('wrap');
+
+  // State
+  let gridSize = parseInt(gridSizeSelect.value, 10); // tiles per axis
+  let tileSize = Math.floor(canvas.width / gridSize);
+  let snake = []; // array of {x,y}
+  let dir = { x: 1, y: 0 }; // current movement direction
+  let nextDir = null; // queued direction to avoid reversing
+  let apple = null;
+  let score = 0;
+  let level = 1;
+  let speed = parseInt(speedInput.value, 10); // tiles per second
+  let tickInterval = 1000 / speed; // ms per tile move
+  let lastTick = 0;
+  let running = true;
+  let gameOver = false;
+  let wrap = false;
+
+  function init(){
+    gridSize = parseInt(gridSizeSelect.value, 10);
+    tileSize = Math.floor(canvas.width / gridSize);
+    snake = [];
+    const mid = Math.floor(gridSize / 2);
+    // start snake length 3
+    snake.push({x: mid - 1, y: mid});
+    snake.push({x: mid, y: mid});
+    snake.push({x: mid + 1, y: mid});
+    dir = { x: 0, y: 0 };
+    nextDir = null;
+    placeApple();
+    score = 0;
+    level = 1;
+    speed = parseInt(speedInput.value, 10);
+    tickInterval = 1000 / speed;
+    lastTick = performance.now();
+    running = false; // start paused until user presses space or resume
+    gameOver = false;
+    wrap = wrapCheckbox.checked;
+    updateUI();
+    draw(); // initial draw
+    showOverlay('Paused', 'Press Space / Resume to start.');
+  }
+
+  function placeApple(){
+    while(true){
+      const ax = Math.floor(Math.random() * gridSize);
+      const ay = Math.floor(Math.random() * gridSize);
+      if (!snake.some(s => s.x === ax && s.y === ay)) {
+        apple = {x: ax, y: ay};
+        break;
+      }
+    }
+  }
+
+  function updateUI(){
+    scoreEl.textContent = score;
+    levelEl.textContent = level;
+    speedDisplay.textContent = speed;
+    speedVal.textContent = speed;
+  }
+
+  function loop(now){
+    if (!running || gameOver) { requestAnimationFrame(loop); return; }
+    const elapsed = now - lastTick;
+    if (elapsed >= tickInterval) {
+      lastTick = now - (elapsed % tickInterval);
+      step();
+    }
+    draw();
+    requestAnimationFrame(loop);
+  }
+
+  function step(){
+    // apply queued direction if valid (no reverse)
+    if (nextDir) {
+      if (!(nextDir.x === -dir.x && nextDir.y === -dir.y)) {
+        dir = nextDir;
+      }
+      nextDir = null;
+    }
+    // if dir is zero (not moving) ignore
+    if (dir.x === 0 && dir.y === 0) return;
+
+    const head = { x: snake[snake.length-1].x + dir.x, y: snake[snake.length-1].y + dir.y };
+
+    if (wrap) {
+      head.x = (head.x + gridSize) % gridSize;
+      head.y = (head.y + gridSize) % gridSize;
+    } else {
+      // wall collision -> game over
+      if (head.x < 0 || head.y < 0 || head.x >= gridSize || head.y >= gridSize) {
+        endGame();
+        return;
+      }
+    }
+
+    // self-collision
+    if (snake.some(s => s.x === head.x && s.y === head.y)) {
+      endGame();
+      return;
+    }
+
+    // move
+    snake.push(head);
+
+    // apple?
+    if (apple && head.x === apple.x && head.y === apple.y) {
+      score += 10;
+      // level up every 50 points
+      level = 1 + Math.floor(score / 50);
+      // increase speed slightly every level
+      const newSpeed = Math.min(18, parseInt(speedInput.value,10) + (level - 1));
+      if (newSpeed !== speed) {
+        speed = newSpeed;
+        tickInterval = 1000 / speed;
+      }
+      placeApple();
+    } else {
+      // drop tail
+      snake.shift();
+    }
+    updateUI();
+  }
+
+  function endGame(){
+    running = false;
+    gameOver = true;
+    showOverlay('Game Over', `Your score: ${score}`);
+  }
+
+  function draw(){
+    // crisp pixels
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.save();
+    ctx.translate(0,0);
+
+    // background grid (soft)
+    ctx.fillStyle = '#071018';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    // draw apple
+    if (apple) {
+      drawTile(apple.x, apple.y, '#ef4444', true);
+      // small shine
+      const px = apple.x * tileSize, py = apple.y * tileSize;
+      ctx.fillStyle = 'rgba(255,255,255,0.12)';
+      ctx.fillRect(px+tileSize*0.18, py+tileSize*0.12, tileSize*0.2, tileSize*0.12);
+    }
+
+    // draw snake body
+    for (let i=0;i<snake.length;i++){
+      const s = snake[i];
+      // gradient for head/tail
+      let color = (i === snake.length-1) ? '#22c55e' : '#16a34a';
+      // fade older segments
+      const fade = 0.5 + 0.5*(i / snake.length);
+      drawTile(s.x, s.y, shade(color, -20 * (1-fade)));
+    }
+
+    // border
+    ctx.strokeStyle = 'rgba(255,255,255,0.03)';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(0.5,0.5,canvas.width-1,canvas.height-1);
+
+    ctx.restore();
+  }
+
+  // draw a rounded rect tile with a small inner highlight
+  function drawTile(tx, ty, color, noHighlight){
+    const x = tx * tileSize, y = ty * tileSize;
+    const r = Math.max(2, tileSize * 0.12);
+    roundRect(ctx, x+1, y+1, tileSize-2, tileSize-2, r);
+    ctx.fillStyle = color;
+    ctx.fill();
+    // inner highlight
+    if (!noHighlight) {
+      ctx.fillStyle = 'rgba(255,255,255,0.06)';
+      roundRect(ctx, x + tileSize*0.15, y + tileSize*0.12, tileSize*0.44, tileSize*0.18, r/2);
+      ctx.fill();
+    }
+  }
+
+  function roundRect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x+r, y);
+    ctx.arcTo(x+w, y, x+w, y+h, r);
+    ctx.arcTo(x+w, y+h, x, y+h, r);
+    ctx.arcTo(x, y+h, x, y, r);
+    ctx.arcTo(x, y, x+w, y, r);
+    ctx.closePath();
+  }
+
+  // small utility to darken/lighten hex color (very simple)
+  function shade(hex, percent) {
+    // hex like #rrggbb
+    const c = hex.replace('#','');
+    const num = parseInt(c,16);
+    let r = (num >> 16) + percent;
+    let g = ((num >> 8) & 0x00FF) + percent;
+    let b = (num & 0x0000FF) + percent;
+    r = Math.max(0,Math.min(255,r));
+    g = Math.max(0,Math.min(255,g));
+    b = Math.max(0,Math.min(255,b));
+    return '#' + ( (1<<24) + (r<<16) + (g<<8) + b ).toString(16).slice(1);
+  }
+
+  // Input handling
+  const keyMap = {
+    'ArrowUp': {x:0,y:-1},
+    'ArrowDown': {x:0,y:1},
+    'ArrowLeft': {x:-1,y:0},
+    'ArrowRight': {x:1,y:0},
+    'w': {x:0,y:-1},
+    's': {x:0,y:1},
+    'a': {x:-1,y:0},
+    'd': {x:1,y:0}
+  };
+
+  window.addEventListener('keydown', e => {
+    const k = e.key;
+    if (k === ' ' || k === 'Spacebar') {
+      e.preventDefault();
+      togglePause();
+      return;
+    }
+    const km = keyMap[k];
+    if (km) {
+      e.preventDefault();
+      // queue direction (prevent immediate reverse)
+      if (!(km.x === -dir.x && km.y === -dir.y)) {
+        nextDir = km;
+      }
+      // if currently paused but no movement yet, start
+      if (!running && !gameOver) {
+        running = true;
+        hideOverlay();
+        lastTick = performance.now();
+        requestAnimationFrame(loop);
+      }
+    }
+  });
+
+  // Buttons
+  pauseBtn.addEventListener('click', togglePause);
+  restartBtn.addEventListener('click', () => { init(); });
+  resumeBtn.addEventListener('click', () => { running = true; hideOverlay(); requestAnimationFrame(loop); });
+  overlayRestart.addEventListener('click', () => { init(); hideOverlay(); });
+
+  function showOverlay(title, text){
+    messageTitle.textContent = title;
+    messageText.textContent = text;
+    overlay.style.display = 'flex';
+  }
+  function hideOverlay(){ overlay.style.display = 'none'; }
+  function togglePause(){
+    if (gameOver) return;
+    running = !running;
+    if (!running) {
+      showOverlay('Paused', 'Press Space / Resume to continue.');
+    } else {
+      hideOverlay();
+      lastTick = performance.now();
+      requestAnimationFrame(loop);
+    }
+  }
+
+  // UI inputs
+  speedInput.addEventListener('input', e => {
+    speed = parseInt(e.target.value, 10);
+    tickInterval = 1000 / speed;
+    speedDisplay.textContent = speed;
+    speedVal.textContent = speed;
+  });
+  gridSizeSelect.addEventListener('change', () => {
+    init();
+  });
+  wrapCheckbox.addEventListener('change', () => {
+    wrap = wrapCheckbox.checked;
+  });
+
+  // mobile: swipe detection
+  let touchStart = null;
+  canvas.addEventListener('touchstart', e => {
+    const t = e.changedTouches[0];
+    touchStart = { x: t.clientX, y: t.clientY, time: Date.now() };
+  }, {passive:true});
+  canvas.addEventListener('touchend', e => {
+    if (!touchStart) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchStart.x;
+    const dy = t.clientY - touchStart.y;
+    const absX = Math.abs(dx), absY = Math.abs(dy);
+    if (Math.max(absX, absY) < 20) {
+      // treat as tap -> toggle pause
+      togglePause();
+    } else {
+      if (absX > absY) {
+        // horizontal
+        if (dx > 0) queueDir(1,0); else queueDir(-1,0);
+      } else {
+        if (dy > 0) queueDir(0,1); else queueDir(0,-1);
+      }
+    }
+    touchStart = null;
+  }, {passive:true});
+
+  function queueDir(x,y){
+    const candidate = {x,y};
+    if (!(candidate.x === -dir.x && candidate.y === -dir.y)) nextDir = candidate;
+    if (!running && !gameOver) { running = true; hideOverlay(); requestAnimationFrame(loop); }
+  }
+
+  // Resize canvas to be square and responsive but keep logical pixel size fixed
+  function resizeCanvas(){
+    // keep canvas element pixel size fixed (we draw at width x width)
+    const rect = canvas.getBoundingClientRect();
+    const size = Math.min(rect.width, window.innerHeight - 120);
+    canvas.style.height = size + 'px';
+    canvas.style.width = size + 'px';
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  // Kick off
+  init();
+  // don't auto-run loop until user starts (prevent unexpected movement)
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

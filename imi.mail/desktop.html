@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Windows 2000 — Retro Desktop</title>
+<style>
+  /* Reset */
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family: "Segoe UI", Tahoma, Arial, sans-serif;background:#008080}
+
+  /* Desktop wallpaper (simple teal textured feel) */
+  body::before{
+    content:"";position:fixed;inset:0;background:linear-gradient(135deg, rgba(255,255,255,0.03), rgba(0,0,0,0.04));pointer-events:none;
+  }
+
+  /* Desktop area */
+  #desktop{position:relative;width:100%;height:100%;padding:12px 8px 40px 8px;overflow:hidden}
+
+  /* Desktop icons */
+  .icon{width:72px;text-align:center;color:#fff;font-size:12px;margin:6px;padding:6px;cursor:default;user-select:none}
+  .icon img{display:block;margin:0 auto 6px auto;width:48px;height:48px;border:2px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.03)}
+  .icon .label{background:rgba(0,0,0,0.25);padding:2px;border-radius:2px}
+
+  /* Taskbar */
+  #taskbar{position:fixed;left:0;right:0;bottom:0;height:36px;background:#c0c0c0;border-top:2px solid #808080;display:flex;align-items:center;padding:2px}
+  #start-btn{display:flex;align-items:center;background:#e0e0e0;border:1px solid #808080;padding:4px 8px;margin-left:6px;border-radius:2px;cursor:pointer}
+  #start-btn:active{transform:translateY(1px)}
+  #start-btn .logo{width:18px;height:18px;margin-right:8px;background:linear-gradient(180deg,#fff,#ccc);display:inline-block;border:1px solid #808080}
+  #taskbar .tray{margin-left:auto;display:flex;align-items:center;padding-right:8px;color:#000}
+  #clock{padding:4px 8px;border:1px solid transparent;font-weight:600}
+
+  /* Start menu */
+  #start-menu{position:fixed;left:6px;bottom:42px;width:260px;background:#f0f0f0;border:2px solid #808080;padding:8px;box-shadow:3px 3px 0 rgba(0,0,0,0.2);display:none}
+  #start-menu h3{margin:0 0 8px 0;font-size:14px}
+  #start-menu ul{list-style:none;margin:0;padding:0}
+  #start-menu li{padding:6px;border-radius:2px;cursor:pointer}
+  #start-menu li:hover{background:#d0d0d0}
+
+  /* Windows (application windows) */
+  .window{position:absolute;width:420px;height:260px;background:#ffffff;border:2px solid #000;box-shadow:6px 6px 0 rgba(0,0,0,0.2);display:flex;flex-direction:column}
+  .titlebar{height:28px;background:linear-gradient(180deg,#d4d4d4,#a4a4a4);display:flex;align-items:center;padding:0 6px;border-bottom:1px solid #606060;cursor:move}
+  .title{flex:1;font-weight:700;font-size:13px}
+  .controls{display:flex;gap:4px}
+  .btn{width:18px;height:18px;border:1px solid #000;background:#e8e8e8;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+  .content{flex:1;padding:10px;background:linear-gradient(180deg,#fff,#f2f2f2);overflow:auto}
+
+  /* Window taskbar tile */
+  .task-tile{background:#e8e8e8;border:1px solid #808080;padding:4px 8px;margin:0 6px;border-radius:2px;cursor:pointer}
+  .task-tile.active{background:#bfe0ff}
+
+  /* Selection box for icons */
+  .selection{position:absolute;border:1px dashed #fff;background:rgba(0,0,0,0.15)}
+
+  /* Context menu */
+  .context{position:absolute;background:#fff;border:1px solid #888;box-shadow:2px 2px 0 rgba(0,0,0,0.2);display:none;z-index:9999}
+  .context li{list-style:none;padding:6px 12px;cursor:pointer}
+  .context li:hover{background:#e0e0e0}
+
+  @media (prefers-color-scheme: dark){body{background:#003e3e}}
+</style>
+</head>
+<body>
+  <div id="desktop" tabindex="0"></div>
+
+  <div id="start-menu" role="menu">
+    <h3>Start</h3>
+    <ul>
+      <li id="prog-mycomputer">My Computer</li>
+      <li id="prog-docs">My Documents</li>
+      <li id="prog-settings">Settings</li>
+      <li id="prog-run">Run...</li>
+    </ul>
+  </div>
+
+  <div id="taskbar">
+    <div id="start-btn" aria-haspopup="true"><span class="logo" aria-hidden></span><strong>Start</strong></div>
+    <div id="task-list" style="display:flex;align-items:center;margin-left:12px"></div>
+    <div class="tray">
+      <div id="tray-icons" style="margin-right:8px">🔔</div>
+      <div id="clock"></div>
+    </div>
+  </div>
+
+  <ul id="desktop-context" class="context">
+    <li id="ctx-refresh">Refresh</li>
+    <li id="ctx-new">New &gt; Folder</li>
+  </ul>
+
+<script>
+/* --- Simple Retro Desktop JS --- */
+const desktop = document.getElementById('desktop');
+const startBtn = document.getElementById('start-btn');
+const startMenu = document.getElementById('start-menu');
+const taskList = document.getElementById('task-list');
+const clockEl = document.getElementById('clock');
+const ctxMenu = document.getElementById('desktop-context');
+let zIndex = 10;
+
+// Sample desktop icons
+const icons = [
+  {name:'My Computer'},
+  {name:'My Documents'},
+  {name:'Recycle Bin'},
+  {name:'Internet Explorer'},
+];
+
+function createIcon(item,x,y){
+  const el = document.createElement('div');
+  el.className = 'icon';
+  el.style.position='absolute';
+  el.style.left = x+'px';
+  el.style.top = y+'px';
+  el.innerHTML = ` <img src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"><rect width="48" height="48" fill="%23f0f0f0" stroke="%23000000" stroke-width="1"/><text x="50%" y="56%" font-size="10" text-anchor="middle" fill="%23000">${encodeURIComponent(item.name[0])}</text></svg>' alt='icon'> <div class='label'>${item.name}</div>`;
+  desktop.appendChild(el);
+
+  el.addEventListener('dblclick', ()=>openWindow(item.name));
+  el.addEventListener('contextmenu', (e)=>{
+    e.preventDefault();showContext(e.pageX,e.pageY);
+  });
+  return el;
+}
+
+// lay out icons
+icons.forEach((ic,idx)=>{
+  const margin = 12;
+  const col = Math.floor(idx/10);
+  const row = idx%10;
+  createIcon(ic, 12 + col*90, 12 + row*90);
+});
+
+// Start menu toggle
+startBtn.addEventListener('click', ()=>{
+  startMenu.style.display = startMenu.style.display === 'block' ? 'none' : 'block';
+});
+window.addEventListener('click',(e)=>{ if(!startMenu.contains(e.target) && e.target !== startBtn) startMenu.style.display='none'; });
+
+// Clock
+function updateClock(){
+  const d = new Date();
+  const h = d.getHours().toString().padStart(2,'0');
+  const m = d.getMinutes().toString().padStart(2,'0');
+  clockEl.textContent = h+':'+m;
+}
+setInterval(updateClock,1000); updateClock();
+
+// Open a simple window
+function openWindow(title){
+  const win = document.createElement('div');
+  win.className='window';
+  win.style.left='80px';win.style.top='40px';win.style.zIndex=++zIndex;
+  win.innerHTML = `<div class='titlebar'><div class='title'>${title}</div><div class='controls'><div class='btn' data-act='min'>–</div><div class='btn' data-act='max'>▢</div><div class='btn' data-act='cls'>✕</div></div></div><div class='content'>This is <strong>${title}</strong> — a retro window. Double-click titlebar to toggle active/inactive. Try dragging. Resize by dragging the border (not perfect).</div>`;
+  document.body.appendChild(win);
+
+  makeDraggable(win);
+  addTaskTile(win,title);
+
+  // control buttons
+  win.querySelectorAll('.btn').forEach(b=>{
+    b.addEventListener('click',(e)=>{
+      const act = b.dataset.act;
+      if(act==='cls'){ removeWindow(win); }
+      if(act==='min'){ win.style.display='none'; updateTaskTile(title,true); }
+      if(act==='max'){ if(win.dataset.max==='1'){ win.style.width='420px';win.style.height='260px';win.dataset.max='0'; } else { win.style.width= '100%'; win.style.height='calc(100% - 42px)'; win.style.left='0'; win.style.top='0'; win.dataset.max='1'; } }
+    });
+  });
+}
+
+
+function removeWindow(win){
+  const title = win.querySelector('.title').textContent;
+  win.remove();
+  // remove task
+  const t = [...taskList.children].find(x=>x.dataset.title===title);
+  if(t) t.remove();
+}
+
+// Draggable windows (simple)
+function makeDraggable(win){
+  const tb = win.querySelector('.titlebar');
+  let ox=0,oy=0,dx=0,dy=0,drag=false;
+  tb.addEventListener('mousedown',(e)=>{
+    drag=true; win.style.zIndex=++zIndex; ox=e.clientX; oy=e.clientY; dx=parseInt(win.style.left||0); dy=parseInt(win.style.top||0);
+  });
+  window.addEventListener('mousemove',(e)=>{
+    if(!drag) return; win.style.left = (dx + e.clientX - ox)+'px'; win.style.top = (dy + e.clientY - oy)+'px';
+  });
+  window.addEventListener('mouseup',()=>drag=false);
+}
+
+// Taskbar tiles
+function addTaskTile(win,title){
+  const tile = document.createElement('div');
+  tile.className='task-tile';
+  tile.textContent = title; tile.dataset.title=title;
+  taskList.appendChild(tile);
+  tile.addEventListener('click', ()=>{
+    // toggle visibility
+    const wins = [...document.querySelectorAll('.window')].filter(w=>w.querySelector('.title').textContent===title);
+    if(wins.length){ const w = wins[0]; if(w.style.display==='none'){ w.style.display='block'; w.style.zIndex=++zIndex; updateTaskTile(title,false);} else { w.style.display='none'; updateTaskTile(title,true);} }
+  });
+}
+function updateTaskTile(title,minimized){
+  const tile = [...taskList.children].find(x=>x.dataset.title===title);
+  if(tile) minimized?tile.classList.remove('active'):tile.classList.add('active');
+}
+
+// Context menu
+desktop.addEventListener('contextmenu', (e)=>{
+  e.preventDefault(); showContext(e.pageX,e.pageY);
+});
+window.addEventListener('click', ()=> ctxMenu.style.display='none');
+function showContext(x,y){ ctxMenu.style.left = x+'px'; ctxMenu.style.top = y+'px'; ctxMenu.style.display='block'; }
+
+// context actions
+document.getElementById('ctx-refresh').addEventListener('click', ()=>{ ctxMenu.style.display='none'; location.reload(); });
+document.getElementById('ctx-new').addEventListener('click', ()=>{ ctxMenu.style.display='none'; createIcon({name:'New Folder'},40,40); });
+
+// keyboard: open My Computer with Enter when focused on desktop
+desktop.addEventListener('keydown',(e)=>{ if(e.key==='Enter') openWindow('My Computer'); });
+
+// helper: double-click desktop to create a new folder
+desktop.addEventListener('dblclick',(e)=>{
+  if(e.target===desktop){ createIcon({name:'New Folder'}, Math.max(12,e.clientX-24), Math.max(12,e.clientY-24)); }
+});
+
+// accessibility focus
+desktop.focus();
+
+</script>
+</body>
+</html>

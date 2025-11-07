@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>imi.mail</title>
+<link rel="icon" type="image/png" href="img/sky background1.png">
+<style>
+/* === 1999-2003 Webmail Look === */
+body {
+  margin: 0;
+  font-family: "Tahoma", "Verdana", "Arial", sans-serif;
+  font-size: 13px;
+  background: #d4d0c8;
+  color: #000;
+}
+
+.app {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  grid-template-rows: 32px 1fr;
+  grid-template-areas:
+    "toolbar toolbar"
+    "sidebar main";
+}
+
+/* Toolbar */
+.toolbar {
+  grid-area: toolbar;
+  background: linear-gradient(#245, #123);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  font-weight: bold;
+  box-shadow: inset 0 -1px #000;
+}
+.toolbar button {
+  margin-left: 8px;
+  padding: 2px 10px;
+  background: #eee;
+  border: 1px solid #999;
+  font-size: 12px;
+  cursor: not-allowed;
+  color: #666;
+}
+
+/* Sidebar */
+.sidebar {
+  grid-area: sidebar;
+  background: #f0f0f0;
+  border-right: 2px groove #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+}
+
+.sidebar h3 {
+  margin: 4px 0;
+  font-size: 11px;
+  color: #003399;
+  border-bottom: 1px solid #999;
+}
+
+.folder {
+  padding: 3px 6px;
+  margin: 2px 0;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.folder.active {
+  background: #cce0ff;
+  border-color: #99bbee;
+}
+.folder:hover {
+  background: #e0ecff;
+}
+
+.search-box {
+  margin: 8px 0;
+  background: #fff;
+  border: 1px inset #999;
+  display: flex;
+}
+.search-box input {
+  width: 100%;
+  border: none;
+  padding: 2px;
+  font-size: 12px;
+  outline: none;
+}
+
+/* Main area */
+.main {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  border-left: 2px ridge #fff;
+}
+
+/* Email list */
+.list {
+  background: #fff;
+  border-right: 1px solid #aaa;
+  overflow-y: auto;
+}
+.message {
+  padding: 4px 6px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+.message.unread .subject { font-weight: bold; }
+.message:hover {
+  background: #eaf3ff;
+}
+
+/* Reader */
+.reader {
+  background: #fff;
+  padding: 8px;
+  overflow-y: auto;
+}
+.reader h2 {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+}
+.reader .meta {
+  font-size: 11px;
+  color: #555;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+}
+.reader .body {
+  white-space: pre-wrap;
+  line-height: 1.4;
+}
+.attachment {
+  display: inline-block;
+  margin: 6px 6px 0 0;
+  padding: 3px 6px;
+  font-size: 11px;
+  border: 1px solid #999;
+  background: #e0e0e0;
+  cursor: pointer;
+}
+
+/* Scrollbars — classic feel */
+::-webkit-scrollbar {
+  width: 14px;
+}
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-left: 1px solid #ccc;
+}
+::-webkit-scrollbar-thumb {
+  background: #b0b0b0;
+  border: 2px outset #e0e0e0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #909090;
+}
+
+.footer-note {
+  margin-top: auto;
+  font-size: 10px;
+  color: #444;
+  text-align: center;
+  padding: 6px 0;
+}
+</style>
+</head>
+<body>
+  <div class="app">
+    <div class="toolbar">
+      imi.mail&nbsp;
+      <button title="Disabled">Compose</button>
+      <button title="Disabled">Reply</button>
+      <button title="Disabled">Forward</button>
+    </div>
+
+    <aside class="sidebar">
+      <h3>Folders</h3>
+      <div class="folder active" data-folder="inbox">Inbox</div>
+      <div class="folder" data-folder="sent">Sent</div>
+      <div class="folder" data-folder="archive">Private</div>
+      <div class="folder" data-folder="trash">Trash</div>
+
+      <h3>Search</h3>
+      <div class="search-box">
+        <input id="searchInput" placeholder="Find mail...">
+      </div>
+
+      <div class="footer-note">
+        Read-only demo<br>©2002 imi.mail
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="list" id="mailList"></div>
+      <div class="reader" id="reader">
+        <p style="color:#666;">Select a message to read.</p>
+      </div>
+    </main>
+  </div>
+
+<script>
+const emails = [
+  {
+    id: 7,
+    from: "laurane",
+    subject: "i guess no coffee",
+    snippet: "i tried to message you about coffee on here and on lop...",
+    body: `i tried to message you about coffee on here and on loppperMessage about
+    possible times around coffee. i guess no coffee? 
+    
+    -laurie`,
+    date: "2002-03-04T01:41:11Z",
+    folder: "inbox",
+    unread: true
+  },
+  {
+    id: 1,
+    from: "Billing Dept.",
+    subject: "Your imi.mail Bill - March 2002",
+    snippet: "Your payment for March 2002 has been received.",
+    body: `Hello,
+
+Your payment for March 2002 has been received. Thanks for using imi.mail ISP!
+
+Regards,
+Billing Dept.`,
+    date: "2002-03-02T18:32:00Z",
+    folder: "inbox",
+    unread: false,
+    attachments: [
+      {
+        name: "billing_march2002.txt",
+        size: "6KB",
+        mimetype: "text/plain",
+        content: "imi.mail ISP\nMarch 2002 Statement\n\nAccount: 12345\nUsage: 120 minutes\nAmount Due: $24.99\n\nThank you for your payment."
+      }
+    ]
+  },
+  {
+    id: 6,
+    from: "laurane",
+    subject: "re: coffee",
+    snippet: "is this the right imimail? i see you didnt respo...",
+    body: `is this the right imimail? i see you didnt respond to my last imimail. i was asking if you wanted too have coffee
+    ill message you on lopperMessage?
+    
+    -laurie`,
+    date: "2002-02-17T01:47:24Z",
+    folder: "inbox",
+    unread: true
+  },
+      {
+    id: 12,
+    from: "InfoBOT",
+    subject: "!IMPORTANT INFO!",
+    snippet: "MANY PEOPLE HAVE GOTTEN IMIMAILS FROM A ANNONA...",
+    body: 
+    `MANY PEOPLE HAVE GOTTEN IMIMAILS FROM A ANNONAMOUS SOURCE WITH RANDOM LETTERS AND NUMBERS IN THE SUBJECT.
+    IT SEEMS THAT EVERY SENT IMIMAIL FROM THEM IS DIFFERENT FROM THE LAST. THIS IS HOW TO READ THEIR CRIPTIC MESSAGES
+    STEP1.
+    TAK YOUR MESSAGE: "XE PMA L E"
+    STEP2.
+    CHANGE THE ORDER OF THE CHUNKS OF LETTERS: "XE PMA L E" TO "EX AMP L E"
+    STEP3.
+    REMOVE THE SPACES: "EX AMP L E" TO "EXAMPLE"
+    GOOD LUCK AND STAY SAFE!
+    `,
+    date: "2002-02-17T05:30:00Z",
+    folder: "inbox",
+    unread: false
+  },
+  {
+    id: 2,
+    from: "jess",
+    subject: "where the fuck did you go?",
+    snippet: "allright. im starting to get worried. its been lik...",
+    body: `allright. im starting to get worried. its been like 12 days and you still havent
+    responded to my recent imimails. where did you go?
+    
+    -jess`,
+    date: "2002-02-16T01:47:24Z",
+    folder: "inbox",
+    unread: false
+  },
+  {
+    id: 3,
+    from: "NewsBot",
+    subject: "Breaking: The future is broadband",
+    snippet: "Experts believe broadband connections could becom...",
+    body: `Tech Update:
+
+Experts believe broadband connections could become mainstream by 2005!
+
+Read more at ����������.`,
+    date: "2002-02-15T09:45:00Z",
+    folder: "inbox",
+    unread: false
+  },
+  {
+    id: 4,
+    from: "jess",
+    subject: "trevor",
+    snippet: "theres this new guy at work and hes being really a...",
+    body: `theres this new guy at work and hes being really annoying. like today
+    he asked me to get him coffee. i put in salt instead of sugar :0!
+    
+    -jess`,
+    date: "2002-02-14T10:22:25Z",
+    folder: "inbox",
+    unread: false
+  },
+     {
+    id: 8,
+    from: "kel846",
+    subject: "yo what up!",
+    snippet: "yo dude! its kel from the work party! rememb...",
+    body: `yo dude! its kel from the work party! remember? call me up!
+
+    +1 (213)-657-9909
+   `,
+    date: "2002-02-14T10:22:25Z",
+    folder: "inbox",
+    unread: false
+  },
+    {
+    id: 11,
+    from: "InfoBOT",
+    subject: "!IMPORTANT INFO!",
+    snippet: "010011100100010101010111010100110010000...",
+    body: 
+    `0100111001000101010101110101001100100000010000100100111101010100001000000100100101010011001000000100111001
+    00111101010100001000000100000100100000010100100100010101000001010011000010000001001110010001010101011101010011001
+    00000010000010100111001000011010010000100111101010010001000010010000001010100010010000100100101010011001000000100
+    10010101001100100000010101110101001001001001010101000100010101001110001000000100100101001110001000000100001001001
+    00101001110010000010101001001011001001000000101010001001111001000000100001001011001010100000100000101010011010100
+    11001000000101010001001000010001010010000001001001010011010100100101001101010000010100100101001100001000000100001
+    10100010101001110010100110100111101010010010100110010000100100001`,
+    date: "2002-02-13T05:30:00Z",
+    folder: "inbox",
+    unread: false
+  },
+   {
+    id: 10,
+    from: "laurane",
+    subject: "coffee",
+    snippet: "hey marie. sorry,it took awhile for me to get bac...",
+    body: `hey marie. sorry,it took awhile for me to get back to you. i would love to go out for coffee sometime
+
+    
+    -laurie`,
+    date: "2002-02-12T01:57:23Z",
+    folder: "inbox",
+    unread: true
+  },
+    {
+    id: 9,
+    from: "jess",
+    subject: "hello?",
+    snippet: "hello? is this marie? its jess from work. i hope i...",
+    body: `hello? is this marie? its jess from work. i hope i got your imimail right.
+    
+    -jess`,
+    date: "2002-02-09T07:32:58Z",
+    folder: "inbox",
+    unread: false
+  },
+  {
+    id: 5,
+    from: "Webmaster",
+    subject: "Welcome to imi.mail!",
+    snippet: "Welcome to imi.mail (v1.0)!",
+    body: `Dear User,
+
+Welcome to imi.mail (v1.0)!
+
+This service lets you read and send messages to your friends!
+
+Enjoy the experience!
+
+- imi.mail Team`,
+    date: "2002-02-08T10:00:00Z",
+    folder: "inbox",
+    unread: false
+  },
+
+    {
+    id: 401,
+    from: "jake",
+    subject: "you little piece of shit",
+    snippet: "you little piece of shit. fuck you",
+    body: `you little piece of shit. fuck you`,
+    date: "2002-02-11T11:23:02Z",
+    folder: "trash",
+    unread: false
+  },
+
+      {
+    id: 402,
+    from: "P SRE O N LA I A",
+    subject: "Y UO R NE XE T",
+    snippet: ".",
+    body: `.`,
+    date: "2002-02-11T11:23:02Z",
+    folder: "trash",
+    unread: false
+  },
+
+       {
+    id: 999,
+    from: "jude",
+    subject: "more coming soon",
+    snippet: "it takes a long time to code this stuff",
+    body: `it takes a long time to code this stuff. wait a little bit!!`,
+    date: "2002-02-11T11:23:02Z",
+    folder: "archive",
+    unread: false
+  },
+];
+
+
+
+
+
+let state = { folder: "inbox", query: "", selected: null };
+const lockedFolders = { archive: "748936" }; // 🔒 set your password here
+let unlocked = {}; // remembers unlocked folders
+
+function escapeHtml(s = "") {
+  return s.replace(/[&<>"]/g, (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;" }[m]));
+}
+
+function renderList() {
+  const list = document.getElementById("mailList");
+  const q = state.query.toLowerCase();
+  const visible = emails.filter((m) => {
+    if (m.folder !== state.folder) return false;
+    if (!q) return true;
+    return m.subject.toLowerCase().includes(q) || m.from.toLowerCase().includes(q);
+  });
+  list.innerHTML = "";
+  if (!visible.length) {
+    list.innerHTML = "<div style='padding:8px;color:#666;'>No messages found.</div>";
+    return;
+  }
+  visible.forEach((m) => {
+    const div = document.createElement("div");
+    div.className = "message" + (m.unread ? " unread" : "");
+    div.innerHTML = `
+      <div class="subject">${escapeHtml(m.subject)}</div>
+      <div class="from">${escapeHtml(m.from)}</div>
+      <div class="date" style="font-size:10px;color:#666;">${new Date(m.date).toLocaleDateString()}</div>
+      <div class="snippet" style="font-size:11px;color:#555;">${escapeHtml(m.snippet)}</div>
+    `;
+    div.onclick = () => openMessage(m.id);
+    list.appendChild(div);
+  });
+}
+
+function openMessage(id) {
+  const msg = emails.find((e) => e.id === id);
+  if (!msg) return;
+  msg.unread = false;
+  state.selected = id;
+  renderList();
+  const reader = document.getElementById("reader");
+  let html = `
+    <h2>${escapeHtml(msg.subject)}</h2>
+    <div class="meta">From: ${escapeHtml(msg.from)} | ${new Date(msg.date).toLocaleString()}</div>
+    <div class="body">${escapeHtml(msg.body)}</div>
+  `;
+  if (msg.attachments) {
+    html += `<div style="margin-top:8px;">Attachments:<br>`;
+    msg.attachments.forEach((a) => {
+      html += `<div class="attachment" data-name="${escapeHtml(a.name)}">${escapeHtml(a.name)} (${escapeHtml(a.size)})</div>`;
+    });
+    html += `</div>`;
+  }
+  reader.innerHTML = html;
+  reader.querySelectorAll(".attachment").forEach((el) => {
+    el.onclick = () => {
+      const name = el.dataset.name;
+      const blob = new Blob(
+        [
+          `imi.mail ISP\nMarch 2002 Statement\n\nAccountID: 748936\nUsage: 120 minutes\nAmount Due: $24.99\n\nThank you for your payment. ${name}`,
+        ],
+        { type: "text/plain" }
+      );
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = name;
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(url), 3000);
+    };
+  });
+}
+
+document.querySelectorAll(".folder").forEach((f) => {
+  f.onclick = () => {
+    const folder = f.dataset.folder;
+
+    // 🔒 Password protection check
+    if (lockedFolders[folder] && !unlocked[folder]) {
+      const entered = prompt("Enter imi.mail AcountID to access this folder:");
+      if (entered !== lockedFolders[folder]) {
+        alert("Incorrect password!");
+        return; // stop before switching
+      } else {
+        unlocked[folder] = true;
+        alert("Access granted.");
+      }
+    }
+
+    document.querySelectorAll(".folder").forEach((n) => n.classList.remove("active"));
+    f.classList.add("active");
+    state.folder = folder;
+    state.selected = null;
+    renderList();
+    document.getElementById("reader").innerHTML = "<p style='color:#666;'>Select a message to read.</p>";
+  };
+});
+
+document.getElementById("searchInput").oninput = (e) => {
+  state.query = e.target.value;
+  renderList();
+};
+
+renderList();
+</script>
+</body>
+</html>

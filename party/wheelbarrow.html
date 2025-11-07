@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lick</title>
+    <style>
+        html{
+            background-color: lightblue;
+        }
+        .layout {
+  display: grid;
+  grid:
+    "span12 span12 span12 span12 span12 span12 span12 span12 span12 span12 span12 span12" 1fr
+    "span6 span6 span6 span6 span6 span6 . . . . . ." 1fr
+    ". . . . . span3 span3 span3 . . . ." 1fr
+    ". . . . span1 . . . . . . ." 1fr
+    / 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 8px;
+}
+
+.span12 { grid-area: span12; }
+.span6 { grid-area: span6; }
+.span3 { grid-area: span3; }
+.span1 { grid-area: span1; }
+
+.span12 { background-color: brown; }
+.span6 { background-color:  orchid; }
+.span3 {  background-color:  palegoldenrod; }
+.span1 { background-color:  lawngreen; }
+
+.span12:hover { background-color: teal; }
+.span6:hover { background-color:  rgb(112, 218, 158); }
+.span3:hover {  background-color:  rgb(213, 61, 61); }
+.span1:hover { background-color:  rgb(252, 206, 0); }
+
+a{
+    color: white;
+
+}
+    </style>
+</head>
+<body>
+    <section class="layout">
+ <div class="span12"><a href="eyeballs.html">1</a></div>
+<div class="span6"><a href="BBBGGGHHH.html">2</a></div></a>
+  <div class="span3">3</div>
+  <div class="span1">4</div>
+</section>
+<br>
+<img src="img/this si mi wi ti.png" height="300px">
+
+</body>
+</html>
