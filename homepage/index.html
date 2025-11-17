@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Jude's Homepage</title>
+      <link href="01.css" rel="stylesheet" type="text/css" media="all">
+      <link rel="icon" type="image/png" href="https://pixelsafari.neocities.org/favicon/nature/star/star64.gif"/>
+    
+      <style>
+        :root {
+     --dk-color:#588157;
+     --mid-color: #A3B18A;
+     --lt-color: #DAD7CD;
+     --dkest-color: #3A5A40;
+      --accent:#344e41;
+}
+ html, body {
+     margin:0;
+     padding-top:25px;
+     padding:0;
+     height:100%;
+     font-family:Verdana;
+     font-size:11px;
+     background-image:url("img/50x501.gif");
+     background-repeat:repeat;
+        background-size: 20px;
+     color:var(--dkest-color);
+     padding:1px;
+     overflow-y:hidden;
+     image-rendering: pixelated;
+}
+body a {
+  color:var(--accent);
+  font-weight:bold;
+  }
+ #container {
+     max-width:900px;
+     margin:0 auto;
+     margin-top:15px;
+     height:100%;
+}
+ h1, h3, h5 {
+     color:var(--dk-color);
+}
+ h2, h4, h6 {
+     color:var(--accent);
+  }
+ #header {
+     max-width:850px;
+     
+     margin-left:5px;
+     margin-right:5px;
+     margin:0 auto;
+     background-color:var(--lt-color);
+     border:1px solid var(--dkest-color);
+}
+#header {
+    display: flex;
+    justify-content: center; /* centers images horizontally */
+    align-items: center;     /* aligns them vertically */
+    gap: 10px;   
+    padding: 10px;            /* optional spacing between stars */
+}
+
+.title {
+    display: inline-block; /* important: NOT block */
+    height: 150px;         /* keep your size */
+}
+#header {
+    text-align: center;
+}
+#header img:first-child,
+#header img:last-child {
+    height: 80px;
+}
+
+.title {
+    display: block;
+    margin: 0 auto;
+} 
+
+ .title{
+  
+     margin: auto;
+     height: 150px;
+}
+ #wrapper {
+     margin:0 auto;
+     max-width:860px;
+}
+.content {
+  padding:10px;
+  }
+ #two-boxes {
+     display:flex;
+     flex-wrap:wrap;
+     max-width:900px;
+}
+ .box-one, .box-two, .box-three, .box-four, .box-five, .box-six {
+     border:1px solid var(--dkest-color);
+     background-color:var(--lt-color);
+     overflow:auto;
+}
+ .box-one, .box-two {
+     height:200px;
+     width:418px;
+     margin-left:5px;
+}
+ .box-one {
+     margin-top:5px;
+     margin-right:5px;
+}
+ .box-two {
+     margin-top:5px;
+     margin-right:5px;
+}
+ .box-three {
+     margin-left:5px;
+     margin-top:5px;
+     width:260px;
+     height:326px;
+}
+ .box-four {
+     margin-top:5px;
+     margin-left:5px;
+     width:581px;
+     height:326px;
+}
+ .section-title {
+     text-align:center;
+     font-weight:bold;
+     padding-top:5px;
+     padding-bottom:5px;
+     background-color:var(--mid-color);
+     color:var(--dkest-color);
+     font-size:12px;
+}
+ .nav-wrapper {
+     display:flex;
+     flex-wrap:wrap;
+     width:400px;
+     height:50px;
+     margin:0 auto;
+     justify-content:space-evenly;
+     margin-top:5px;
+}
+ button {
+     width:190px;
+     height:35px;
+     background-color:var(--mid-color);
+     color:var(--dkest-color);
+     font-weight:bold;
+     border:none;
+     margin-top:5px;
+     margin-right:5px;
+}
+  button a {
+    color:var(--accent);
+    font-weight:bold;
+  }
+  p {
+     padding:5px;
+}
+ p a {
+  color:var(--dkest-color);
+  font-weight:bold;
+  }
+ .scroll::-webkit-scrollbar-track {
+     background-color: var(--lt-color);
+}
+ .scroll::-webkit-scrollbar {
+     width: 10px;
+     background-color: #f2b1a4;
+}
+ .scroll::-webkit-scrollbar-thumb {
+     background-color: var(--dk-color);
+}
+ #footer {
+     text-align:center;
+     padding-top:5px;
+     margin-bottom:5px;
+}
+ #footer p {
+     background-color:white;
+     display:block;
+     width:160px;
+     margin:0 auto;
+     margin-top:5px;
+     margin-bottom:5px;
+     padding:5px;
+}
+textarea {
+  background-color:var(--dkest-color);
+  color:var(--lt-color);
+  font-size:10px;
+  }
+ @media only screen and (max-width: 860px) {
+     html, body {
+         overflow:visible;
+    }
+    #header {
+      width:97.6%;
+    }
+     #container {
+         width:100%;
+    }
+     .box-one, .box-two, .box-three, .box-four, .box-five, .box-six {
+         width:100%;
+    }
+    .box-two {
+      order:1;
+    }
+    .box-one {
+      order:2;
+    }
+     .box-three {
+         width:98%;
+    }
+     .three-boxes {
+         width:98%;
+    }
+     .two-boxes {
+         width:100%;
+    }
+     .wrapper {
+         width:100%;
+    }
+}
+
+#center{
+    margin: auto;
+    display: block;
+    text-align: center;
+}
+
+textarea{
+    margin-left: 2px;
+}
+
+img{
+margin: 1px;
+
+}
+
+
+
+        </style>
+   </head>
+   <body class="scroll">
+    <a style="position:fixed;z-index:1339; !important;top:55px;right:3px;" href="http://www.snazzyspace.com/generators/viewer-counter/" title="SnazzySpace.com Viewer Counter" target="_blank"><img src="http://www.snazzyspace.com/generators/viewer-counter/counter.php/fid=1763229676/style=2/counter.png" border="0"></a>
+      <div id="container">
+      <div id="header">
+         <img class="title" src="img/stars.png"><img class="title" src="img/judehere.png"><img class="title" src="img/stars.png">
+      </div>
+      <div id="wrapper">
+         <div id="two-boxes">
+            <div class="box-one scroll">
+               <div class="section-title">
+                  Who the heck am I?
+               </div>
+               <div class="content">
+                <p><strong>My Status</strong></p>
+                 <div id="statuscafe"><div id="statuscafe-username"></div><div id="statuscafe-content"></div></div><script src="https://status.cafe/current-status.js?name=judefelstead" defer></script>
+               </div>
+                  <p><strong>About me!</strong></p>
+                  <ul>
+                     <li>I love making music. Ableton > FL!!! I make electronica. As of me writing this, my 5th album <i>Glass Eyeball</i> just came out! Check it out <a href="https://motormachineorchestra.bandcamp.com/music">Here.</a></li>
+                     <li>I also love coding. I use VSCode. </li>
+                     <li>I used to make animations but I stopped</li>
+                  </ul>
+                 <div id="center"> <form method="post" action="https://poll.pollcode.com/46621512"><div style="background-color:#DAD7CD;padding:2px;width:300px;font-family:Arial;font-size:small;color:#344E41;"><div style="padding:2px 0px 4px 2px;"><strong>how do you like the site?</strong></div><div align="center"><input type="radio" name="answer" value="1" id="answer466215121"> <label for="answer466215121">1</label> <input type="radio" name="answer" value="2" id="answer466215122"> <label for="answer466215122">2</label> <input type="radio" name="answer" value="3" id="answer466215123"> <label for="answer466215123">3</label> <input type="radio" name="answer" value="4" id="answer466215124"> <label for="answer466215124">4</label> <input type="radio" name="answer" value="5" id="answer466215125"> <label for="answer466215125">5</label> <nobr><input type="submit" value=" Vote ">&nbsp;<input type="submit" name="view" value=" View "></nobr></div></div></form>
+</div> 
+                 
+            </div>
+            <div class="box-two scroll">
+               <div class="section-title">Navigation</div>
+               <div class="nav-wrapper">
+                  <button><a href="https://judefelstead.com">Home</a></button>
+                  <button><a href="https://motormachineorchestra.bandcamp.com/">Bandcamp</a></button>
+                  <button><a href="https://www.youtube.com/@judefelstead">Youtube</a></button>
+                  <button><a href="#">Tiktok</a></button>
+                  <button><a href="#">Spacehey</a></button>
+                  <button><a href="#">Git</a></button>
+                  <button><a href="#">Spotify</a></button>    
+                  <button><a href="#">Secret</a></button>
+               </div>
+            </div>
+         </div>
+         <div id="two-boxes">
+            <div class="box-three scroll">
+               <div class="section-title">Chatbox</div>
+               <div class="content">
+                  <iframe id="chat" src="https://www3.cbox.ws/box/?boxid=3550240&boxtag=8ki4ND" width="100%" height="280" allowtransparency="yes" allow="autoplay" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"></iframe>	
+               </div>
+            </div>
+               <div class="box-four scroll">
+                  <div class="section-title">More shit</a></div>
+                  <div class="content">
+                    <table>
+                        <tr>
+                            <td>
+                     <p><strong>Favourates</strong></p>
+                      <ul>
+                     <li>Colour: Green. Could you have guessed?</li>
+                     <li>Animal: Douglas</li>
+                     <li>Season: Autumn</li>
+                      <li>Food: Poridge</li>
+                       <li>Plant: Woodsorrel</li>
+                        <li>Video Game: Hypnospace Outlaw</li>
+                         <li>Book: Hometime</li>
+                          <li>Movie: Hundreds of Beavers</li>
+                           <li>Song: Edward 40Hands - mom jeans.</li>
+                            <li>Band: Jadu Heart</li>
+                             <li>Word: Octothorp</li>
+                             <li>Wanna learn more about me? Check out<br> my <a target="_blank" href="https://judefelstead.com/webthing/index.html">Webthing</a></li>
+                  </ul>
+                  </td>
+                  <td>
+                    <p><strong>Stats</strong></p>
+                      <ul>
+                     <li>Visitors: <script type="text/javascript" src="https://counter.websiteout.com/js/36/0/2657/0"></script></li>
+                     <li>imood: <a href="https://www.imood.com/users/judefel"><img src="https://moods.imood.com/display/uname-judefel/trans-1/imood.gif" alt="The current mood of judefel at www.imood.com" border="0"></a></li>
+                      <li>Time: <iframe src="https://free.timeanddate.com/clock/ia5p5cye/n137/fs12/tct/pct" frameborder="0" width="97" height="17" allowtransparency="true"></iframe>
+                      </li>
+                  </ul>
+                  <p><strong>Link Me!!</strong></p>
+                    <ul>
+                     <li>JudeHere #1: <br> 
+                         <a href="https://judefelstead.com"><img src="img/judehere88311.png"></a><textarea><a href="https://judefelstead.com"><img src="https://judefelstead.com/img/judehere88311.png"></a></textarea>
+                     </li>
+                      <li>JudeHere #2: <br>
+                         <a href="https://judefelstead.com"><img src="img/judehere88312.png"></a><textarea><a href="https://judefelstead.com"><img src="https://judefelstead.com/img/judehere88312.png"></a></textarea>
+                      </li>
+                  </ul>
+                  </td>
+                  </tr>
+                </table>
+                  </div>
+               </div>
+         </div>
+         <div id="footer">
+            <img src="https://cyber.dabamos.de/88x31/cdaweb.gif"><img src="https://cyber.dabamos.de/88x31/firefoxnow.gif"><img src="https://cyber.dabamos.de/88x31/winzip3.gif"><img src="https://cyber.dabamos.de/88x31/win10no.gif"><img src="https://cyber.dabamos.de/88x31/web3.gif"><img src="https://cyber.dabamos.de/88x31/neocities6.gif"><a href="https://olliveen.neocities.org/" target="_blank"><img src="https://olliveen.neocities.org/img/button.gif"></a>
+            <br>
+             <img src="https://cyber.dabamos.de/mirrors/tau/RButtons/left.gif"><a href="https://judefelstead.com/wb/about.html"><img src="img/sq.png"></a><img src="https://cyber.dabamos.de/mirrors/tau/RButtons/right.gif">
+            <p>©2025 Jude Felstead</p> <audio>
+         </div>
+      </div>
+  <script>NekoType="white"</script>
+<h1 id=nl><script src="https://webneko.net/n20171213.js"></script><a 
+href="">Neko</a></h1>
+   </body>
+</html>
