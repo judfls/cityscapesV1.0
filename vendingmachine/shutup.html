@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>90s Vending Keyboard — A–G / 1–6</title>
+<style>
+/* Minimal, 90s-ish look — monospace, beveled buttons, simple colors */
+html,body{height:100%;margin:0}
+body{
+background:#bfbfbf;
+font-family: "Courier New", Courier, monospace;
+display:flex;align-items:center;justify-content:center;padding:20px;
+}
+.machine{
+width:380px;
+background:#e6e6e6;
+border:3px solid #6b6b6b;
+padding:12px;
+box-shadow: 4px 4px 0 #8a8a8a;
+}
+.screen{
+height:56px;
+background:#000;
+color:#39ff14; /* retro green */
+font-size:28px;
+display:flex;align-items:center;justify-content:flex-start;
+padding:8px 12px;
+box-sizing:border-box;
+border:3px inset #fff;
+margin-bottom:10px;
+overflow:hidden;
+white-space:nowrap;
+}
+.screen .label{opacity:.6;margin-right:8px;font-size:12px}
+
+
+.keys{display:flex;gap:12px}
+.key-column{display:flex;flex-direction:column;gap:8px}
+button.key{
+min-width:48px;padding:10px 8px;border:2px solid #fff;cursor:pointer;
+background:#d9d9d9;font-weight:bold;font-size:16px;
+box-shadow: 2px 2px 0 #8a8a8a; /* chunky 90s shadow */
+}
+button.key:active{transform:translateY(1px)}
+.key.letter{width:56px}
+.key.number{width:42px}
+.key.active{outline:3px solid #fffb99}
+
+
+.controls{display:flex;gap:8px;margin-top:10px}
+.history{margin-top:10px;font-size:12px;color:#222}
+.mini{font-size:12px;padding:6px 8px}
+</style>
+</head>
+<body>
+<div class="machine" role="application" aria-label="Vending machine keypad">
+<div class="screen" id="screen">
+<span class="label">SELECT:</span>
+<span id="display">--</span>
+</div>
+
+
+<div class="keys">
+<div class="key-column" id="letters">
+<!-- Letters A-G -->
+</div>
+
+
+<div class="key-column" id="numbers">
+<!-- Numbers 1-6 -->
+</div>
+
+
+<div style="display:flex;flex-direction:column;gap:8px;justify-content:flex-start;">
+<button class="key mini" id="clear">CLEAR</button>
+<button class="key mini" id="back">BACK</button>
+</div>
+</div>
+
+
+<div class="history" id="history" aria-live="polite">
+Recent: <span id="recent">(none)</span>
+</div>
+</div>
+
+
+<script>
+// Create buttons dynamically so HTML remains compact
+// Create buttons dynamically so HTML remains compact
+const letters = ['A','B','C','D','E','F','G'];
+const nums = ['1','2','3','4','5','6'];
+
+
+const lettersEl = document.getElementById('letters');
+const numbersEl = document.getElementById('numbers');
+const display = document.getElementById('display');
+const recent = document.getElementById('recent');
+const clearBtn = document.getElementById('clear');
+const backBtn = document.getElementById('back');
+
+let selectedLetter = null;
+let history = [];
+
+
+function makeButton(text, cls){
+const b = document.createElement('button');
+b.className = 'key ' + cls;
+b.type = 'button';
+b.textContent = text;
+return b;
+}
+
+
+letters.forEach(l=>{
+const b = makeButton(l,'letter');
+b.addEventListener('click', ()=>{
+// select a letter (highlight)
+selectedLetter = l;
+updateActive();
+display.textContent = l + ("_");
+});
+lettersEl.appendChild(b);
+});
+
+
+nums.forEach(n=>{
+const b = makeButton(n,'number');
+b.addEventListener('click', ()=>{
+if(!selectedLetter){
+// If no letter chosen, give brief feedback (flash)
+flashDisplay('Pick a letter first');
+return;
+}
+const combo = selectedLetter + n;
+showCombo(combo);
+selectedLetter = null;
+updateActive();
+});
+numbersEl.appendChild(b);
+});
+
+
+
+function updateActive(){
+// highlight the chosen letter button
+document.querySelectorAll('.key.letter').forEach(btn=>{
+btn.classList.toggle('active', btn.textContent === selectedLetter);
+});
+if(!selectedLetter){
+if(display.textContent === '--' || display.textContent.endsWith('_')) display.textContent = '--';
+}
+}
+
+
+function showCombo(combo){
+const msg = messages[combo] || combo;
+display.textContent = msg;
+history.unshift(msg);
+if(history.length>8) history.pop();
+recent.textContent = history.join(' ');
+}
+
+
+function flashDisplay(msg){
+const old = display.textContent;
+display.textContent = msg;
+setTimeout(()=> display.textContent = old, 900);
+}
+
+
+clearBtn.addEventListener('click', ()=>{
+selectedLetter = null;
+display.textContent = '--';
+history = [];
+recent.textContent = '(none)';
+updateActive();
+});
+
+
+backBtn.addEventListener('click', ()=>{
+// remove last history entry
+if(history.length) history.shift();
+recent.textContent = history.length? history.join(' '): '(none)';
+selectedLetter = null;
+display.textContent = '--';
+updateActive();
+});
+// messages for each combo
+const messages = {
+A1: "A1 - Popcorn", A2: "A2 — X", A3: "A3 — Chips",
+A4: "A4 — Candy Bar", A5: "A5 — Gum Pack", A6: "A6 — Mystery Snack",
+B1: "B1 — Water Bottle", B2: "B2 — Lemonade", B3: "B3 — Ear",
+B4: "B4 — Times", B5: "B5 — Suhvv A Ilyh Wlphv", B6: "B6 — Nuts",
+C1: "C1 — Energy Drink", C2: "C2 — Cola", C3: "C3 — Five",
+C4: "C4 — Skin", C5: "C5 — Chocolate", C6: "C6 — Chips 2",
+D1: "D1 — Knife", D2: "D2 — Burrito", D3: "D3 — Muffin",
+D4: "D4 — Brownie", D5: "D5 — Granola Bar", D6: "D6 — Tea",
+E1: "E1 — Toy Capsule", E2: "E2 — Sticker Pack", E3: "E3 — Keychain",
+E4: "E4 — Mini Puzzle", E5: "E5 — Matches", E6: "E6 — Buttons",
+F1: "F1 — Chips Deluxe", F2: "F2 — Gummy Worms", F3: "F3 — Lemon Cookies",
+F4: "F4 — Press", F5: "F5 — ş̸̨̢̧̧̨̢̢̢̡̢̢̧̢̢̢̧̢̨̨̨̧̢̡̢̧̢̢̛̖̹͖̥͕̦͎̭͎̺̠̝̬̯̜͇͇̼̻͉͓̥̦̤͉̗̤̪̜͚̝̠̺̤̼͈̙̘̩͇͈̤̯̲̱͍̮̝̪̗̰̫̳̳̠̫̙̫̺̣̺̱̦̳͚͙͖͇̺͎̩̞̙͓̖̭̣͍͓̖̝͙̤̘̤̩̝̲̦̠̙̖̩͉̠͇͍̝̞̫̩̙̩̫͔͎͇͖̠̜͍̟͎̩̘̮̻͚̺̘̳̯͖̗̟̞̦͔͎̙̮̤̮͉͍̖͎̩͎̙̦̥̪̺̳͈̙͚̤̯̜̣̠̣̖̬̤̯͖̹̙̙̘̹̥̮̖͉̙̟͕̻̖̰̙̥͉͙͔̥̺̟͔̜̝̱̪̝̰̻̭̮̲͇̩͓̭̬̙͈̫̳̺̗̟̣̺̠̤̺͙̬̳̟̲͖̟͇̥̘͉̦̣͙̘͙̭̪̤̖͉͙͚̟̬̬̯̝̯̗̘͉̠͙̞͇͍̣̠̦͓͇̞̱̎͋̓͆̈͋̂̅̓̑̂̀̉͋͌̎̔̽́̑̔̾̋̎̎̍̌͂́̎̒̍͊̇͌̍̽͑̋̎͑͐̈̈́́̃̏́̈́̾̏͌́͒͗̄̄̔͊̑̀̐̅̍̈́̎̉͒̏͛̿͂̋̂͆̃̂̈͋͛̀͋̍͌̀͛̒́̃̈́͂̂̏̆̄̀͛͐͋̀́̾̓͊̀̾͋̋̀̆̂̾͂́̋͂̀̉̃̄͆̆̒̓͂́̏͗̐̊̌̃͑̎͂̎̃̀͊͂̀̂̉͂̓̔͐͌̿̈́̃̎͒͐͘̚̚̚̕̕̚͘̕̕̕̚͘͘̚͘̕͜͜͜͜͜͜͜͜͜͜͝͝͝͠͝͝͝͝͠͝͠͝͝͝͝͝͠͝ͅͅͅͅͅͅͅę̵̨̧̢̧̛̛͓͍̺͚̤̮̰̮͓̳̬͓͎͙͕̪̣̻̫̫̤̥̺̺͎͚̳̞̦̗̦̪͓̺͔̖͍͖̜̫͎͇̩̺̠̝̞̠̼͙͎̎͐́̓̈̏̄̉̽̈̈̿͛̐̆̒̅̔̒̋̓̿̇͊͗̃͋͆͊̄̆͐̔̏̊̓̈́̐̌̍̈́̄̆͒̏̌̉̌̈́̋͒̎͊̏̿̈̍̂̈̒̑͌̊̂͌́̂̂̀̈̈́̎̌͛̾́̓͋̒̑͐̑͆͂͗̉̾̅͗̄̍̅̒͐͂̐̂̉͐̋̒͂̿̄̀̀̔̉͘̕̕̕̕̕̚̕͜͜͝͠͠͝v̸̡̨̧̧̡̢̢̧̨̧̢̡̨̢̨̢̡̧̡̡̡̢̧̢̨̧̨̢̡̡̨̢̛̛̝͙̺̠̤̮̗͈̘̺̹̥̥͚͙̖̖̘̥̱̫̪̗͈͇̥̹̲̼̞͖̞̭̼͉̻̖̩̮̩̻̝̹͉̱̲̹̙͍̞͈͇̫̘͎͍̰̰̳̙͓͉̱̭̥̺̳͍̲͈̠͙̮͚͕̪͉̮̞̱̻̻̦͙̭̥̪͙͓̮͍͚͎̺̙̻̬̪̟̩̹̘͍̮͇̭͔̹̺̝̗̰̱̤͈̻͚̪̬͎̻̰̟̼͉̲̺̼̥̰̠̪̯̫̫̫͇̼̺̲̟̜̯͇͕̯̳̩̹̩͙͈͉̲̠̖͎͉̜̫̰͚̮̫̼̱̥̲̗̭̤̟͇̖͖̣͉̮̠͉̲̪̝̜̼̼͚̯̲͕̬̮̞͙̹̯̥̫̤̝͓̲̰̞̬̝̘͈̦̽̒̎́͋͆̅̅̍͒̔̍̆͋͂̍̾̏̀̂͋͗͑̀̓͒͋̋͊̎̈́̌̀͒͆̾̀̍͗̒̓͊͂̋̊͐͋̂̌̿̅̊͛͒͋͐̈̈́̇͒͑̓̍̈́̑͐̓͋̄̐̍́͛̐͑͛͐͒͗͊̎̍͛̎̐̉̿̃̓̈́̅͋̃̒̈́̂̑̈́̏̑̍̄̈́̾͋̚͘̚̚͘͘̕̕̕̕͘͜͜͜͜͜͜͜͝͠͝͝͠͝ͅͅē̷̢̧̢̡̢̧̡̢̨̢̧̢̧̡̡̨̨̡̛̛̛̬͔̖̣̻͚̙̲̹͍͎͇̪͍̜̳̬̟̺͓͓͎̠͈͉̟̻̮̦̭̥̤̫̯̦̪̮͇̰̮̥̤̥̣̭͉͚̫̼̻̗̼̤̹̳͓͚͇̤̼͙̱̣̠̙̻̼̖͕̞̖̣̜̙̝̪̳̣͔͎̝͈̞̫̙̝̝̫̺̯̤͍͚̳̰͓̭͎͇̦̫̗̣͖̬̦̜͓̣̫̮͉̤̬̩̖̩̦͇̣͎̩̟̭͔̲̙̺̩̝̲͖̜͉̜͓͇̫͍͓͇͉̘̣̗̲̦̭̦̱̬̬̞̭̭̣̖̦͙̺̭̝͉̪̪̣̜͔͕̩̳̮̫̱̱̤̯̟̖̖̣̱̹̞͔̫̩͈̲͕͇͔̲̼͓͎̯̹̪͛̃̎̒̒͋̆̋͗̓́͆͊͊̓̅̿͊̾̊̔̈́͒̓͋͌͌́͛̃̂̈́͊̆͐͒̎͛̀̌͗̈́̊͂̏͒̓̌͗̇̆̓̽͒̈̈́̐̅̓̎͑̂̈́̒̌̇͌̾́͐̐̒̅͋̊͒̏̿͋̓̓̽̍͋̀͒̈̆́̈́̇̍̌͊̉̑̃͛́͑͛̍̊̓͘̚̕̚̚̕͜͜͜͝͝͝͠͝͠͝ͅͅͅͅͅͅñ̸̡̢̧͇͕̪̟̬̙̣̥͇͙͇͙͖̠͉̠̯̗͈̫͇̱̼̱̤͚͙̺̣̹͖̖̺̟͚̮͓̳̯͇͇͕̜͇͕̲̠̜̰̦̭̪̫̫̙̻͇̈́̌͑̅̿͐̀͊̊́͑̀͂̿̒̍̒̎͐̆̈̌̓͌̓̈̐́̔̑͛̀͒̀̋́͋̉̈́͒̈́́̑̓͒̏̈́̈́̇̀̋̾̈́̓̋̀͌͂̀̄́́͗́͑͗͌̆̊̂̏̕̕͘̕̕͘͝͝͝͠͠͝͠͠ ̴̨̧̢̢̨̨̢̡̧̢̛̛̛͚̱͕̝̭̪͖͔̫̹͈̱̲̜̩̪̙̯̬̜̼͎̱̠̰̦̝̥̫͖̻̬̖̫̫̼̞̩̼͎͇͚͕̦̬̜̥͕̲͙̭͚̪͍̖̘̞̭̜̟̰̞̬̺͉̱̥͇̹͖͙̝͈͕̺̹͔͔̖͉̮͓̞̭͕̪̺̗͉͖̮̳͈̻͍̠͙͓͔͈͇͎̺̥̝͉͔̹̯͖̱͊͛̆̈́͗̈̌͑̽̈̏͋̆̆̄̿̉̑̌͐̄̑͗̈́͂͂̈́̏̌̋̃̅̑̀̔̈͒͌̌̐̀͆̍͌̊̈́̿̈́̔̀̋͗̋́̈̈́̔͘͘͘͜͜͠͝͝͝ͅͅͅͅͅͅm̴̨̛̘̙͙̥̬̳̦̯̞͔̜͔̩̱̜̭̱̫̞̫̖͕̻̪̼̦̲͔̰̠̝̥̗͙͐̊̏̔̄̍͌̍̔͂͊̽͂͒̀̔̋͋̈́̍͂̇̇̍̔͒̿̚͘̚͝ͅo̵̧̧̢̨̨̫̫̘̥̻̠̝̱͖͚̗̟̻̼̜̜̤̱͔̬̲̘͙̭̩̞͉͉͇͙̖͉͉̦̳̮̘̬͕̺̟̗̪̬͔̻̮̻̣̙̍̂̋́̓̈̊͗͆̽̋͊̐̾̋͊͒̀͆͊̽̄̊̍̀̋̀͌́̀̆̕͘̚͝͝͝ͅư̵̡̨̡̢̡̢̨̡̢̢̢̨̨̢̧̢̡̧̡̢̨̡̢̨̢̡̧̧̛̜͍͖̦̠̙̩͔͍̹͓̮̥͔̫͖̼̟̜̺̹̤̗͓̖͔͔̘͉̺̱̟̰̥͍̱̲͖̠̝̳͕̯̗͇͕̗͈͇͙̗̹͎̝͎̬͇͇̼̳̫̗͉̪̭͈̘͈͎͔͕̝̯̩̝̙̣̯̳̟̣̞͓̼͈͎͙̯̜̺͔͕̲͓̳̪̪͙̱͍̥̝̣̪̤̟̼̟͈̳͇̰͔̤͎͇̰̗̞̣̮̖͎̱̥͈̝̦̱͓͇̣͙̺̣̥̞̗̬̳̫̻͎̙͔̘̳͔̠̙͙͙̞̬̹͖̝̗͓͍̰͎͖̳̞̱̣̖̺̩͇͍̬͕͈̘͕͈̗͉̤̯̩̱̖͍͙̻̟̦̲̺͇̖̯̯̣͇̹̻̝̝̟͔̪̲͚͈̼̘̯̫͕͓̋̂̈́͗̋̍̓͛̓̾̍́͌̇̇͂̓͋̓͑̈̀̓͆̈́̎̀̓̄̅̓̊̾̃̇̀̌̿̉͑̈́̑̾̔́̂̊͑̈́̇̓̓͆͆̾̆̽̿̑̈͊̄͒͐̆̀̒̂̿̂̄̊̈̒̔͘̕͘̕̚͘͜͜͜͜͜͜͝͝͠͠͝ͅͅͅͅͅͅt̸̡̧̨̢̢̢̢̢̡̧̨̧̢̧̢̧̡̨̨̧̨̨̡̨̨̡̢̨̨̧̛̛̛̺͖̱͙͕͔͓̻̬͎̥͙̳̠̬̣͍̬̦̺̘̱̪͙͚̫̜̞͍͚̱̪͍̲͈̦͔͉̘̤̩̤̜̱͙̙̱̦̼̳͈͍͍̩͔̼͚̦͎̺͖̮̫͇̩͕̳̘̭̳̥̗̝̤̦̬̦̞͕̙̜̪̙̰͕̭̜̭̥͕̳̦͖̘̳̰̮̦͙̦̩̺̳̪̣̠͙̜̩͎̟̞̰̮͇̘̬͉̺͍̯͔͍̰̫̝̟̬̝̜̲̱̣̗̭͓̯̻̠̰̩̣̰̖̙̖̙͎̠̻̲̲̗̦͎̘̣̼̫̻͙̦̥͉̱̜̜̺̦͓̳̯̯̯̻̮͎͙̘̦͕̮̳̜̹̖̹̦͍̻̣͚̥͈̟͙̘̬̗̝̘̻̙̗͉̯͕͚̥̮̬͔͖̙̻̰̻͇͍͗́͋̈̀͐̋̏͋̉̎͆́̂̀̋̔̅̋́̑͛̌̂̊̆̌͋̄͐̈͆̓͛͋̎̈́̈̃̋̎̓̋͒̀̾̈̈́̈́͛͆͋͂̑̅͌͂͊͐͒̆̈́̊́̈̀̋̉͂̉̍̃̄̋͐̇͐̾̈́̒̃̈́̃̊̔͛͒̅͛͛̔̍͊̀͐̋͋͊̿͂͑͆̏̅̇͗͑͒̉̾̍̆́̎̈́͆̐͒̆͆̽̿̅͂͑́̇̾̓̾͛͑̿̈́̀̐̋̂̊̈̄̉̽̈̑̐́͗͂̀̆̔̈͋̈̐̑͐̽́̾̂͌̑̀̑̑̆̍́̀͌̓̅͐̀̀͛͑̑̎̈́̈̓̏̏̅̾͒̎̒̈́͑̓͑̂̇̋̀͊͊̄̋͐͗̌̿̒͑͗̅̀̈͐̓̒̆͛̎̉̓͑̊̈̈́̈́̌̓̀̌̌̾̿́̚̚͘͘̕̚͘̕͘̕̚͘̕̚̚͘̚͘̕̚̚̚͜͜͜͜͝͝͠͝͠͝͝͠͝͠͝͝͝͠͝͠͝͝͝͝͝ͅͅͅͅͅͅͅͅͅḩ̴̧̢̧̡̡̢̨̢̭̫̪͚͉͙̣̻̘͔̹̱̱̖̘̲̣̗̻̣̘̞̱̦̦̬̤͇̺̣̲̣̪̣̥̦̦̰̖̱̜̗͓͕̹͉͚̦͓̩̯̙̻̠̥̯̱̝̪̪̜͇͉͈͔̮͚̣̘̞͙̯̥͔̙̟̮̥͖̖̻̬͚̦̮̅̊̀͂͗͌̿̓̾̆͌̑̐̊̿̋̑͋̚̕̕̕͜͜͠͝ͅş̵̧̢̛̻̞̱̘̭̬̤͍͙͉̪͚̞̱̩̱͔̳͓͉̪̦͕̮̱̯̰̹͔̦̒͗̓́̎͂̄̋̓̉̆͜͝͝ͅ.̶̨̢̢̨̨̧̢̨̢̧̧̢̨̢̧̡̡̧̨̡̨̢̛̝̼͔̺͈̘̳̹̳̦̤̝̯͔̰̠̹̠̻̰̦͓͔͔͍̱͚̤͕̩̝̝͕̼̞̳̲͙̮̩͕̗̪̳͙̲̟̹͉̱̠̗̰͕̤̯͇̳̩̲͍̯̤̣̦͔̩̳͔͖͇̙͎̫̼͔͓̮̠̯̘̣̫͙͙̺̤͙͇̮̮̙̥͇͉̖̱͉̰̣̹͚͚̳̹̥̙͉͖͙̳̖͎̥̙̺̪͙̯̥͉̮̳̬͎͍̼̩̬͇̝̘͈̮̼͙̼̖͚̜͍̲̭̝̝̦͈͙̪̠̝͖̝̦̞͖̫͓͚͓̬̠̩͓̱̠̠̗̜̞̤͇̠̰͍̻͎͙̬̦̹̯̖̥̗̪̞͔̯͓͍̲̭̹̥̦̦̱͎̣̙̘̦͔͉̥̙̖̻̠̤͕̪͕̳̺͍͖̖̻̙̭̩̯̰̘̱̏̄̃̉̀̂͑͂̀̆͊̃̒͌̈̓͑̑͊̓̿̀̈́͛͂̿̂́̽̊̎̄͒̈́̌̽̔̾̾͑̅͆̈͐̈́̊͑̀̒̄̐͒͌̀͌͒̈́͊́͆̐̾̀̎̽́̐̒̽̑͛̉̌͛̐̐́́̔̇̉͐͊̔̋̾̀̌̒͋̆̏̽̈́́̔͒̏̓͆̈́͐̿̔͊͒͂͊͋̈̅̈́̉̏͊̃̉͗̏̑͛͑̊̌̂̀̈́͌̿͌̈̏̅̍̓͂͘̕͘̕̚͘͘̚̚̚͘͜͜͜͜͠͠͝͝͝͝͝͝͝͠ͅͅͅͅͅ", F6: "F6 — Juice Box",
+G1: "G1 — Arm", G2: "G2 — Sour Candy", G3: "G3 — Bonus Treat",
+G4: "G4 — Soda Lite", G5: "G5 — Donut", G6: "G6 — Gun"
+};
+
+let secretCount = 0;
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "x" || e.key === "X") {
+    secretCount++;
+    if (secretCount >= 5) {
+      window.location.href = "castle.html";
+    }
+  }
+});
+
+</script>
+</body>
+</html>

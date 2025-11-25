@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Oregon Trail</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jacquard+12&display=swap">
+</head>
+<body>
+  <!-- Emulated iMac window -->
+  <div id="os-shell">
+    <div class="mac-window">
+      <div class="titlebar">
+        <div class="title-left">
+          <div class="close"></div>
+          <div class="min"></div>
+          <div class="zoom"></div>
+        </div>
+        <div class="title-center">Oregon Trail v1.3</div>
+        <div class="title-right">File  Edit  View</div>
+      </div>
+
+      <div class="window-body">
+        <div class="left-col">
+          <div class="scene-porthole">
+            <div class="sun"></div>
+            <div class="hill hill-a"></div>
+            <div class="hill hill-b"></div>
+            <div class="river"></div>
+            <div class="wagon">
+              <div class="wagon-body"></div>
+              <div class="wheel wheel-l"></div>
+              <div class="wheel wheel-r"></div>
+            </div>
+          </div>
+
+          <div class="log-box">
+            <div class="log-header">Journal</div>
+            <div id="message" class="log-text">Start your journey by spinning the wheel.</div>
+          </div>
+        </div>
+
+        <div class="right-col">
+          <div class="stats">
+            <div class="stat-row"><span>Day</span><span id="day">1</span></div>
+            <div class="stat-row"><span>Miles</span><span id="miles">0</span></div>
+            <div class="stat-row"><span>Food</span><span id="food">100</span></div>
+            <div class="stat-row"><span>Health</span><span id="health">5</span></div>
+          </div>
+
+          <div class="wheel-area">
+            <div id="wheel" class="wheel-graphic"></div>
+            <div class="wheel-pointer"></div>
+            <button id="spinBtn" class="btn">Continue</button>
+            <div class="wheel-legend">
+              <div>+Food</div>
+              <div>+Miles</div>
+              <div>+Health</div>
+              <div>-Health / Food</div>
+            </div>
+          </div>
+
+          <div class="controls">
+            <button id="travelBtn" class="btn">Travel</button>
+            <button id="saveBtn" class="btn">Save</button>
+            <button id="loadBtn" class="btn">Load</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bar">— © 2025 Jude Felstead • Made with VSCode —</div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>

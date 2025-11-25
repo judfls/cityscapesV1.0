@@ -1,0 +1,133 @@
+
+:root{
+  --bg:#ffffff;
+  --window:#ffffff;
+  --titlebar-top:#ffffff;
+  --titlebar-bottom:#ffffff;
+  --chrome-shadow: rgba(0, 0, 0, 0.25);
+  --text:#000000;
+  --pixel-scale: 1; /* increase for chunkier pixels */
+}
+
+html,body{height:100%;margin:0;background:var(--bg);  font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;  font-style: normal; color:var(--text);}
+
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jacquard+12&display=swap');
+/* scale whole page to emulate chunky pixels */
+#os-shell{
+  width: 980px;
+  margin:40px auto;
+  image-rendering: pixelated;
+  transform-origin: top center;
+  transform: scale(var(--pixel-scale));
+}
+
+/* window chrome */
+.mac-window{
+  width: 690px;
+  margin: 0 auto;
+  
+
+  background-color: white;
+  border: 1px solid #000000;
+  background-image: url("img/Untitled-3.png");
+  overflow: hidden;
+}
+
+/* title bar */
+.titlebar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:6px 8px;
+ background-color: white;
+  color:rgb(0, 0, 0);
+  font-weight:bold;
+  height:34px;
+  box-shadow: inset 0 -2px rgba(0, 0, 0, 0.12);
+}
+
+.title-left{display:flex;gap:6px;align-items:center;}
+
+
+.title-center{font-size:13px;letter-spacing:1px; font-family: "Jacquard 12", system-ui;
+  font-weight: 300;
+  font-style: normal; font-size: large;}
+.title-right{opacity:0.75;font-size:12px; font-family: "Jacquard 12", system-ui;
+  font-weight: 300;
+  font-style: normal; font-size: large;}
+
+/* body */
+.window-body{
+  display:flex;
+  padding:12px;
+  gap:12px;
+}
+
+/* left pane: scene + log */
+.left-col{width:310px;display:flex;flex-direction:column;gap:12px;}
+.scene-porthole{
+  width:310px;
+  height:170px;
+  background: linear-gradient(#ffffff,#ffffff 70%);
+  border:1px solid #000000;
+  position:relative;
+  overflow:hidden;
+  box-shadow: inset 0 -6px rgba(0,0,0,0.08);
+}
+
+/* pixel elements - use blocky shapes */
+.sun{position:absolute;left:16px;top:12px;width:28px;height:28px;background: url("img/sun.png");background-size: contain;border-radius:100%;}
+.hill{position:absolute;bottom:18px;border-radius:50%;background:url("img/Untitled-3.png");}
+.hill-a{width:220px;height:120px;left:-40px;transform:skewX(-8deg);background:url("img/Untitled-3.png");}
+.hill-b{width:180px;height:90px;left:120px;bottom:22px;background:url("img/Untitled-3.png");}
+
+.river{position:absolute;left:0;bottom:0;width:100%;height:26px;background: url("img/gr.png"); background-repeat: repeat-x; background-size: 140px;}
+
+/* wagon : simple pixel-art rectangle + wheels */
+.wagon{position:absolute;width:120px;left:70px;bottom:36px;height:44px;transform:translateZ(0); background: url("img/car.png");}
+.wagon-body{position:absolute;left:8px;top:0;width:96px;height:34px; background: url("img/gr.png");background-size: contain;}
+.wheel{position:absolute;bottom:-10px;width:22px;height:22px;border-radius:50%; background: url("img/whelgon.png"); background-size: contain;}
+.wheel-l{left:18px; background: url("img/whelgon.png"); background-size: contain;}
+.wheel-r{right:18px; background: url("img/whelgon.png"); background-size: contain;}
+
+/* journal box */
+.log-box{background:#ffffff;border:0px solid #ffffff;padding:6px;height:82px;box-sizing:border-box}
+.log-header{font-weight:bold;background:#ffffff;padding:4px;border:0px solid rgb(255, 255, 255);font-size:12px;margin-bottom:6px}
+.log-text{font-size:12px;line-height:1.1;white-space:pre-wrap;height:36px;overflow:auto;padding-right:6px}
+
+/* right pane */
+.right-col{flex:1;display:flex;flex-direction:column;gap:12px}
+
+.stats{background:#fff;border:3px solid #ffffff;padding:8px;display:grid;grid-template-columns:1fr 150px;gap:6px;font-size:13px}
+.stat-row{display:flex;justify-content:space-between;padding:6px 8px;background:linear-gradient(#fff,#ffffff);border:1px solid rgba(255, 255, 255,)}
+
+/* wheel area */
+.wheel-area{background:#ffffff;border:0px solid #000000;padding:10px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.wheel-graphic{
+  width:140px;height:140px;border-radius:50%;
+
+  background:
+    conic-gradient(#b94a4a 0deg 60deg, #6ab46a 60deg 120deg, #4b78c7 120deg 180deg,
+                  #e7d356 180deg 240deg, #c67acb 240deg 300deg, #49bdbd 300deg 360deg);
+  transition: transform 2.8s cubic-bezier(.08,.83,.19,1.02);
+  image-rendering: pixelated;
+
+  background-image: url("img/wheel.png");
+  background-size: contain;
+}
+
+.wheel-pointer{width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-bottom:18px solid #102b48;margin-top:-8px}
+
+.btn{
+  padding:8px 12px;border:1px solid #000000;background:linear-gradient(#ffffff,#ffffff);font-weight:bold;cursor:pointer;
+ 
+}
+
+.controls{display:flex;gap:8px;align-items:center}
+
+/* wheel legend list */
+.wheel-legend{display:flex;gap:12px;font-size:12px;justify-content:center;color:rgb(0, 0, 0)}
+
+.footer-bar{background:#ffffff;padding:8px;border-top:1px solid #ffffff;text-align:center;font-size:12px;color:#000000}
