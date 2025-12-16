@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simple Mathroom</title>
+  <style id="appStyles">
+    :root{
+      --bg:#ffffff; /* slate-900 */
+      --panel:#ffffff; /* gray-900 */
+      --panel-2:#ffffff; /* gray-800 */
+      --text:#000000; /* gray-200 */
+      --muted:#9ca3af; /* gray-400 */
+      --accent:#ffffff; /* cyan-400 */
+      --accent-2:#ffffff; /* sky-400 */
+      --danger:#ff002b; /* rose-500 */
+    }
+    *{ box-sizing:border-box }
+    html,body{ height:100% }
+    body{
+        background-color: #ffffff;
+      margin:0;
+      display:flex; align-items:center; justify-content:center; padding:24px;
+       background-color: #ffffff;
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* stack children vertically */
+  align-items: center;
+  justify-content: flex-start; /* don’t vertically center everything */
+  padding: 24px;
+  gap: 16px; /* adds space between image and chat box */
+    }
+    .app{
+      border:1px solid rgb(0, 0, 0);
+    }
+    header{ background-color: white; display:flex; align-items:center; gap:12px; padding:14px 16px; border-bottom:1px solid rgba(0, 0, 0) } 
+
+    h1{ font-size:16px; margin:0; }
+    .room{ margin-left:auto; font-size:12px;}
+
+    #messages{
+      padding:16px; overflow:auto;;
+      display:flex; flex-direction:column; gap:8px;
+    }
+    .msg{ display:grid; grid-template-columns:auto 1fr; gap:8px; align-items:start; }
+    .avatar{ width:28px; height:28px; display:grid; place-items:center; background-color: black; color:#ffffff; font-weight:700; border: #000000, 2px; }
+    .bubble{ background:rgb(255,255,255); border:1px solid rgb(0, 0, 0); padding:10px 12px; }
+    .meta{ font-size:12px; color:var(--muted); margin-bottom:4px }
+    .yours .bubble{ background:rgba(0, 0, 0,); border-color:rgba(255, 255, 255,) color(white) }
+
+    form{
+      display:flex; gap:10px; padding:12px; background:rgb(255, 255, 255); border-top:1px solid rgba(0, 0, 0);
+    }
+    textarea{
+      flex:1; min-height:46px; max-height:140px; resize:vertical; padding:12px 12px; border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.04); color:var(--text);
+      outline:none; border: inset 0 1px 2px rgba(0,0,0);
+    }
+    textarea::placeholder{ color:var(--muted) }
+    button{
+      padding:0 16px; border:1px solid rgba(255,255,255); color:#07121a; font-weight:700; cursor:pointer;
+    }
+    button:disabled{cursor:not-allowed }
+    .topbar{
+      display:flex; gap:8px; align-items:center; margin-left:auto;
+    }
+    .pill{
+      font-size:12px; padding:6px 10px; border:1px solid rgba(255,255,255); color:var(--muted);
+      background:rgba(255,255,255);
+    }
+    .name{ color:var(--text); font-weight:700 }
+    .danger{ border-color: rgb(255, 0, 0); background-color: red;}
+    .link{ color:var(--accent-2); text-decoration:none }
+    #sendBtn{border: 2px black;}
+#centered{
+     display: flex;
+  flex-direction: column;
+}
+  </style>
+</head>
+<body>
+   
+    <img src="https://judefelstead.com/shout/img/TALKOTOWN.png" id="centered" height="150px">
+ 
+    <br>
+  <div class="app">
+    <header>
+      <div class="dot" aria-hidden="true"></div>
+      <h1>TALKTOWN</h1>
+      <div class="topbar">
+        <span class="pill" id="who"></span>
+        <button id="changeNameBtn" title="Change display name">Change Name</button>
+        <button id="signOutBtn" class="danger" title="Sign out">Sign Out</button>
+      </div>
+      <span class="room" id="roomName"></span>
+    </header>
+
+    <main id="messages" aria-live="polite" aria-busy="true"></main>
+
+    <form id="composer">
+      <textarea id="text" rows="2" maxlength="500" placeholder="Type a message… (Shift+Enter = newline)"></textarea>
+      <button id="sendBtn" type="submit">Send</button>
+    </form>
+  </div>
+  <br>
+  <label style="margin-bottom:10px;">
+  <input type="checkbox" id="toggleCSS"> 1998 Mode
+</label>
+  <p id="centered"><i>© 2025 Jude Felstead. All Rights Reserved</i></p>
+
+  <!-- Firebase SDKs (v10 modular). Safe to use from a static page like GitHub Pages. -->
+  <script type="module">
+    // 1) Replace this with your Firebase project config (Project Settings ➜ General ➜ SDK setup and configuration).
+// Import the functions you need from the SDKs you need
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyACBxjXRBvI7XAnBZEGAZlD83kbdaXw3fw",
+  authDomain: "talktownv10.firebaseapp.com",
+  projectId: "talktownv10",
+  storageBucket: "talktownv10.appspot.com",
+  messagingSenderId: "74099623321",
+  appId: "1:74099623321:web:2e82ccced6de71c6ae3f08",
+  measurementId: "G-2HLY2KJVRH"
+};
+
+
+
+    // 2) Choose a room ID. You can later swap this from the URL (?room=foo) or make multiple rooms.
+    const ROOM_ID = new URL(location.href).searchParams.get('room') || 'global';
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import {
+      getFirestore, collection, addDoc, serverTimestamp,
+      query, orderBy, limit, onSnapshot
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    import {
+      getAuth, onAuthStateChanged, signInAnonymously, updateProfile, signOut
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+
+    // UI elements
+    const el = (id)=>document.getElementById(id);
+    const messagesEl = el('messages');
+    const composer = el('composer');
+    const textInput = el('text');
+    const sendBtn = el('sendBtn');
+    const who = el('who');
+    const changeNameBtn = el('changeNameBtn');
+    const signOutBtn = el('signOutBtn');
+    el('roomName').textContent = `#${ROOM_ID}`;
+
+    // Local username persisted in localStorage (you can also store in Auth.profile)
+    function getSavedName(){ return localStorage.getItem('displayName') || '' }
+    async function setDisplayName(name){
+      name = (name || '').trim().slice(0, 30) || `Guest-${Math.floor(Math.random()*9999)}`;
+      localStorage.setItem('displayName', name);
+      if (auth.currentUser) {
+        try { await updateProfile(auth.currentUser, { displayName:name }); } catch {}
+      }
+      who.innerHTML = `Signed in as <span class="name">${escapeHTML(name)}</span>`;
+    }
+
+    // Minimal HTML escape
+    function escapeHTML(s){ return s.replace(/[&<>"']/g, m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m])) }
+
+    // Sign-in flow (anonymous)
+    onAuthStateChanged(auth, async (user)=>{
+      if (!user) {
+        await signInAnonymously(auth);
+        return;
+      }
+      // Display name bootstrap
+      if (!getSavedName()) {
+        const name = prompt('Pick a display name (shown to others):') || '';
+        await setDisplayName(name);
+      } else {
+        await setDisplayName(getSavedName());
+      }
+      attachRoomListener();
+      messagesEl.setAttribute('aria-busy', 'false');
+    });
+
+    changeNameBtn.addEventListener('click', async()=>{
+      const name = prompt('New display name:') || '';
+      await setDisplayName(name);
+    });
+
+    signOutBtn.addEventListener('click', async()=>{
+      await signOut(auth);
+      location.reload();
+    });
+
+    // Realtime listener
+    let unsubscribe = null;
+    function attachRoomListener(){
+      if (unsubscribe) unsubscribe();
+      const messagesRef = collection(db, 'rooms', ROOM_ID, 'messages');
+      const q = query(messagesRef, orderBy('createdAt', 'asc'), limit(500));
+      unsubscribe = onSnapshot(q, (snap)=>{
+        messagesEl.innerHTML = '';
+        for (const doc of snap.docs){
+          const m = doc.data();
+          renderMessage(m);
+        }
+        // Auto-scroll to bottom on load/update
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+      });
+    }
+
+    function renderMessage(m){
+      const isYou = auth.currentUser && (m.uid === auth.currentUser.uid);
+      const wrap = document.createElement('div');
+      wrap.className = `msg${isYou ? ' yours' : ''}`;
+
+      const avatar = document.createElement('div');
+      avatar.className = 'avatar';
+      avatar.textContent = (m.username || '??').slice(0,1).toUpperCase();
+
+      const bubble = document.createElement('div');
+      bubble.className = 'bubble';
+
+      const meta = document.createElement('div');
+      meta.className = 'meta';
+      const when = m.createdAt?.toDate ? m.createdAt.toDate() : (m.createdAt || new Date());
+      meta.textContent = `${m.username || 'Anonymous'} • ${formatTime(when)}`;
+
+      const text = document.createElement('div');
+      text.innerHTML = m.text ? linkify(escapeHTML(m.text)) : '';
+
+      bubble.append(meta, text);
+      wrap.append(avatar, bubble);
+      messagesEl.appendChild(wrap);
+    }
+
+    function formatTime(d){
+      try{
+        return new Intl.DateTimeFormat(undefined, { hour:'2-digit', minute:'2-digit', month:'short', day:'2-digit' }).format(d);
+      }catch{ return d.toLocaleString() }
+    }
+
+    // Linkify basic URLs
+    function linkify(s){
+      const urlRe = /\b(https?:\/\/[^\s<]+[^<\.,\s])/gi;
+      return s.replace(urlRe, (m)=>`<a class="link" target="_blank" rel="noopener noreferrer" href="${m}">${m}</a>`);
+    }
+
+    // Sending
+    composer.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const text = textInput.value.trim();
+      if (!text) return;
+      if (text.length > 500) { alert('Keep it under 500 characters.'); return; }
+      textInput.value = '';
+      textInput.focus();
+      sendBtn.disabled = true;
+      try{
+        const messagesRef = collection(db, 'rooms', ROOM_ID, 'messages');
+        await addDoc(messagesRef, {
+          text,
+          uid: auth.currentUser?.uid || null,
+          username: getSavedName() || auth.currentUser?.uid?.slice(0,6) || 'Anon',
+          createdAt: serverTimestamp()
+        });
+      }catch(err){
+        console.error(err);
+        alert('Failed to send message. Check your Firebase config.');
+      }finally{
+        sendBtn.disabled = false;
+        // Scroll after sending
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+      }
+    });
+
+    // Send on Enter, newline with Shift+Enter
+    textInput.addEventListener('keydown', (e)=>{
+      if (e.key === 'Enter' && !e.shiftKey){
+        e.preventDefault();
+        composer.requestSubmit();
+      }
+    });
+
+    
+  </script>
+  <script>
+  const cssToggle = document.getElementById('toggleCSS');
+  const styleTag = document.getElementById('appStyles');
+
+  cssToggle.addEventListener('change', () => {
+    if (cssToggle.checked) {
+      styleTag.disabled = true;   // Turn OFF all CSS
+    } else {
+      styleTag.disabled = false;  // Turn it back ON
+    }
+  });
+</script>
+</body>
+</html>
