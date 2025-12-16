@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GLITCH_1997</title>
+
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: black;
+    color: #00ffcc;
+    font-family: "Courier New", monospace;
+    overflow: hidden;
+}
+
+/* CRT scanlines */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(255,255,255,0.03) 0px,
+            rgba(255,255,255,0.03) 1px,
+            rgba(0,0,0,0.03) 2px,
+            rgba(0,0,0,0.03) 3px
+        );
+    mix-blend-mode: overlay;
+    animation: flicker 0.15s infinite;
+}
+
+/* VHS distortion overlay */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        rgba(255,255,255,0.05),
+        rgba(0,0,0,0.05)
+    );
+    opacity: 0.2;
+}
+
+@keyframes flicker {
+    0% { opacity: 0.15; }
+    50% { opacity: 0.25; }
+    100% { opacity: 0.15; }
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    animation: jitter 0.12s infinite;
+}
+
+/* RGB split */
+.glitch {
+    position: relative;
+    font-size: 64px;
+    letter-spacing: 4px;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.glitch::before {
+    color: red;
+    transform: translate(-2px, 0);
+    clip-path: inset(0 0 45% 0);
+}
+
+.glitch::after {
+    color: blue;
+    transform: translate(2px, 0);
+    clip-path: inset(55% 0 0 0);
+}
+
+@keyframes jitter {
+    0%   { transform: translate(-50%, -50%) translate(0,0); }
+    25%  { transform: translate(-50%, -50%) translate(2px,-1px); }
+    50%  { transform: translate(-50%, -50%) translate(-2px,1px); }
+    75%  { transform: translate(-50%, -50%) translate(1px,2px); }
+    100% { transform: translate(-50%, -50%) translate(0,0); }
+}
+
+/* Horizontal tearing */
+.tear {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(255,255,255,0.8);
+    mix-blend-mode: difference;
+    animation: tearMove 0.1s linear infinite;
+}
+
+@keyframes tearMove {
+    from { transform: translateX(-100%); }
+    to   { transform: translateX(100%); }
+}
+
+/* Signal loss */
+.signal-loss {
+    position: fixed;
+    inset: 0;
+    background: black;
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="glitch" id="glitchText" data-text="NO SIGNAL">
+        NO SIGNAL
+    </div>
+</div>
+
+<div class="signal-loss" id="signal"></div>
+
+<script>
+const text = document.getElementById("glitchText");
+const signal = document.getElementById("signal");
+
+const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}<>";
+
+function corruptText() {
+    const original = text.dataset.text;
+    let corrupted = "";
+
+    for (let i = 0; i < original.length; i++) {
+        if (Math.random() < 0.2) {
+            corrupted += chars[Math.floor(Math.random() * chars.length)];
+        } else {
+            corrupted += original[i];
+        }
+    }
+
+    text.textContent = corrupted;
+}
+
+setInterval(corruptText, 80);
+
+/* Random horizontal tearing */
+setInterval(() => {
+    if (Math.random() < 0.3) {
+        const tear = document.createElement("div");
+        tear.className = "tear";
+        tear.style.top = Math.random() * window.innerHeight + "px";
+        document.body.appendChild(tear);
+        setTimeout(() => tear.remove(), 100);
+    }
+}, 120);
+
+/* VHS tracking jump */
+setInterval(() => {
+    if (Math.random() < 0.15) {
+        document.body.style.transform =
+            `translateY(${(Math.random() * 20 - 10)}px)`;
+        setTimeout(() => {
+            document.body.style.transform = "";
+        }, 80);
+    }
+}, 300);
+
+/* Signal loss flash */
+setInterval(() => {
+    if (Math.random() < 0.05) {
+        signal.style.opacity = 1;
+        setTimeout(() => {
+            signal.style.opacity = 0;
+        }, 150);
+    }
+}, 1000);
+</script>
+
+</body>
+</html>

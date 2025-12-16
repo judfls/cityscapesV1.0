@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>2</title>
+<style>
+  :root { --bg: #111; --fg: #eee; --accent: #6cf; }
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,Segoe UI,Roboto,Arial}
+  #container{display:flex;flex-direction:column;align-items:center;padding:12px;gap:8px}
+  canvas{background:#222;border:4px solid #111;display:block}
+  .info{width:800px;display:flex;justify-content:space-between;align-items:center;color:#bbb;font-size:13px}
+  button{background:var(--accent);border:none;padding:6px 10px;border-radius:6px;color:#001;font-weight:700;cursor:pointer}
+  a{color:var(--accent)}
+  /* Mini-map styling drawn on the same canvas - separate small area */
+</style>
+</head>
+<body>
+<div id="container">
+  <div class="info">
+    <div>congradulations of beating challenge one.</div>
+    <div><button id="regen">regenerate maze</button></div>
+  </div>
+  <canvas id="game" width="800" height="450"></canvas>
+  <div style="width:800px;color:#888;font-size:13px">
+   find the end of the maze.
+  </div>
+</div>
+
+<script>
+/*
+ First-person 3D maze using 2D raycasting.
+ - Maze generated via recursive backtracker.
+ - Player moves with keyboard; mouse rotation via Pointer Lock.
+*/
+
+const canvas = document.getElementById('game');
+const ctx = canvas.getContext('2d');
+
+let W = canvas.width, H = canvas.height;
+const mapCols = 21;              // odd numbers produce enclosed walls
+const mapRows = 21;
+const cellSize = 1;             // logical cell size (we'll scale to world units)
+const fov = Math.PI / 3;        // 60 degrees
+const numRays = W;              // one ray per column for crisp output
+const maxDepth = 30;            // how far rays check
+let maze = [];                  // grid: 0 = empty, 1 = wall
+
+// Player state
+let player = {
+  x: 1.5,   // in world units (cells)
+  y: 1.5,
+  angle: 0,
+  moveSpeed: 2.5,  // units per second
+  rotSpeed: Math.PI, // rad/s (used for keyboard rotation fallback)
+  runningMultiplier: 1.8
+};
+
+// Controls
+const keys = { w:false, s:false, a:false, d:false, shift:false, left:false, right:false };
+let pointerLocked = false;
+
+// Time
+let lastTime = performance.now();
+
+// Generate maze with recursive backtracker
+function generateMaze(cols, rows) {
+  // Create grid of walls (1) and unvisited cells (-1)
+  const grid = new Array(rows).fill(0).map(()=>new Array(cols).fill(1));
+
+  // We carve in a grid of odd indices (1,3,5...), leaving walls between cells.
+  function carve(x, y) {
+    grid[y][x] = 0;
+    const dirs = shuffle([[2,0],[-2,0],[0,2],[0,-2]]);
+    for (const [dx,dy] of dirs) {
+      const nx = x + dx, ny = y + dy;
+      if (nx>0 && nx<cols && ny>0 && ny<rows && grid[ny][nx] === 1) {
+        grid[y + dy/2][x + dx/2] = 0; // remove wall between
+        carve(nx, ny);
+      }
+    }
+  }
+  // Start carving from (1,1)
+  carve(1,1);
+
+  // Enclose edges (already walls) and create entrance/exit
+  // Place a wall border if needed (grid already has walls)
+  return grid;
+}
+function shuffle(arr) {
+  for (let i = arr.length-1; i>0; i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]] = [arr[j],arr[i]];
+  }
+  return arr;
+}
+
+// Raycasting renderer
+function renderScene(dt) {
+  // Clear
+  ctx.fillStyle = '#222';
+  ctx.fillRect(0,0,W,H);
+
+  // floor & ceiling
+  ctx.fillStyle = '#555';
+  ctx.fillRect(0,0,W,H/2);       // ceiling
+  ctx.fillStyle = '#333';
+  ctx.fillRect(0,H/2,W,H/2);     // floor
+
+  // Cast rays — one per screen column
+  const halfFov = fov / 2;
+  for (let col = 0; col < W; col++) {
+    // angle for this column
+    const cameraX = (col / W) * 2 - 1; // -1 .. 1
+    const rayAngle = player.angle + Math.atan(cameraX * Math.tan(halfFov));
+
+    // ray position and direction
+    const rayDirX = Math.cos(rayAngle);
+    const rayDirY = Math.sin(rayAngle);
+
+    // step through the world in small steps (DDA could be used; here we sample)
+    let dist = 0;
+    let hit = false;
+    let hitX=0, hitY=0, hitCellX=0, hitCellY=0;
+    const step = 0.02; // smaller -> more accurate, slower
+    while (!hit && dist < maxDepth) {
+      dist += step;
+      const rx = player.x + rayDirX * dist;
+      const ry = player.y + rayDirY * dist;
+      const cellX = Math.floor(rx);
+      const cellY = Math.floor(ry);
+      if (cellX < 0 || cellX >= mapCols || cellY < 0 || cellY >= mapRows) {
+        hit = true;
+        break;
+      }
+      if (maze[cellY][cellX] === 1) {
+        hit = true;
+        hitX = rx;
+        hitY = ry;
+        hitCellX = cellX;
+        hitCellY = cellY;
+        break;
+      }
+    }
+
+    // Correct fisheye: multiply distance by cos of difference between ray and player angle
+    const correctedDist = dist * Math.cos(rayAngle - player.angle);
+
+    // Calculate wall height on screen (simple projection)
+    const wallHeight = Math.min(H, (H / correctedDist) * 0.8); // scale factor 0.8
+    const top = Math.floor(H/2 - wallHeight/2);
+    const bottom = Math.floor(H/2 + wallHeight/2);
+
+    // Simple shading by distance and by which side was hit (approx)
+    let shade = 1 - Math.min(1, correctedDist / maxDepth);
+    // Slight side shading: detect whether the ray hit a vertical or horizontal wall by checking fractional position
+    if (hit) {
+      const fx = hitX - Math.floor(hitX);
+      const fy = hitY - Math.floor(hitY);
+      // whichever fractional coordinate is closer to 0 or 1 tends to indicate the side
+      if (Math.abs(fx - 0.5) > Math.abs(fy - 0.5)) shade *= 0.8; // vertical side -> darker
+    } else {
+      shade *= 0.3;
+    }
+    const colorValue = Math.floor(180 * shade) + 30; // 30..210
+    ctx.fillStyle = `rgb(${colorValue},${colorValue},${colorValue})`;
+    ctx.fillRect(col, top, 1, bottom - top);
+  }
+
+
+}
+
+// Update player based on controls
+function update(dt) {
+  // Movement vector in local coordinates
+  let forward = 0, strafe = 0;
+  if (keys.w) forward += 1;
+  if (keys.s) forward -= 1;
+  if (keys.a) strafe -= 1;
+  if (keys.d) strafe += 1;
+
+  // Running multiplier
+  const speed = player.moveSpeed * (keys.shift ? player.runningMultiplier : 1);
+
+  // Normalize diagonal movement
+  let len = Math.hypot(forward, strafe);
+  if (len > 0) { forward /= len; strafe /= len; }
+
+  // Delta movement in world coordinates
+  const dx = (Math.cos(player.angle) * forward - Math.sin(player.angle) * strafe) * speed * dt;
+  const dy = (Math.sin(player.angle) * forward + Math.cos(player.angle) * strafe) * speed * dt;
+
+  // Collision check: simple axis-aligned
+  const tryX = player.x + dx;
+  if (!isWallAt(tryX, player.y)) player.x = tryX;
+  const tryY = player.y + dy;
+  if (!isWallAt(player.x, tryY)) player.y = tryY;
+
+  // Mouse rotation (handled by pointer events that update player.angle incremental)
+  // Keyboard rotate fallback
+  if (!pointerLocked) {
+    if (keys.left) player.angle -= player.rotSpeed * dt;
+    if (keys.right) player.angle += player.rotSpeed * dt;
+  }
+  // Check win condition
+const px = Math.floor(player.x);
+const py = Math.floor(player.y);
+
+if (px === endCell.x && py === endCell.y) {
+  // Redirect to your page
+  window.location.href = "OohJXgBsUFZET3TgT8I2lXF91oqoB3s0.html"; 
+}
+
+}
+
+function isWallAt(x,y) {
+  const cx = Math.floor(x);
+  const cy = Math.floor(y);
+  if (cx < 0 || cy < 0 || cx >= mapCols || cy >= mapRows) return true;
+  return maze[cy][cx] === 1;
+}
+
+// Animation loop
+function frame(now) {
+  const dt = Math.min(0.05, (now - lastTime) / 1000); // clamp dt
+  lastTime = now;
+
+  update(dt);
+  renderScene(dt);
+
+  requestAnimationFrame(frame);
+}
+
+// Input handlers
+window.addEventListener('keydown', e => {
+  if (e.code === 'KeyW') keys.w = true;
+  if (e.code === 'KeyS') keys.s = true;
+  if (e.code === 'KeyA') keys.a = true;
+  if (e.code === 'KeyD') keys.d = true;
+  if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') keys.shift = true;
+  if (e.code === 'ArrowLeft') keys.left = true;
+  if (e.code === 'ArrowRight') keys.right = true;
+});
+window.addEventListener('keyup', e => {
+  if (e.code === 'KeyW') keys.w = false;
+  if (e.code === 'KeyS') keys.s = false;
+  if (e.code === 'KeyA') keys.a = false;
+  if (e.code === 'KeyD') keys.d = false;
+  if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') keys.shift = false;
+  if (e.code === 'ArrowLeft') keys.left = false;
+  if (e.code === 'ArrowRight') keys.right = false;
+});
+
+// Pointer lock and mouse movement
+canvas.addEventListener('click', () => {
+  if (!pointerLocked) canvas.requestPointerLock?.();
+});
+document.addEventListener('pointerlockchange', () => {
+  pointerLocked = !!document.pointerLockElement;
+});
+document.addEventListener('mousemove', (e) => {
+  if (pointerLocked) {
+    const sensitivity = 0.0025;
+    player.angle += e.movementX * sensitivity;
+  }
+});
+
+// Resize handler (optional)
+window.addEventListener('resize', () => {
+  // keep canvas fixed size for simplicity in this demo; could scale for responsiveness
+});
+
+// Maze generation + place player
+function initNewMaze() {
+  maze = generateMaze(mapCols, mapRows);
+  // Place player in first available free cell near (1,1)
+  player.x = 1.5;
+  player.y = 1.5;
+  player.angle = 0;
+  // ensure spawn not in wall
+  if (isWallAt(player.x, player.y)) {
+    // find nearest empty
+    for (let y=1;y<mapRows;y+=2) for (let x=1;x<mapCols;x+=2) {
+      if (maze[y][x] === 0) { player.x = x+0.5; player.y = y+0.5; x=mapCols; y=mapRows; break; }
+    }
+  }
+  // Pick a random maze exit (must be an empty cell)
+let endCell = null;
+while (!endCell) {
+  const rx = Math.floor(Math.random() * mapCols);
+  const ry = Math.floor(Math.random() * mapRows);
+  if (maze[ry][rx] === 0 && !(rx === Math.floor(player.x) && ry === Math.floor(player.y))) {
+    endCell = { x: rx, y: ry };
+  }
+}
+window.endCell = endCell; // store globally
+console.log("Exit located at:", endCell);
+}
+
+// Utility to randomly pick odd start coordinates and carve
+// (Already done in generateMaze above)
+
+document.getElementById('regen').addEventListener('click', () => {
+  initNewMaze();
+});
+
+// Kick off
+initNewMaze();
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>

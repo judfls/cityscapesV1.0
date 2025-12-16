@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>1</title>
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        background: black;
+        color: white;
+        text-align: center;
+    }
+
+    #game {
+        position: relative;
+        width: 800px;
+        height: 450px;
+        margin: auto;
+        background: #8dcce9;
+        overflow: hidden;
+        image-rendering: pixelated;
+        border: 3px solid #ffffff;
+    }
+
+    #world {
+        position: absolute;
+        top: 0;
+        left: 0;
+        image-rendering: pixelated;
+    }
+
+    .tile {
+        position: absolute;
+        width: 32px;
+        height: 32px;
+        background: #000000;
+    }
+
+    .spike {
+        position: absolute;
+        width: 32px;
+        height: 32px;
+        background: red;
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+
+    #player {
+        position: absolute;
+        width: 32px;
+        height: 32px;
+        background: rgb(51, 0, 255);
+        z-index: 5;
+    }
+    .goal {
+        position: absolute;
+        width: 32px;
+        height: 32px;
+        background: rgb(255, 255, 255);
+        border: 2px solid rgb(0, 0, 0);
+        box-sizing: border-box;
+    }
+</style>
+</head>
+<body>
+
+<div id="game">
+    <div id="world"></div>
+    <div id="player"></div>
+</div>
+if you get through the pages, you get many prizes.
+<script>
+// ----------------------------------------------------
+// CONFIG
+// ----------------------------------------------------
+const TILE_SIZE = 32;
+const GRAVITY = 0.15;
+const SPEED = 3;
+const JUMP = 6;
+
+// 0 = empty
+// 1 = solid block
+// 2 = spike (hazard)
+// 3 = goal (win / redirect)
+const tileMap = [
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,2,0,2,0,0,0,0,0,0,0,0,2,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,2,2,2,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,1,1,2,1,1,0,1,2,2,2,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,2,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,1,1,1,1,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,0,2,0,0,1,0,0,0,2,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,2,0,0,0,2,2,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,1,1,0,0,1,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,1,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,1,1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,2,0,0,1,1,0,1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,2,2,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,2,1,2,2,2,2,2,2,2,2,2,2,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,1,2,2,1,1,2,1,0,0,2,1,2,1,0,0,2,2,0,0,1,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0],
+[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+];
+
+const world = document.getElementById("world");
+const playerEl = document.getElementById("player");
+
+const sampleGoals = [
+    
+    
+];
+
+// ----------------------------------------------------
+// RENDER TILES
+// ----------------------------------------------------
+function renderTiles() {
+    // clear world (in case of re-render)
+    world.innerHTML = "";
+
+    for (let y = 0; y < tileMap.length; y++) {
+        for (let x = 0; x < tileMap[y].length; x++) {
+            if (tileMap[y][x] === 0) continue;
+
+            let tile = document.createElement("div");
+
+            if (tileMap[y][x] === 1) {
+                tile.className = "tile";
+            } else if (tileMap[y][x] === 2) {
+                tile.className = "spike";
+            } else if (tileMap[y][x] === 3) {
+                tile.className = "goal";
+            }
+
+            tile.style.left = (x * TILE_SIZE) + "px";
+            tile.style.top = (y * TILE_SIZE) + "px";
+
+            world.appendChild(tile);
+        }
+    }
+
+    // render any sample goals (so you have a visible goal to test)
+    for (const g of sampleGoals) {
+        // skip if map already has a 3 at this position
+        if (tileMap[g.ty] && tileMap[g.ty][g.tx] === 3) continue;
+
+        let tile = document.createElement("div");
+        tile.className = "goal";
+        tile.style.left = (g.tx * TILE_SIZE) + "px";
+        tile.style.top = (g.ty * TILE_SIZE) + "px";
+        world.appendChild(tile);
+    }
+
+    // set world width/height so world element can be larger than viewport if needed
+    const worldWidth = tileMap[0].length * TILE_SIZE;
+    const worldHeight = tileMap.length * TILE_SIZE;
+    world.style.width = worldWidth + "px";
+    world.style.height = worldHeight + "px";
+}
+renderTiles();
+
+// ----------------------------------------------------
+// PLAYER VARIABLES
+// ----------------------------------------------------
+let px = 50;
+let py = 0;
+let vx = 0;
+let vy = 0;
+let cameraX = 0;
+
+// ----------------------------------------------------
+// INPUT
+// ----------------------------------------------------
+const keys = { left: false, right: false, up: false };
+
+document.addEventListener("keydown", e => {
+    if (e.code === "ArrowLeft") keys.left = true;
+    if (e.code === "ArrowRight") keys.right = true;
+    if (e.code === "Space" || e.code === "ArrowUp") keys.up = true;
+});
+
+document.addEventListener("keyup", e => {
+    if (e.code === "ArrowLeft") keys.left = false;
+    if (e.code === "ArrowRight") keys.right = false;
+    if (e.code === "Space" || e.code === "ArrowUp") keys.up = false;
+});
+
+// ----------------------------------------------------
+// COLLISION CHECKERS
+// ----------------------------------------------------
+function getTile(x, y) {
+    let tx = Math.floor(x / TILE_SIZE);
+    let ty = Math.floor(y / TILE_SIZE);
+
+    if (tx < 0 || ty < 0 || ty >= tileMap.length || tx >= tileMap[0].length) return 0;
+    return tileMap[ty][tx];
+}
+
+function isSolid(x, y) {
+    return getTile(x, y) === 1;
+}
+
+function isSpike(x, y) {
+    return getTile(x, y) === 2;
+}
+
+function isGoal(x, y) {
+    // check tileMap first
+    if (getTile(x, y) === 3) return true;
+
+    // also check sampleGoals (tile coordinates)
+    let tx = Math.floor(x / TILE_SIZE);
+    let ty = Math.floor(y / TILE_SIZE);
+    return sampleGoals.some(g => g.tx === tx && g.ty === ty);
+}
+
+function killPlayer() {
+    px = 50;
+    py = 0;
+    vx = 0;
+    vy = 0;
+}
+
+// ----------------------------------------------------
+// GAME LOOP
+// ----------------------------------------------------
+function update() {
+    // -------------------------------------
+    // MOVEMENT
+    // -------------------------------------
+    vx = 0;
+    if (keys.left) vx = -SPEED;
+    if (keys.right) vx = SPEED;
+
+    vy += GRAVITY;
+
+    // Jump
+    let onGround = isSolid(px + 16, py + 33);
+
+    if (keys.up && onGround) {
+        vy = -JUMP;
+    }
+
+    // -------------------------------------
+    // SPIKE COLLISION
+    // -------------------------------------
+    if (isSpike(px + 16, py + 16)) {
+        killPlayer();
+    }
+
+    // -------------------------------------
+    // GOAL / WIN COLLISION
+    // -------------------------------------
+    if (isGoal(px + 16, py + 16)) {
+        // change this URL to the page you want the player to go to
+        window.location.href = "S5NhtGNAXCfl3sOqI2ZpBy8fzFPs4g52.html";
+        return; // stop further updating
+    }
+
+    // -------------------------------------
+    // MOVE PLAYER (with collision)
+    // -------------------------------------
+    // Horizontal
+    let newX = px + vx;
+    if (!isSolid(newX + 16, py + 16)) {
+        px = newX;
+    }
+
+    // Vertical
+    let newY = py + vy;
+    if (!isSolid(px + 16, newY + 32)) {
+        py = newY;
+    } else {
+        vy = 0;
+    }
+
+    // -------------------------------------
+    // CAMERA SCROLLING
+    // -------------------------------------
+    cameraX = px - 350; // follow player but leave a margin
+
+    if (cameraX < 0) cameraX = 0;
+
+    world.style.left = (-cameraX) + "px";
+    playerEl.style.left = (px - cameraX) + "px";
+    playerEl.style.top = py + "px";
+
+    requestAnimationFrame(update);
+}
+update();
+</script>
+
+</body>
+</html>

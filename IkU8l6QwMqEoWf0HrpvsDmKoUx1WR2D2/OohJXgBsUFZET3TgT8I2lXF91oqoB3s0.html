@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>3</title>
+<style>
+
+    #game {
+        width: 400px;
+        height: 400px;
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+    }
+
+    .hole {
+        width: 100%;
+        height: 100px;
+        background: #848484;
+     
+        position: relative;
+        cursor: pointer;
+    }
+
+    .mole {
+        width: 60%;
+        height: 60%;
+        background: rgb(0, 0, 0);
+        border-radius: 50%;
+        position: absolute;
+        top: 20px;
+        left: 20%;
+        display: none; /* hidden until popped */
+    }
+
+    #score, #time {
+        font-size: 24px;
+        margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+
+<h1>congrats. now press 35 in 30 seconds.</h1>
+
+<div id="score">score: 0</div>
+<div id="time">time: 30</div>
+
+<div id="game"></div>
+
+<script>
+// --- GAME SETUP ---------------------------------------------------
+
+const game = document.getElementById("game");
+let score = 0;
+let time = 30;
+let timer;
+let moleInterval;
+
+// Create 9 holes
+for (let i = 0; i < 9; i++) {
+    let hole = document.createElement("div");
+    hole.classList.add("hole");
+
+    let mole = document.createElement("div");
+    mole.classList.add("mole");
+
+    // Clicking mole increases score
+    mole.addEventListener("click", () => {
+        if (mole.style.display === "block") {
+            score++;
+            document.getElementById("score").innerText = "Score: " + score;
+            mole.style.display = "none";
+
+            // Win condition → redirect
+            if (score >= 35) {
+                window.location.href = "m0o8RjungWM7GyO46jtA6eSiCP3FCqCD.html";
+            }
+        }
+    });
+
+    hole.appendChild(mole);
+    game.appendChild(hole);
+}
+
+// --- GAME FUNCTIONS ------------------------------------------------
+
+// Makes a random mole appear
+function showRandomMole() {
+    let holes = document.querySelectorAll(".mole");
+    holes.forEach(m => m.style.display = "none");
+
+    let random = Math.floor(Math.random() * holes.length);
+    holes[random].style.display = "block";
+}
+
+// Countdown timer
+function startTimer() {
+    timer = setInterval(() => {
+        time--;
+        document.getElementById("time").innerText = "Time: " + time;
+
+        if (time <= 0) {
+            endGame();
+        }
+    }, 1000);
+}
+
+// Stop everything
+function endGame() {
+    clearInterval(timer);
+    clearInterval(moleInterval);
+    alert("Time's up! You whacked " + score + " moles.");
+    location.reload(); // restart game
+}
+
+// --- START GAME ----------------------------------------------------
+
+startTimer();
+moleInterval = setInterval(showRandomMole, 700);
+</script>
+
+</body>
+</html>
