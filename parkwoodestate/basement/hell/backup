@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="images/png" href="img/red.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Csvws</title>
+
+  <style>
+    html {
+      background-image: url("img/thehelper.png");
+      background-size: cover;
+      color: red;
+    }
+
+    body {
+      text-align: center;
+    }
+
+    .header-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .header-wrapper img {
+      width: 50px;
+      height: auto;
+    }
+
+    #header {
+      margin: 20px;
+    }
+
+    a {
+      color: white;
+      text-decoration: underline;
+    }
+
+    #dialogText {
+      white-space: pre-wrap;
+     
+      margin-top: 20px;
+      min-height: 2em; /* prevents layout jump */
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header-wrapper">
+    <img src="img/animated-candle-image-0019.gif" alt="AIzaSyACBxjXRBvI7XAnBZEGAZlD83kbdaXw3fw">
+    <h1 id="header">ⰱ⊬Ⲥℨ</h1>
+    <img src="img/animated-candle-image-0019.gif" alt="ⰱ⊬Ⲥℨ⑗⡝⎀⭆⧎ⳕ⁰ⷙ⤉⨍⬿⸦⎋⣽⧰⸪⢀⻾ⵧ✐⌔Ⓜ⌢⨱ⱑ⤀⏝⑱◎ℐ₏⥅⡧⸧⼢⮖≯⮧▔⌿≎⒲≢⃡⨚⦝≮⩠⢻⪹⋂⟒⎢⮴⠼⃊⿋⦿⢔⃖⎋Ⱜ₤ⓤ⻠⋍⚅⦔⧜ℳ⣇╽␣⹒⹥⁦⁸┏⧊⹭␾⦛⨠‹✑⏭⼅⿾⡅⻟ⷡ⨉⊌‎">
+  </div>
+
+  <br>
+
+  <button onclick="showDialog()">Talk</button>
+
+  <div id="dialog" hidden>
+    <p id="dialogText"></p>
+    <button onclick="nextLine()">Next</button>
+  </div>
+
+  <br><br>
+
+  <a href="caves5.html">Continue</a>
+
+  <!-- ✅ DIALOG TYPEWRITER SCRIPT -->
+  <script>
+    const dialogLines = [
+      "Hello there.",
+      "Nice to see you.",
+      "Good luck on your journey.",
+      "I hope you find your way.",
+      "He did this to me.",
+      "Don't let him see you."
+    ];
+
+    const typingSpeed = 250;
+
+    let dialogIndex = 0;
+    let charIndex = 0;
+    let isTyping = false;
+
+    const dialogBox = document.getElementById("dialog");
+    const dialogText = document.getElementById("dialogText");
+
+    function typeLine(line) {
+      isTyping = true;
+      dialogText.textContent = "";
+      charIndex = 0;
+
+      function typeChar() {
+        if (charIndex < line.length) {
+          dialogText.textContent += line.charAt(charIndex);
+          charIndex++;
+          setTimeout(typeChar, typingSpeed);
+        } else {
+          isTyping = false;
+        }
+      }
+
+      typeChar();
+    }
+
+    function showDialog() {
+      dialogIndex = 0;
+      dialogBox.hidden = false;
+      typeLine(dialogLines[dialogIndex]);
+    }
+
+    function nextLine() {
+      if (isTyping) {
+        // Instantly finish current line
+        dialogText.textContent = dialogLines[dialogIndex];
+        isTyping = false;
+        return;
+      }
+
+      dialogIndex++;
+
+      if (dialogIndex < dialogLines.length) {
+        typeLine(dialogLines[dialogIndex]);
+      } else {
+        dialogBox.hidden = true;
+      }
+    }
+  </script>
+
+</body>
+</html>
+
+
+
+ /* ===== JUMPSCARE ===== */
+    function triggerJumpscare() {
+      const scare = document.getElementById("jumpscare");
+      const sound = document.getElementById("scream");
+
+      scare.style.display = "flex";
+      sound.currentTime = 0;
+      sound.play();
+
+      // auto redirect after delay
+      setTimeout(() => {
+        window.location.href = "NEXT_PAGE.html";
+      }, 800); // milliseconds (adjust timing here)
+    }
