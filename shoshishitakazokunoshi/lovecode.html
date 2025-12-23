@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>itjz</title>
+  <style>
+    .hidden {
+  display: none; /* Hides the element completely */
+}
+  </style>
+</head>
+<body>
+
+
+  
+
+   
+ 
+
+  <p>locked<br>
+
+
+</p>
+
+  <input type="password" id="codeInput" placeholder="Enter code here">
+        <button id="button" onclick="checkCode()">Submit</button>
+
+<br>
+<br>
+
+
+
+<script>
+ function checkCode() {
+      const clickable = document.getElementById('button');
+  const hidden = document.getElementById('hiddenText');
+                var correctCode = "1264756529575926198234278630177830811811"; // Set your desired code here
+                var enteredCode = document.getElementById("codeInput").value;
+
+                if (enteredCode === correctCode) {
+                    window.location.href = "ilove.html"; // Redirect to the next page
+                } else {
+                    hidden.classList.toggle('hidden'); // Toggles the 'hidden' class
+                }
+            }
+</script>
+
+</body>
+</html>

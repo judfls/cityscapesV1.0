@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="images/png" href="img/red.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Goodbye.</title>
+
+  <style>
+
+    body {
+      text-align: center;
+    }
+
+    .header-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .header-wrapper img {
+      width: 50px;
+      height: auto;
+    }
+
+    #header {
+      margin: 20px;
+    }
+
+    p {
+      margin-top: 30px;
+    }
+
+    a {
+      color: white;
+      text-decoration: underline;
+    }
+
+    #typewriter {
+      white-space: pre-wrap;
+     
+    }
+  </style>
+</head>
+
+<body>
+
+ 
+
+  <br>
+
+  <p id="typewriter"></p>
+
+  <br><br>
+
+
+
+  <!-- ✅ TYPEWRITER SCRIPT -->
+ <script>
+  const text = "Hello? This is [REDACTED]. If you are hearing this, I am dead.\nHe knows where I am. Marie... We panicked. Where are you? \n Someone burned our house down, the police said it was the wildfires but...\n He followed us.";
+  const speed = 200;
+  const redirectDelay = 2000; // time to wait AFTER typing finishes (ms)
+  const redirectURL = "https://judefelstead.com"; // change this to your target page
+
+  let index = 0;
+  const target = document.getElementById("typewriter");
+
+  function typeLetter() {
+    if (index < text.length) {
+      target.textContent += text.charAt(index);
+      index++;
+      setTimeout(typeLetter, speed);
+    } else {
+      // Typing finished → redirect after delay
+      setTimeout(() => {
+        window.location.href = redirectURL;
+      }, redirectDelay);
+    }
+  }
+
+  typeLetter();
+</script>
+
+</body>
+</html>
