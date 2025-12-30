@@ -214,7 +214,7 @@
   ❄
   </div>
 </div>
-    <div class="div1"> <h1></h1></div>
+    <div class="div1"> </div>
     <div class="div2"> <h1></h1></div>
 
     <div class="div3">
@@ -248,6 +248,7 @@
    <tr><td><a href="wb/about.html">Fuck Squarespace Webring</a></td><td><a href="oreg/index.html">The Oregon Trail</a></td></tr>
    <tr><td><img src="img/new3_e0.gif" height="15px" width="15px"><a id="hot" href="unbockled/index3.html">Jude's Games</a></td><td><img src="img/new3_e0.gif" height="15px" width="15px"><a href="devl/log.html">Cityscape's Devlog</a></td></tr>
       <tr><td><a href="cast/begin.html">The Castle</a></td><td><img src="img/new3_e0.gif" height="15px" width="15px"><a id="hot" href="ucom/umain.html">μ-community</a></td>
+              <tr><td><img src="img/new3_e0.gif" height="15px" width="15px"><a href="projecth1/index.html">Project H1</a></td><td><img src="img/new3_e0.gif" height="15px" width="15px"><a href="http://design.judefelstead.com">design.judefelstead.com</a></td></tr>
 
      
   
@@ -298,7 +299,7 @@
             <a target="_blank" href="https://motormachineorchestra.bandcamp.com/">Motor Machine Orchestra</a>.
             I make websites. A <u>LOT</u> of websites. So many that I made a whole city!<br>
             Every website is made BY JUDE FELSTEAD. (Unless it <u>specifically</u> says. <a href="six/people.html">For</a> example: "<i>fartpage by idiot</i>")<br>
-            On to the monthly report! <i>(Est. 2025)</i> By the way, if the text is <i>red</i> it means it's really good. This website works best on computer!!
+            On to the monthly report! <i>(Est. 2025)</i> By the way, if the text is <i>red</i> it means it's really good. This website works best on computer!! (PRESS X FIVE TIMES TO ACCESS THE ARCHIVE)
           </td></tr>
         </table>
       </div>
@@ -334,7 +335,18 @@
   </div>
   <p id="centerGuestBook">Sign the GuestBook at <a href="https://judefelstead.atabook.org/">judefelstead.atabook.org</a>!</p>
 
+<script>
+  let secretCount = 0;
 
+document.addEventListener("keydown", (e) => {
+  if (e.key === "x" || e.key === "X") {
+    secretCount++;
+    if (secretCount >= 5) {
+      window.location.href = "archives/archives.html";
+    }
+  }
+});
+</script>
 
 </body>
 </html>
