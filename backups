@@ -1,231 +1,170 @@
-<html lang="en">
+<html>
 <head>
-     <link rel="icon" type="images/png" href="img/sky background1.png">
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CityScapes</title>
-<style>
+    <title>Jude Felstead</title>
+    <link rel="icon" type="image/png" href="img/globe.gif">
+    <style>
+        body {
+            background: black;
+            color: yellow;
+            font-family: Times New Roman;
+        }
 
-html{
-background-color: white;
-background-image: url("img/sky\ background1.png");
-background-repeat: repeat;
-}
+        #center {
+            display: flex;
+            justify-content: center;
+        }
 
-#logo{
-margin: 20px;
-position: fixed;
-}
+        #centertable {
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 20px;
+        }
 
-#center{
- display: block;
-  margin: auto;
+        .flex-container {
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 20px;
+            color: yellow;
+        }
 
-text-align: center;
-}
+        .flex-container img {
+            width: 30px;
+        }
 
-a{
- text-decoration-line: underline;
-  text-decoration-style: wavy;
-  text-decoration-color: lightseagreen; 
-  color: lightseagreen;
+        #table {
+            margin: auto;
+            width: 40%;
+        }
 
-}
+        table {
+            border-collapse: collapse;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
 
-a:hover{
-color: rgb(95, 185, 181);
-text-decoration-color: rgb(95, 185, 181);;
-}
+        td,
+        th {
+            border: 1px solid yellow;
+            text-align: center;
+            padding: 8px;
+        }
 
-.parent {
-display: grid;
-grid-template-columns: repeat(12, 1fr);
-grid-template-rows: repeat(6, 1fr);
-grid-column-gap: 20px;
-grid-row-gap: 20px;
-}
+        #text {
+            border: 1px solid yellow;
+            padding: 8px;
+        }
 
-.div1 { grid-area: 1 / 1 / 8 / 4; }
-.div2 { grid-area: 1 / 10 / 8 / 13; }
-.div3 { grid-area: 1 / 4 / 2 / 10; }
-.div4 { grid-area: 2 / 4 / 8 / 8; }
-.div5 { grid-area: 2 / 8 / 8 / 10; }
+        a {
+            color: white;
+        }
 
-#citiesheader{
-color: white;
-background-color: lightskyblue;
-width: 100%;
-}
+        @media (max-width: 600px){
+                #table {
+                    margin: auto;
+                    width: 95%;
+                }
 
-#cities{
-border-radius: 1px;
-border-color: lightskyblue;
-border-style: solid;
-background-color: white;
-}
-
-#updateheader{
-color: white;
-background-color: lightpink;
-width: 100%;
-}
-
-#update{
-
-    border-radius: 1px;
-border-color: lightpink;
-border-style: solid;
-background-color: white;
-}
-
-#report{
-
-    border-radius: 1px;
-border-color: lightpink;
-border-style: solid;
-background-color: white;
-
-}
-
-@media (max-width: 600px) {
-
-}
-
-</style>
+                table {
+                    border-collapse: collapse;
+                    display: flex;
+                    justify-content: center;
+                    width: 100%;
+                }
+        }
+    </style>
 </head>
+
 <body>
-<br>
-    <div class="parent">
-<div class="div1"> </div>
-<div class="div2"> </div>
-<div class="div3"> 
-    <table>
-        <tr>
-            <img id="center" height="100px" width="400px" src="img/cityscapeslogo2.png" alt="CityScapes Logo">
-        </tr>
-    </table>
-</div>
-<br>
-<div class="div4"> 
-
-
-<br>
-<Div id="cities">
-
-<table id="citiesheader">
-<tr>
-    <td>
-<b>Cities</b>
-</td>
-</tr>
-</table>  
-
-<table id="citiestext">
-<tr>
-<td>
-    <table>
-        <TR>
-
-            <td> <img src="img/new3_e0.gif" height="15px" width="15px"> <a href="webthing/index.html">Jude's Webthing</a> <br></td>
-            <td> <img src="img/new3_e0.gif" height="15px" width="15px"> <a href="website/index.html">judefelstead.com (old) </a> <br></td>
-        </TR>
-<tr>
-            <td><img src="img/new3_e0.gif" height="15px" width="15px"><a href="vendingmachine/index.html">Magic Vending Machine</a> <br></td>
-            <td><img src="img/new3_e0.gif" height="15px" width="15px"><a href="party/index.html">party time (epilepsy warning)</a><br></td>
-           
-</TR>
-<tr>
-<td> icanfly3004</td><td>Arch Chemical Robertson Head</td>
-</tr>
-<tr>
-<td>Eastwood Estate</td><td>jude's design site</td>
-</tr>
-<tr>
-<td>COMING SOON!</td><td>COMING SOON!</td>
-</tr>
-<tr>
-<td>
+    <div class="flex-container">
+        <img src="img/globe.gif" alt="globe">
+        <h1>judefelstead.com</h1>
+        <img src="img/globe.gif" alt="globe">
+    </div>
+    <div id="center">
+    <img src="img/divider.gif" alt="Divider">
+    </div>
     <br>
-</td>
+    <div id="table">
+        <div id="text">
+            <p>
+                Hello. My name is Jude Felstead. I'm a <a href="https://motormachineorchestra.com">musician</a>, programmer, 
+                and <a href="https://design.judefelstead.com">graphic designer</a>. I was born in Ontario, Canada, 
+                and moved to Los Angeles in 2017. I know HTML, CSS, JS, and some Python. I started learning to code in 
+                sixth grade, starting with HTML. I make lots of websites, I can even <a href="https://design.judefelstead.com">make one for you</a>.
+                Below this text box is a general list of websites and work that I've made, including <a href="cityscapes/index.html">CityScapes</a>,
+                the original version of judefelstead.com.
+            </p>
+            <p>
+                I also make <a href="https://motormachineorchestra.com">music</a>. Electronic, IDM, Ambient music. 
+                I think you'll like my music if you like 
+                <a href="https://open.spotify.com/artist/2VAvhf61GgLYmC6C8anyX1?si=it5Bm3hSRdKvRzfUU_1_HA">Boards of Canada</a>, 
+                <a href="https://open.spotify.com/artist/6kBDZFXuLrZgHnvmPu9NsG?si=FppJLIJ1TjCLl3pJ-8eYcw">Aphex Twin</a>, 
+                <a href="https://open.spotify.com/artist/7AiamoV760pPGGM5PbOC6X?si=ji1ei5oQTCuX_hxzfWKyrQ">μ-Ziq</a>, 
+                <a href="https://open.spotify.com/artist/5xMtVcziLHpIwD9iNWPOM6?si=ia-sNJqdRlCIvUrOnG3wsg">Casino Versus Japan</a>, 
+                and
+                <a href="https://open.spotify.com/artist/4mtHSXwIHihO6MWNq5Qoko?si=28qZ7Lh5SVO72cJf8NprVw">SquarePusher</a>.
+                Those are also my favourate artists. I have 4 released albums as of April 18th, 2026 at 5:15PM. Those being 
+                <a href="https://motormachineorchestra.bandcamp.com/album/new-world">New World</a>, 
+                <a href="https://motormachineorchestra.bandcamp.com/album/glass-eyeball">Glass Eyeball</a>, 
+                <a href="https://motormachineorchestra.bandcamp.com/album/strangers-ep">Strangers EP</a>, 
+                and
+                <a href="https://motormachineorchestra.bandcamp.com/album/super-nothing-music">Super Nothing Music</a>. 
+                Right now, I'm working on 4 albums. Those being Blue Room EP, Wild Rose Country, Welcome to Eaglerock, and Supermarket EP.
+                I started making music when I was 10, but just started releasing in 2025. I also could make music for you. I can make many other genres, for your video games, or for videos.
+                Just <a href="https://mail.google.com/mail/u/0/?fs=1&to=judefelsteadbusiness@gmail.com&tf=cm">contact me</a>.
+            </p>
+            <p>
+                My favourate colour is green, and my favourate animal is cats. I have a cat named <a href="https://judefelstead.com/webthing/images/ginger%20in%20the%20woods.jpg">Ginger</a>.
+                My favourate shows are Steven Universe, Scavengers Reign, How To With John Wilson and I Think You Should Leave. I can also edit videos for you. I am also making a video game
+                called <a href="sylus.html">Sylus Reyndar</a>. I also make <a href="https://www.youtube.com/@motormachineorchestra">YouTube</a> videos. That's it. Goodbye.
+            </p>
+        </div>
 
-</tr>
-</table>
-
-</td>
-
-</tr>
-
-</table>
-
-
-
-</Div>
-<i>© 2025 CityScapes Inc. Created by Jude Felstead</i>
-</div>
-
-
-
-
-
-
-
-<div class="div5"> 
-      <br>
-    <div id="update">
-      
-    <table id="updateheader">
-<tr>
-    <td>
-<b>About</b>
-</td>
-</tr>
-</table>
-
-<table>
-<tr>
-    <td>
-
-
-
-Hello and Welcome to CityScapes! I am Jude. You might know me as <a target="_blank" href="https://www.youtube.com/@judfls">judfls</a> or
-<a target="_blank" href="https://motormachineorchestra.bandcamp.com/">Motor Machine Orchestra.</a> I make websites. A <u>LOT</u> of websites. So many that I made a whole city!
-Every website is made BY JUDE FELSTEAD. (Unless it <u>specifically</u> says. For example: "<i>fartpage by idoit</i>")
-On to the monthly report! <i>(Est. 2025)</i>
-</td>
-</tr>
-</table>  
-</div>
-<br>
-<div id="report">
-    <table id="updateheader">
-<tr>
-    <td>
-<b>Monthly Report</b>
-</td>
-</tr>
-</table>
-
-<table">
-<tr>
-    <td>
-
-Aug 1st - Sept 1st
-<br>
-Added <i>Jude's Webthing, judefelstead.com (old), Magic Vending Machine, and the Party.</i>
-Feeling tired. Happy last bit of summer. Working on <i>Eastwood Estate, Party, and Jude's Design site.</i>
-See you in October.
-</td>
-</tr>
-</table>  
-</div>
+        <br>
+        <div id="centertable">
+        <img id="center" src="img/pointL.gif" alt="Pointer">
+        <table>
+            <tr>
+                <th>Design</th>
+                <th>Games</th>
+                <th>Music</th>
+                <th>Other</th>
+            </tr>
+            <tr>
+                <td><a href="https://design.judefelstead.com">design.judefelstead.com</a></td>
+                <td><a href="sylus.html">Sylus Reyndar</a></td>
+                <td><a href="https://motormachineorchestra.com">Motor Machine Orhcestra</a></td>
+                <td><a href="https://youtube.com/@amishdog102">YouTube</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://mail.google.com/mail/u/0/?fs=1&to=judefelsteadbusiness@gmail.com&tf=cm">Contact me</a></td>
+                <td><a href="cityscapes/parkwoodestate/Index.html">Eastwood Estate</a></td>
+                <td><a href="https://open.spotify.com/artist/5fPakwTw1pphrdvSgcdhNs?si=TTP6gzFjRKCPM_n1Q2hICw">Spotify</a></td>
+                <td><a href="https://www.twitch.tv/amishdog102">Twitch</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://design.judefelstead.com/img/businesscard1.png">Business card</a></td>
+                <td><a href="cityscapes/index.html">CityScapes</a></td>
+                <td><a href="https://www.youtube.com/@motormachineorchestra">YouTube</a></td>
+                <td><a href="https://seriesgraph.com/user/e429d2ab-699d-4fce-843e-b2a5011a5a8a">Series Graph</a></td>
+            </tr>
+        </table>
+        <img src="img/pointR.gif" alt="Pointer">
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
 
-
-</div>
-
-  </div>
-
-</div>
-<p id="center">Sign the GuestBook at <a href="https://judefelstead.atabook.org/">judefelstead.atabook.org!</a> <br></p>
 </body>
+
 </html>
