@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="AS.png">
+  <title>Even Steven</title>
+  <style>
+    body {
+      background-color: #01561e;
+      image-rendering: pixelated;
+      color: #000000;
+      margin: 0;
+      padding: 4px;
+      zoom: 0.9;
+    }
+
+    #game-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    #header {
+      background: #00802b;
+      border: 4px solid #ffffff;
+      padding: 6px 10px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    #header h1 {
+      font-size: 2rem;
+      color: #ffffff;
+      text-shadow: 2px 2px #000000;
+      margin: 0;
+    }
+
+    #round-info {
+      font-size: 0.8rem;
+      color: #ffffff;
+      text-align: right;
+    }
+
+    #log-bar {
+      background: #00802b;
+      border: 3px solid #888888;
+      padding: 5px 10px;
+      font-size: 0.85rem;
+      color: #ffffff;
+      margin-bottom: 6px;
+      min-height: 28px;
+    }
+
+    #board {
+      display: grid;
+      grid-template-rows: auto auto auto auto;
+      gap: 6px;
+    }
+
+    .player-zone {
+      background: #00802b;
+      border: 4px solid #c0c0c0;
+      padding: 8px;
+    }
+
+    .player-zone.active-turn {
+      border-color: #ffff00;
+      background: #00802b;
+    }
+
+    .player-zone.p2-zone {
+      transform: rotate(180deg);
+    }
+
+    .player-zone.p2-zone .zone-label,
+    .player-zone.p2-zone .hand-row,
+    .player-zone.p2-zone .facedown-row {
+      transform: rotate(180deg);
+    }
+
+    .zone-label {
+      font-size: 0.85rem;
+      color: #ffffff;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .zone-label .player-name {
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    .active-indicator {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: #00802b;
+      border: 1px solid #ffffff;
+      animation: blink 0.6s step-start infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .hand-row,
+    .facedown-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      min-height: 90px;
+      align-items: center;
+    }
+
+    .facedown-row {
+      margin: 6px;
+      padding: 6px;
+      border: 2px dashed #c0c0c0;
+    }
+
+    .card {
+      width: 72px;
+      height: 100px;
+      cursor: pointer;
+      position: relative;
+      flex-shrink: 0;
+      user-select: none;
+      display: block;
+      border: 2px solid #ffffff;
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    .card:hover:not(.disabled):not(.face-down) {
+      border-color: #ffff00;
+      top: -8px;
+      position: relative;
+    }
+
+    .card.selected {
+      border: 3px solid #ffff00;
+      top: -12px;
+      position: relative;
+    }
+
+    .card.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .card.face-down {
+      cursor: default;
+      border-color: #c0c0c0;
+    }
+
+    .card.face-down.playable-fd {
+      cursor: pointer;
+    }
+
+    .card.face-down.playable-fd:hover {
+      border-color: #ffff00;
+      top: -6px;
+    }
+
+
+    #center-zone {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 10px;
+      align-items: center;
+      background: #00802b;
+      border: 4px solid #26ff00;
+      padding: 10px;
+    }
+
+    #deck-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    #deck-card {
+      width: 72px;
+      height: 100px;
+      cursor: pointer;
+      border: 2px solid #c0c0c0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #deck-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    #deck-card:hover {
+      border-color: #ffff00;
+    }
+
+    #deck-card.disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    #deck-count {
+      font-size: 0.75rem;
+      color: #c0c0c0;
+    }
+
+    #pile-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    #pile-display {
+      width: 72px;
+      height: 100px;
+      border: 2px solid #c0c0c0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    #pile-display.empty-pile {
+      background: #00802b;
+    }
+
+    #pile-count {
+      font-size: 0.75rem;
+      color: #c0c0c0;
+    }
+
+    #center-info {
+      text-align: center;
+    }
+
+    #current-value-label {
+      font-size: 0.7rem;
+      color: #c0c0c0;
+      margin-bottom: 2px;
+    }
+
+    #current-value {
+      font-size: 3rem;
+      color: #ffffff;
+      text-shadow: 2px 2px #000000;
+      line-height: 1;
+      font-weight: bold;
+    }
+
+    #turn-label {
+      font-size: 0.75rem;
+      color: #ffffff;
+      margin-top: 4px;
+    }
+
+    #turn-label span {
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+
+    #steal-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #steal-modal.show {
+      display: flex;
+    }
+
+    #steal-box {
+      background: #00802b;
+      border: 4px solid #ffff00;
+      padding: 16px;
+      max-width: 420px;
+      width: 90%;
+    }
+
+    #steal-box h2 {
+      color: #ffffff;
+      font-size: 1.4rem;
+      margin-bottom: 6px;
+    }
+
+    #steal-box p {
+      font-size: 0.8rem;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    #steal-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    #steal-cancel {
+      background: #00802b;
+      border: 2px outset #ffffff;
+      color: #ffffff;
+      padding: 4px 12px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    #steal-cancel:active {
+      border-style: solid;
+    }
+
+
+    .action-btn {
+      background: #00802b;
+      color: #000000;
+      border: 3px outset #ffffff;
+      padding: 6px 16px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    .action-btn:hover {
+      background: #009431;
+    }
+
+    .action-btn:active {
+      border-style: solid;
+    }
+
+    .action-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .action-btn.secondary {
+      background: #00802b;
+      border-color: #c0c0c0;
+      color: #ffffff;
+    }
+
+
+    #win-screen {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #00802b;
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+    }
+
+    #win-screen.show {
+      display: flex;
+    }
+
+    #win-screen h1 {
+      font-size: 3.5rem;
+      color: #ffff00;
+      text-shadow: 3px 3px #ff0000;
+      animation: winBlink 0.5s step-start infinite;
+    }
+
+    @keyframes winBlink {
+
+      0%,
+      100% {
+        color: #ffff00;
+      }
+
+      50% {
+        color: #ff00ff;
+      }
+    }
+
+    #win-screen p {
+      color: #00ff00;
+      font-size: 0.9rem;
+    }
+
+
+    #legend {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+      padding: 6px;
+      background: #00802b;
+      border: 2px solid #888888;
+      margin-top: 0;
+      flex: 1;
+    }
+
+    .legend-item {
+      font-size: 0.7rem;
+      color: #000000;
+      padding: 2px 6px;
+      border: 1px solid #c0c0c0;
+      background: #00802b;
+    }
+
+    .legend-item strong {
+      color: #ffff00;
+    }
+
+    #controls-row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      margin-top: 6px;
+      flex-wrap: wrap;
+    }
+
+    .small-label {
+      font-size: 0.7rem;
+      color: #c0c0c0;
+      margin-bottom: 3px;
+    }
+
+    #center {
+      display: flex;
+      justify-content: center;
+      color: #ffffff;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="game-wrapper">
+    <div id="header">
+      <h1>Even Steven</h1>
+      <div id="round-info">
+        Round <span id="round-num">1</span> &nbsp;|&nbsp;
+        Hand target: <span id="hand-target">7</span> cards
+      </div>
+    </div>
+
+    <div id="log-bar">Waiting to start...</div>
+
+    <div id="board">
+
+      <div class="player-zone p2-zone" id="zone-p2">
+        <div class="zone-label">
+          <span class="player-name">Player 2</span>
+          <span id="p2-indicator" style="display:none" class="active-indicator"></span>
+          <span id="p2-card-count" style="margin-left:auto;font-size:0.65rem;color:var(--muted)"></span>
+        </div>
+        <div class="hand-row" id="hand-p2"></div>
+        <div class="facedown-row" id="facedown-p2">
+          <div class="small-label" style="width:100%;color:var(--muted);font-size:0.6rem">face-down</div>
+        </div>
+      </div>
+
+      <div id="center-zone">
+        <div id="deck-area">
+          <div class="small-label">DECK</div>
+          <div id="deck-card" title="Draw from deck">
+            <img src="back.png" alt="deck">
+          </div>
+          <div id="deck-count">0 cards</div>
+        </div>
+
+        <div id="center-info">
+          <div id="current-value-label">current value</div>
+          <div id="current-value">—</div>
+          <div id="turn-label">Turn: <span id="turn-name">—</span></div>
+        </div>
+
+        <div id="pile-area">
+          <div class="small-label">PILE</div>
+          <div id="pile-display" class="empty-pile">
+            <span style="color:var(--muted);font-size:0.65rem">empty</span>
+          </div>
+          <div id="pile-count">0 cards</div>
+        </div>
+      </div>
+
+      <div class="player-zone" id="zone-p1">
+        <div class="zone-label">
+          <span class="player-name">Player 1</span>
+          <span id="p1-indicator" class="active-indicator"></span>
+          <span id="p1-card-count" style="margin-left:auto;font-size:0.65rem;color:var(--muted)"></span>
+        </div>
+        <div class="hand-row" id="hand-p1"></div>
+        <div class="facedown-row" id="facedown-p1">
+          <div class="small-label" style="width:100%;color:var(--muted);font-size:0.6rem">face-down</div>
+        </div>
+      </div>
+
+      <div id="controls-row">
+        <button class="action-btn" id="btn-play" onclick="playSelected()" disabled>Play Card</button>
+        <button class="action-btn secondary" onclick="initGame()">New Game</button>
+        <div id="legend" style="margin-top:0;flex:1">
+          <div class="legend-item"><strong>3</strong> Skip</div>
+          <div class="legend-item"><strong>5</strong> +1 below</div>
+          <div class="legend-item"><strong>7</strong> Steal</div>
+          <div class="legend-item"><strong>9</strong> Reset→2</div>
+          <div class="legend-item"><strong>A</strong> Burn pile</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="steal-modal">
+    <div id="steal-box">
+      <h2>Steal</h2>
+      <p id="steal-desc">Choose a card from the opponent's hand to steal.</p>
+      <div id="steal-cards"></div>
+    </div>
+  </div>
+
+  <div id="win-screen">
+    <h1 id="win-title">Player 1 wins.</h1>
+    <p>All cards played. You beat Even Steven!</p>
+    <button class="action-btn" onclick="initGame()">Play Again</button>
+  </div>
+
+  <div id="center"><i>© Jude Felstead, 2026</i></div>
+
+  <script>
+
+    const SUITS = ['♠', '♥', '♦', '♣'];
+    const VALUES = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+    const EVEN_ORDER = { '2': 2, '4': 4, '6': 6, '8': 8, '10': 10, 'J': 11, 'Q': 12, 'K': 13 };
+    const ODD_SPECIAL = { '3': 'skip', '5': 'plus', '7': 'steal', '9': 'reset', 'A': 'burn' };
+
+    function cardNumericValue(v) {
+      if (EVEN_ORDER[v] !== undefined) return EVEN_ORDER[v];
+      return null;
+    }
+
+    function isEven(v) { return EVEN_ORDER[v] !== undefined; }
+    function isOdd(v) { return ODD_SPECIAL[v] !== undefined; }
+    function isRed(suit) { return suit === '♥' || suit === '♦'; }
+
+    function makeCard(value, suit) {
+      return { value, suit, id: value + suit };
+    }
+
+    function buildDeck() {
+      const deck = [];
+      for (const s of SUITS)
+        for (const v of VALUES)
+          deck.push(makeCard(v, s));
+      return deck;
+    }
+
+    function shuffle(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    let state = {};
+
+    function initGame() {
+      const deck = shuffle(buildDeck());
+      const startHandSize = 7;
+      state = {
+        deck,
+        pile: [],
+        hands: { p1: [], p2: [] },
+        faceDown: { p1: [], p2: [] },
+        turn: 'p1', // determined below
+        round: 1,
+        startHandSize,
+        currentValue: null,
+        selectedCard: null,
+        phase: 'hand', // 'hand' or 'facedown'
+        awaitingSteal: false,
+        gameOver: false,
+      };
+
+
+      for (let i = 0; i < startHandSize; i++) {
+        state.hands.p1.push(state.deck.pop());
+        state.hands.p2.push(state.deck.pop());
+      }
+
+      for (let i = 0; i < 3; i++) {
+        state.faceDown.p1.push(state.deck.pop());
+        state.faceDown.p2.push(state.deck.pop());
+      }
+
+      state.turn = determineStarter();
+      state.selectedCard = null;
+
+      document.getElementById('win-screen').classList.remove('show');
+      render();
+      log(`Game started! ${state.turn === 'p1' ? 'Player 1' : 'Player 2'} goes first.`);
+    }
+
+    function determineStarter() {
+
+      const lowestEven = (hand) => {
+        const evens = hand.filter(c => isEven(c.value)).sort((a, b) => EVEN_ORDER[a.value] - EVEN_ORDER[b.value]);
+        return evens.length ? EVEN_ORDER[evens[0].value] : 999;
+      };
+      const e1 = lowestEven(state.hands.p1);
+      const e2 = lowestEven(state.hands.p2);
+      return e1 <= e2 ? 'p1' : 'p2';
+    }
+
+
+    function render() {
+      const { hands, faceDown, deck, pile, turn, currentValue, round, startHandSize } = state;
+
+      document.getElementById('round-num').textContent = round;
+      document.getElementById('hand-target').textContent = Math.max(1, startHandSize - (round - 1));
+      document.getElementById('current-value').textContent = currentValue !== null ? (currentValue === 2 ? '2' : currentValue) : '—';
+      document.getElementById('turn-name').textContent = turn === 'p1' ? 'Player 1' : 'Player 2';
+
+
+      document.getElementById('p1-indicator').style.display = turn === 'p1' ? 'inline-block' : 'none';
+      document.getElementById('p2-indicator').style.display = turn === 'p2' ? 'inline-block' : 'none';
+      document.getElementById('zone-p1').classList.toggle('active-turn', turn === 'p1');
+      document.getElementById('zone-p2').classList.toggle('active-turn', turn === 'p2');
+
+      document.getElementById('p1-card-count').textContent = `${hands.p1.length} in hand + ${faceDown.p1.length} fd`;
+      document.getElementById('p2-card-count').textContent = `${hands.p2.length} in hand + ${faceDown.p2.length} fd`;
+
+
+      document.getElementById('deck-count').textContent = `${deck.length} cards`;
+      const deckEl = document.getElementById('deck-card');
+      const needDraw = turn === 'p1'
+        ? mustDrawFromDeck('p1')
+        : mustDrawFromDeck('p2');
+      deckEl.classList.toggle('disabled', !needDraw);
+      deckEl.onclick = needDraw ? drawFromDeck : null;
+
+
+      renderPile();
+
+      renderHand('p1', hands.p1, faceDown.p1);
+      renderHand('p2', hands.p2, faceDown.p2);
+
+
+      document.getElementById('btn-play').disabled = !state.selectedCard;
+    }
+
+    function cardImg(card) {
+      const suitMap = { '♠': 'S', '♥': 'H', '♦': 'D', '♣': 'C' };
+      return `${card.value}${suitMap[card.suit]}.png`;
+    }
+
+    function renderPile() {
+      const pile = state.pile;
+      const el = document.getElementById('pile-display');
+      document.getElementById('pile-count').textContent = `${pile.length} cards`;
+      if (pile.length === 0) {
+        el.innerHTML = '<span style="color:var(--muted);font-size:0.65rem">empty</span>';
+        el.className = 'empty-pile';
+        el.style = '';
+        return;
+      }
+      const top = pile[pile.length - 1];
+      el.className = '';
+      el.style = 'width:72px;height:100px;border-radius:0px;overflow:hidden;';
+      el.innerHTML = `<img src="${cardImg(top)}" alt="${top.value}${top.suit}" style="width:100%;height:100%;object-fit:cover;border-radius:0px;">`;
+    }
+
+    function renderHand(pid, hand, fd) {
+      const handEl = document.getElementById('hand-' + pid);
+      const fdEl = document.getElementById('facedown-' + pid);
+      const isActive = state.turn === pid && !state.gameOver;
+      const isHidden = state.turn !== pid;
+      const inHandPhase = hand.length > 0;
+
+      handEl.innerHTML = '';
+      hand.forEach(card => {
+        const div = document.createElement('div');
+        if (isHidden) {
+          div.className = 'card face-down';
+          div.innerHTML = '<img src="back.png" alt="card back">';
+        } else {
+          const canPlay = isActive && inHandPhase && canPlayCard(card);
+          const sel = state.selectedCard && state.selectedCard.id === card.id;
+          div.className = `card${sel ? ' selected' : ''}${(!isActive || !canPlay) ? ' disabled' : ''}`;
+          div.innerHTML = `<img src="${cardImg(card)}" alt="${card.value}${card.suit}">`;
+          if (isActive && canPlay) div.onclick = () => selectCard(card, pid);
+        }
+        handEl.appendChild(div);
+      });
+
+
+      const existing = fdEl.querySelector('.small-label');
+      fdEl.innerHTML = '';
+      if (existing) fdEl.appendChild(existing);
+
+      const canPlayFD = isActive && hand.length === 0;
+      fd.forEach((card, idx) => {
+        const div = document.createElement('div');
+        div.className = `card face-down${canPlayFD ? ' playable-fd' : ''}`;
+        div.innerHTML = '<img src="back.png" alt="card back">';
+        if (canPlayFD) div.onclick = () => playFaceDown(pid, idx);
+        fdEl.appendChild(div);
+      });
+    }
+
+    function canPlayCard(card) {
+
+      if (isOdd(card.value) && card.value !== 'A') return true;
+      if (card.value === 'A') return true;
+      if (card.value === '9') return true;
+
+      if (state.currentValue === null) return isEven(card.value);
+      return EVEN_ORDER[card.value] >= state.currentValue;
+    }
+
+    function mustDrawFromDeck(pid) {
+      if (state.gameOver) return false;
+      if (state.turn !== pid) return false;
+      const hand = state.hands[pid];
+      if (hand.length === 0) return false;
+
+      return !hand.some(c => canPlayCard(c));
+    }
+
+    function selectCard(card, pid) {
+      if (state.turn !== pid) return;
+      state.selectedCard = (state.selectedCard && state.selectedCard.id === card.id) ? null : card;
+      document.getElementById('btn-play').disabled = !state.selectedCard;
+      render();
+    }
+
+    function playSelected() {
+      if (!state.selectedCard) return;
+      const pid = state.turn;
+      const card = state.selectedCard;
+      state.selectedCard = null;
+
+      state.hands[pid] = state.hands[pid].filter(c => c.id !== card.id);
+      resolveCardPlay(pid, card, false);
+    }
+
+    function playFaceDown(pid, idx) {
+      const card = state.faceDown[pid][idx];
+      state.faceDown[pid].splice(idx, 1);
+      resolveCardPlay(pid, card, true);
+    }
+
+    function resolveCardPlay(pid, card, wasFaceDown) {
+      const opp = pid === 'p1' ? 'p2' : 'p1';
+
+
+      if (card.value === '9') {
+        state.pile.push(card);
+        state.currentValue = 2;
+        log(`${pname(pid)} played 9. Value back to 2.`);
+        endTurn(pid);
+        return;
+      }
+
+
+      if (card.value === 'A') {
+        state.pile.push(card);
+        log(`${pname(pid)} played ACE. Pile terminated.`);
+        burnPile();
+
+        refillAfterPileEnd();
+        endTurn(pid, true);
+        return;
+      }
+
+
+      if (card.value === '3') {
+        state.pile.push(card);
+        log(`${pname(pid)} played 3. ${pname(pid)}'s turn is skipped.`);
+
+        endTurn(pid);
+        return;
+      }
+
+
+      if (card.value === '5') {
+        state.pile.push(card);
+
+        const belowIdx = state.pile.length - 2;
+        if (belowIdx < 0) {
+          log(`${pname(pid)} played 5. Nothing below to boost.`);
+          endTurn(pid);
+          return;
+        }
+        const below = state.pile[belowIdx];
+
+        const ALL_ORDER = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+        const belowIdx2 = ALL_ORDER.indexOf(below.value);
+        const newValue = belowIdx2 >= 0 && belowIdx2 < ALL_ORDER.length - 1
+          ? ALL_ORDER[belowIdx2 + 1]
+          : below.value;
+        const oldValue = below.value;
+        below.value = newValue;
+        below.id = newValue + below.suit;
+        log(`${pname(pid)} played 5. ${oldValue} boosted to ${newValue}.`);
+
+
+        if (newValue === '9') {
+          state.currentValue = 2;
+          log(`→ Boosted to 9. Value back to 2.`);
+          endTurn(pid);
+        } else if (newValue === 'A') {
+          log(`→ Boosted to ACE. Pile terminated.`);
+          burnPile();
+          refillAfterPileEnd();
+          endTurn(pid, true);
+        } else if (newValue === '3') {
+          log(`→ Boosted to 3. Skipped turn. ${pname(pid)}'s turn skipped.`);
+          endTurn(pid);
+        } else if (newValue === '7') {
+          log(`→ Boosted to 7. Steal a card.`);
+          if (state.hands[opp].length > 0) {
+            showStealModal(pid, opp);
+          } else if (state.faceDown[opp].length > 0) {
+            const stolen = state.faceDown[opp].splice(0, 1)[0];
+            state.hands[pid].push(stolen);
+            log(`${pname(opp)} had no hand cards. Stole face down card.`);
+            endTurn(pid);
+          } else {
+            log(`${pname(opp)} has no cards to steal`);
+            endTurn(pid);
+          }
+        } else if (EVEN_ORDER[newValue] !== undefined) {
+          state.currentValue = EVEN_ORDER[newValue];
+          endTurn(pid);
+        } else {
+
+          endTurn(pid);
+        }
+        return;
+      }
+
+
+      if (card.value === '7') {
+        state.pile.push(card);
+        log(`${pname(pid)} played 7. Steal a card.`);
+
+        if (state.hands[opp].length > 0) {
+          showStealModal(pid, opp);
+        } else if (state.faceDown[opp].length > 0) {
+
+          const stolen = state.faceDown[opp].splice(0, 1)[0];
+          state.hands[pid].push(stolen);
+          log(`${pname(opp)} had no hand cards. Stole face down card (now in ${pname(pid)}'s hand).`);
+          endTurn(pid);
+        } else {
+          log(`${pname(opp)} has no cards to steal`);
+          endTurn(pid);
+        }
+        return;
+      }
+
+
+      if (isEven(card.value)) {
+        const val = EVEN_ORDER[card.value];
+        if (wasFaceDown && state.currentValue !== null && val < state.currentValue) {
+
+          state.pile.push(card);
+          log(`${pname(pid)} flipped ${card.value} too low! Picks up the pile.`);
+          pickUpPile(pid);
+          refillAfterPileEnd();
+          endTurn(pid, true);
+        } else {
+          state.pile.push(card);
+          state.currentValue = val;
+          log(`${pname(pid)} played ${card.value}${card.suit}. Current value: ${card.value}`);
+          endTurn(pid);
+        }
+        return;
+      }
+
+
+      state.pile.push(card);
+      endTurn(pid);
+    }
+
+    function drawFromDeck() {
+      const pid = state.turn;
+      if (state.deck.length === 0) { log('Deck is empty!'); return; }
+      const card = state.deck.pop();
+      log(`${pname(pid)} drew ${card.value}${card.suit} from deck.`);
+
+
+      if (isEven(card.value) && (state.currentValue === null || EVEN_ORDER[card.value] >= state.currentValue)) {
+
+        state.pile.push(card);
+        state.currentValue = EVEN_ORDER[card.value];
+        log(`→ Playable! ${card.value} played.`);
+        endTurn(pid);
+      } else if (isOdd(card.value)) {
+
+        resolveCardPlay(pid, card, false);
+      } else {
+
+        state.pile.push(card);
+        log(`→ Too low (${card.value}). ${pname(pid)} picks up the pile!`);
+        pickUpPile(pid);
+        refillAfterPileEnd();
+        endTurn(pid, true);
+      }
+    }
+
+    function pickUpPile(pid) {
+      state.hands[pid].push(...state.pile);
+      state.pile = [];
+      state.currentValue = null;
+    }
+
+    function burnPile() {
+
+      state.deck.unshift(...state.pile);
+      state.pile = [];
+      state.currentValue = null;
+    }
+
+    function refillAfterPileEnd() {
+
+      const target = Math.max(1, state.startHandSize - (state.round - 1));
+      for (const pid of ['p1', 'p2']) {
+        while (state.hands[pid].length < target && state.deck.length > 0) {
+          state.hands[pid].push(state.deck.pop());
+        }
+      }
+      state.round++;
+    }
+
+    function endTurn(pid, pileEnded = false) {
+      checkWin(pid);
+      if (!state.gameOver) {
+        state.turn = pid === 'p1' ? 'p2' : 'p1';
+        state.selectedCard = null;
+        render();
+      }
+    }
+
+    function checkWin(pid) {
+      if (state.hands[pid].length === 0 && state.faceDown[pid].length === 0) {
+        state.gameOver = true;
+        document.getElementById('win-title').textContent = `${pname(pid)} WINS!`;
+        document.getElementById('win-screen').classList.add('show');
+        render();
+      }
+    }
+
+
+    function showStealModal(pid, opp) {
+      state.awaitingSteal = { pid, opp };
+      const box = document.getElementById('steal-cards');
+      box.innerHTML = '';
+      document.getElementById('steal-desc').textContent =
+        `${pname(pid)}: choose a card to steal from ${pname(opp)}'s hand.`;
+
+      state.hands[opp].forEach(card => {
+        const div = document.createElement('div');
+        div.className = 'card';
+        div.style.cssText = 'cursor:pointer;';
+        div.innerHTML = `<img src="${cardImg(card)}" alt="${card.value}${card.suit}">`;
+        div.onclick = () => doSteal(card);
+        box.appendChild(div);
+      });
+
+      document.getElementById('steal-modal').classList.add('show');
+    }
+
+    function doSteal(card) {
+      const { pid, opp } = state.awaitingSteal;
+      state.hands[opp] = state.hands[opp].filter(c => c.id !== card.id);
+      state.hands[pid].push(card);
+      log(`${pname(pid)} stole ${card.value}${card.suit} from ${pname(opp)}!`);
+      document.getElementById('steal-modal').classList.remove('show');
+      state.awaitingSteal = null;
+      endTurn(pid);
+    }
+
+    function cancelSteal() {
+      const { pid } = state.awaitingSteal;
+      document.getElementById('steal-modal').classList.remove('show');
+      state.awaitingSteal = null;
+      endTurn(pid);
+    }
+
+
+    function pname(pid) { return pid === 'p1' ? 'Player 1' : 'Player 2'; }
+
+    function log(msg) {
+      const el = document.getElementById('log-bar');
+      el.textContent = msg;
+      el.style.color = 'var(--accent)';
+      setTimeout(() => { el.style.color = 'var(--muted)'; }, 2000);
+    }
+
+
+    initGame();
+  </script>
+</body>
+
+</html>
